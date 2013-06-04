@@ -1,5 +1,8 @@
 <?php
 
+// Load the installation-specific settings
+require_once('sitesettings.php');
+
 return array(
 
 	/*
@@ -26,7 +29,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://fillmysuitcase.dev',
+	'url' => $SITE_CONFIG['url'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,7 +68,7 @@ return array(
 	|
 	*/
 
-	'key' => 'YourSecretKey!!!',
+	'key' => $SITE_CONFIG['key'],
 
 	/*
 	|--------------------------------------------------------------------------
