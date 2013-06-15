@@ -13,13 +13,29 @@
     <div class="container-narrow">
         <div class="masthead">
             <ul class="nav nav-pills pull-right">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Login</a></li>
+                <li class="active"><a href="{{ URL::route('root') }}">Home</a></li>
+                @if (!Auth::user())
+                    <li><a href="{{ URL::route('login') }}">Log In</a></li>
+                @else
+                    <li><a href="#">{{ Auth::user()->username }}</a></li>
+                    <li><a href="{{ URL::route('logout') }}">Log Out</a></li>
+                @endif
             </ul>
             <h3 class="muted rootlink"><a href="{{ URL::route('root') }}">FillMySuitcase</a></h3>
         </div>
 
         <hr />
+
+        @if (Session::has('errors'))
+        <div class="page-errors alert alert-error">
+            <h4>Errors</h4>
+            <ul>
+            @foreach (Session::get('errors')->getMessages() as $message)
+                <li>{{ $message[0] }}</li>
+            @endforeach
+            </ul>
+        </div>
+        @endif
 
         @yield('content')
 
