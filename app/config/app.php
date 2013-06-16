@@ -1,7 +1,7 @@
 <?php
 
 // Load the installation-specific settings
-require_once('sitesettings.php');
+require(__DIR__ . '/sitesettings.php');
 
 return array(
 
