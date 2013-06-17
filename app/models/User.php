@@ -2,8 +2,9 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use LaravelBook\Ardent\Ardent;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Ardent implements UserInterface, RemindableInterface {
 
 	/**
 	 * The database table used by the model.
@@ -27,15 +28,22 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     protected $fillable = array('username', 'password', 'email');
 
     /**
-     * The rules to use for validating this model.
+     * The rules to use for validating this model (used by Ardent).
      *
      * @var array
      */
-    protected static $validationRules = array(
+    public static $rules = array(
         'username' => 'required|unique:users',
         'password' => 'required|min:6',
         'email'    => 'required|unique:users|email',
     );
+
+    
+    /**
+     * Tell Ardent to hash the password field before storing to the database.
+     */
+    public $autoHashPasswordAttributes = true;
+    public static $passwordAttributes = array('password');
 
 	/**
 	 * Get the unique identifier for the user.
@@ -66,31 +74,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->email;
 	}
-
-    /**
-     * Makes a validator with the User's validation rules
-     *
-     * @param array $attribs 
-     *
-     * @return Validator
-     */
-    public static function makeValidator($attribs)
-    {
-        return Validator::make($attribs, User::$validationRules);
-    }
-
-    /**
-     * setPasswordAttribute is a mutator for the password attribute.  Every
-     * time the password is set on the model, it should be hashed before
-     * being stored.
-     * 
-     * @param string $value
-     * @access public
-     * @return void
-     */
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
-
 }

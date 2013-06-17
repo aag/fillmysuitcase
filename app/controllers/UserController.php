@@ -62,28 +62,19 @@ class UserController extends BaseController {
 	public function store()
 	{
         $inputs = Input::only('username', 'password', 'email');
-        $validator = User::makeValidator($inputs);
+        $user = new User($inputs);
 
-        if ($validator->fails())
+        // The save fails if the inputs don't pass validation due to Ardent.
+        if ($user->save())
         {
-            return Redirect::route('createuser')
-                                ->withInput()
-                                ->withErrors($validator);
+            Auth::login($user);
+            return Redirect::route('root');
         }
         else
         {
-            $user = new User($inputs);
-            $user->save();
-
-            Auth::attempt(
-                array(
-                    'username' => $inputs['username'],
-                    'password' => $inputs['password'],
-                ),
-                false
-            );
-
-            return Redirect::route('root');
+            return Redirect::route('createuser')
+                                ->withInput()
+                                ->withErrors($user->errors());
         }
 	}
 
