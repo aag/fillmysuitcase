@@ -37,6 +37,12 @@
         </div>
         @endif
 
+        @if (Session::has('success-message'))
+        <div class="page-errors alert alert-success">
+            {{ Session::get('success-message') }}
+        </div>
+        @endif
+
         @yield('content')
 
     </div>

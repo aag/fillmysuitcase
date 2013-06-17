@@ -20,5 +20,10 @@ Route::get('/logout',  array('as' => 'logout', 'uses' => 'UserController@doLogou
 Route::get('/user/create',  array('as' => 'createuser', 'uses' => 'UserController@create'));
 Route::post('/user',        array('as' => 'storeuser', 'before' => 'csrf', 'uses' => 'UserController@store'));
 
+Route::get('/passwordreset',      array('as' => 'passwordreset', 'uses' => 'UserController@showPasswordReset'));
+Route::post('/passwordreset',     array('as' => 'sendpasswordreset', 'before' => 'csrf', 'uses' => 'UserController@sendPasswordEmail'));
+Route::get('/password/{token}',   array('as' => 'setpassword', 'uses' => 'UserController@showSetPassword'));
+Route::post('/password/{token}',  array('as' => 'dosetpassword', 'before' => 'csrf', 'uses' => 'UserController@doSetPassword'));
+
 
 

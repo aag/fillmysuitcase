@@ -22,6 +22,10 @@
         Don't have an account yet?  <a href="{{ URL::route('createuser') }}">Create Account</a>
     </div>
 
+    <div class="create-account-message">
+        Forgot your password?  <a href="{{ URL::route('passwordreset') }}">Send Reminder</a>
+    </div>
+
     {{ Form::close() }}
 @stop
 

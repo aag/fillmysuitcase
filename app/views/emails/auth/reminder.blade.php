@@ -4,10 +4,14 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<h2>Password Reset</h2>
+		<h3>FillMySuitcase Password Reset</h3>
 
 		<div>
-			To reset your password, complete this form: {{ URL::to('password/reset', array($token)) }}.
+			A password reset has been requested for this email address on the FillMySuitcase website.  If you did not request this email, it is safe to just ignore this message.  If you did request this email, reset your password by completing this form:
 		</div>
+
+        <div>
+            <a href="{{ URL::route('setpassword', array($token)) }}">{{ URL::route('setpassword', array($token)) }}</a>
+        </div>
 	</body>
 </html>
