@@ -61,7 +61,7 @@ class UserController extends BaseController {
 	 */
 	public function store()
 	{
-        $inputs = Input::only('username', 'password', 'email');
+        $inputs = Input::only('username', 'email', 'password', 'password_confirmation');
         $user = new User($inputs);
 
         // The save fails if the inputs don't pass validation due to Ardent.

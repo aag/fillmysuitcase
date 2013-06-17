@@ -6,15 +6,17 @@ class UserTest extends TestCase {
     {
         $this->validAttribs = array(
             'username' => 'unittestuser',
-            'password' => 'unittestpass',
             'email'    => 'ut@test.com',
+            'password' => 'unittestpass',
+            'password_confirmation' => 'unittestpass',
         );
         $this->validUser = new User($this->validAttribs);
 
         $this->validAttribs2 = array(
             'username' => 'unittestuser2',
-            'password' => 'unittestpass2',
             'email'    => 'ut2@test.com',
+            'password' => 'unittestpass2',
+            'password_confirmation' => 'unittestpass2',
         );
     }
 

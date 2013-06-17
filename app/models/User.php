@@ -25,7 +25,9 @@ class User extends Ardent implements UserInterface, RemindableInterface {
      *
      * @var array
      */
-    protected $fillable = array('username', 'password', 'email');
+    protected $fillable = array(
+        'username', 'email', 'password', 'password_confirmation'
+    );
 
     /**
      * The rules to use for validating this model (used by Ardent).
@@ -34,16 +36,22 @@ class User extends Ardent implements UserInterface, RemindableInterface {
      */
     public static $rules = array(
         'username' => 'required|unique:users',
-        'password' => 'required|min:6',
         'email'    => 'required|unique:users|email',
+        'password' => 'required|min:6|confirmed',
+        'password_confirmation' => 'required|min:6',
     );
 
-    
     /**
      * Tell Ardent to hash the password field before storing to the database.
      */
     public $autoHashPasswordAttributes = true;
     public static $passwordAttributes = array('password');
+
+    /**
+     * Tell Ardent to remove the password_confirmation field before storing
+     * to the database.
+     */
+    public $autoPurgeRedundantAttributes = true;
 
 	/**
 	 * Get the unique identifier for the user.
