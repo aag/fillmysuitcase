@@ -25,8 +25,7 @@ class UserController extends BaseController {
      */
     public function showLogin()
     {
-        $user = new User();
-        return View::make('user.login', array('user' => $user));
+        return View::make('user.login');
     }
 
     /**
@@ -49,9 +48,7 @@ class UserController extends BaseController {
 	 */
 	public function create()
 	{
-        $user = new User();
-
-        return View::make('user.create', array('user' => $user));
+        return View::make('user.create');
 	}
 
 	/**
