@@ -16,7 +16,6 @@ class UserController extends BaseController {
             return Redirect::route('login')
                                 ->exceptInput('password')
                                 ->withErrors(array('' => 'Username or password invalid.'));
-
         }
     }
 
@@ -95,7 +94,7 @@ class UserController extends BaseController {
         $credentials = array('email' => Input::get('email'));
         return Password::remind($credentials,  function($message, $user)
         {
-                $message->subject('FillMySuitcase Password Reset');
+            $message->subject('FillMySuitcase Password Reset');
         });
     }
 
@@ -129,6 +128,5 @@ class UserController extends BaseController {
             return Redirect::route('login');
         });
     }
-
 }
 
