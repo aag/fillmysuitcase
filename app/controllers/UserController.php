@@ -4,7 +4,7 @@ class UserController extends BaseController {
     /**
      * Attempt a login with the credentials in the POST.
      */
-    public function doLogin()
+    public function login()
     {
         $username = Input::get('username');
         $password = Input::get('password');
@@ -22,7 +22,7 @@ class UserController extends BaseController {
     /**
      * Show the login form to the user.
      */
-    public function showLogin()
+    public function showLoginForm()
     {
         return View::make('user.login');
     }
@@ -30,7 +30,7 @@ class UserController extends BaseController {
     /**
      * Log out the current user.
      */
-    public function doLogout()
+    public function logout()
     {
         if (Auth::user())
         {
@@ -45,7 +45,7 @@ class UserController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function showCreateForm()
 	{
         return View::make('user.create');
 	}
@@ -55,7 +55,7 @@ class UserController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function storeNew()
 	{
         $inputs = Input::only('username', 'email', 'password', 'password_confirmation');
         $user = new User($inputs);
@@ -79,7 +79,7 @@ class UserController extends BaseController {
      *
 	 * @return Response
      */
-    public function showPasswordReset()
+    public function showPasswordResetForm()
     {
         return View::make('user.sendpasswordreset', array('token' => 'ATOKEN'));
     }
@@ -103,7 +103,7 @@ class UserController extends BaseController {
      *
      * @return Response
      */
-    public function showSetPassword($token)
+    public function showSetPasswordForm($token)
     {
         return View::make('user.setpassword')
                         ->with('token', $token);
@@ -114,7 +114,7 @@ class UserController extends BaseController {
      *
      * @return Response
      */
-    public function doSetPassword($token)
+    public function setPassword($token)
     {
         $credentials = array('email' => Input::get('email'));
 

@@ -13,17 +13,17 @@
 
 Route::get('/', array('as' => 'root', 'uses' => 'HomeController@showHome'));
 
-Route::post('/login',  array('as' => 'dologin', 'before' => 'csrf', 'uses' => 'UserController@doLogin'));
-Route::get('/login',   array('as' => 'login', 'uses' => 'UserController@showLogin'));
-Route::get('/logout',  array('as' => 'logout', 'uses' => 'UserController@doLogout'));
+Route::get('/login',   array('as' => 'login', 'uses' => 'UserController@showLoginForm'));
+Route::post('/login',  array('as' => 'dologin', 'before' => 'csrf', 'uses' => 'UserController@login'));
+Route::get('/logout',  array('as' => 'logout', 'uses' => 'UserController@logout'));
 
-Route::get('/user/create',  array('as' => 'createuser', 'uses' => 'UserController@create'));
-Route::post('/user',        array('as' => 'storeuser', 'before' => 'csrf', 'uses' => 'UserController@store'));
+Route::get('/user/create',  array('as' => 'createuser', 'uses' => 'UserController@showCreateForm'));
+Route::post('/user',        array('as' => 'storeuser', 'before' => 'csrf', 'uses' => 'UserController@storeNew'));
 
-Route::get('/passwordreset',      array('as' => 'passwordreset', 'uses' => 'UserController@showPasswordReset'));
+Route::get('/passwordreset',      array('as' => 'passwordreset', 'uses' => 'UserController@showPasswordResetForm'));
 Route::post('/passwordreset',     array('as' => 'sendpasswordreset', 'before' => 'csrf', 'uses' => 'UserController@sendPasswordEmail'));
-Route::get('/password/{token}',   array('as' => 'setpassword', 'uses' => 'UserController@showSetPassword'));
-Route::post('/password/{token}',  array('as' => 'dosetpassword', 'before' => 'csrf', 'uses' => 'UserController@doSetPassword'));
+Route::get('/password/{token}',   array('as' => 'setpassword', 'uses' => 'UserController@showSetPasswordForm'));
+Route::post('/password/{token}',  array('as' => 'dosetpassword', 'before' => 'csrf', 'uses' => 'UserController@setPassword'));
 
 
 
