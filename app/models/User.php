@@ -82,4 +82,16 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 	{
 		return $this->email;
 	}
+
+    /**
+     * items returns this user's items list.
+     * 
+     * @access public
+     * @return an Eloquent collection
+     */
+    public function items()
+    {
+        return $this->hasMany('Item');
+    }
+
 }

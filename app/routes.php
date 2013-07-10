@@ -25,5 +25,6 @@ Route::post('/passwordreset',     array('as' => 'sendpasswordreset', 'before' =>
 Route::get('/password/{token}',   array('as' => 'setpassword', 'uses' => 'UserController@showSetPasswordForm'));
 Route::post('/password/{token}',  array('as' => 'dosetpassword', 'before' => 'csrf', 'uses' => 'UserController@setPassword'));
 
-
+Route::get('/list', array('as' => 'item.index', 'before' => 'auth', 'uses' => 'ItemController@index'));
+Route::resource('item', 'ItemController', array('before' => 'auth', 'except' => array('index')));
 
