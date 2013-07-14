@@ -60,3 +60,12 @@ body {
 .create-user-form .create-account-message {
     margin-top: 20px;
 }
+
+#list-container .packed {
+    margin-top: 100px;
+}
+
+#list-container ul {
+    list-style-type: none;
+    list-style-position: none;
+}

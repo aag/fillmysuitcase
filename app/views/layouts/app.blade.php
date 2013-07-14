@@ -48,7 +48,10 @@
     </div>
     {{ Html::script('//code.jquery.com/jquery-1.9.1.min.js') }}
     {{ Html::script('js/bootstrap.min.js') }}
+
     {{ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js') }}
+    {{ Html::script('js/app.js') }}
+    {{ Html::script('js/controllers.js') }}
 </body>
 </html>
 

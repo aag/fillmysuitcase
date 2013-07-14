@@ -4,11 +4,9 @@
 
     <h2>Your Packing List</h2>
 
-    <ul>
-        @foreach ($items as $item)
-        <li>{{ $item->name }}</li>
-        @endforeach
-    </ul>
+    <div id="list-container">
+        @include('item._list')
+    </div>
 
 @stop
 
