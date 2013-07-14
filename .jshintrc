@@ -1,0 +1,16 @@
+{
+    // JSHint Configuration File 
+    "maxerr"        : 50,       // {int} Maximum error before stopping
+
+    // Enforcing
+    "undef"         : true,     // true: Require all non-global variables to be declared (prevents global leaks)
+    "unused"        : true,     // true: Require all defined variables be used
+    "globalstrict"  : true,     // true: Allow global "use strict" (also enables 'strict')
+
+    // Environments
+    "browser"       : true,     // Web Browser (window, document, etc)
+
+    // Custom Globals
+    "predef"        : [ "angular" ]  // additional predefined global variables
+}
+
