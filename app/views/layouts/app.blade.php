@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="suitcase">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>FillMySuitcase</title>
@@ -46,8 +46,9 @@
         @yield('content')
 
     </div>
-    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    {{ Html::script('//code.jquery.com/jquery-1.9.1.min.js') }}
     {{ Html::script('js/bootstrap.min.js') }}
+    {{ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js') }}
 </body>
 </html>
 
