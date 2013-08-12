@@ -7,10 +7,16 @@ class ItemController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($format = 'html')
 	{
+        $format = str_replace('.', '', $format);;
+
         $items = Auth::user()->items;
-        return View::make('item.index', array('items' => $items));
+        switch ($format)
+        {
+          case 'json': return Response::json($items);
+          default: return View::make('item.index', array('items' => $items));
+        }
 	}
 
 	/**
