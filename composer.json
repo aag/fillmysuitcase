@@ -3,7 +3,7 @@
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
 	"require": {
-		"laravel/framework": "4.0.5",
+		"laravel/framework": "4.0.6",
         "laravelbook/ardent": "dev-master"
 	},
 	"autoload": {
