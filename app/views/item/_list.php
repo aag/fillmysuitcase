@@ -3,8 +3,8 @@
         <ul class="packing-list">
             <li ng-repeat="item in items | filter:{packed:false}">
                 <form class="form-inline">
-                    <input type="checkbox" class="check" ng-model="item.packed">
-                    <input ng-model='item.name'>
+                    <input type="checkbox" class="check" ng-model="item.packed" ng-change="change(item)">
+                    <input ng-model="item.name" ng-change="change(item)">
                 </form>
             </li>
         </ul>
@@ -15,8 +15,8 @@
         <ul class="packing-list">
             <li ng-repeat="item in items | filter:{packed:true}">
                 <form class="form-inline">
-                    <input type="checkbox" class="check" ng-model="item.packed">
-                    <input ng-model='item.name'>
+                    <input type="checkbox" class="check" ng-model="item.packed" ng-change="change(item)">
+                    <input ng-model="item.name" ng-change="change(item)">
                 </form>
             </li>
         </ul>

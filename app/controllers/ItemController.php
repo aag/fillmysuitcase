@@ -45,7 +45,17 @@ class ItemController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+        $item = Auth::user()->items()->where('id', $id)->first();
+
+        if ($item) {
+            $item->name = Input::get('name', $item->name);
+            $item->packed = Input::get('packed', $item->packed);
+            $item->save();
+
+            return Response::json($item);
+        } else {
+            App::abort(500, 'Item not found or access denied.');
+        }
 	}
 
 	/**
