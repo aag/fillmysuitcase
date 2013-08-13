@@ -4,7 +4,7 @@
             <li ng-repeat="item in items | filter:{packed:false}">
                 <form class="form-inline">
                     <input type="checkbox" class="check" ng-model="item.packed">
-                    <input ng-model='item.name'> (added {{item.created_at|date}})
+                    <input ng-model='item.name'>
                 </form>
             </li>
         </ul>
@@ -16,7 +16,7 @@
             <li ng-repeat="item in items | filter:{packed:true}">
                 <form class="form-inline">
                     <input type="checkbox" class="check" ng-model="item.packed">
-                    <input ng-model='item.name'> (added {{item.created_at|date}})
+                    <input ng-model='item.name'>
                 </form>
             </li>
         </ul>
