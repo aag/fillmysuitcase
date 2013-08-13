@@ -3,66 +3,42 @@
 class ItemController extends \BaseController {
 
 	/**
-	 * Display the user's packing list.
+	 * Display the HTML page of the user's packing list.
 	 *
 	 * @return Response
 	 */
-	public function index($format = 'html')
+	public function listPage()
 	{
-        $format = str_replace('.', '', $format);;
-
         $items = Auth::user()->items;
-        switch ($format)
-        {
-          case 'json': return Response::json($items);
-          default: return View::make('item.index', array('items' => $items));
-        }
+        return View::make('item.index', array('items' => $items));
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Return the JSON representation of the user's packing list.
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function index()
 	{
-		//
+        $items = Auth::user()->items;
+        return Response::json($items);
 	}
 
 	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
+     * Return the JSON representation of the specified Item if it exists and
+     * the current user owns it.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		//
+        $item = Auth::user()->items()->where('id', $id)->first();
+        return Response::json($item);
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
+	 * Update the specified Item in storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -73,14 +49,22 @@ class ItemController extends \BaseController {
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+     * Remove the specified Item from the DB if it exists and the current
+     * user owns it.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		//
+        $item = Auth::user()->items()->where('id', $id)->first();
+
+        if ($item) {
+            $item->delete();
+            return Response::json(array("success" => true));
+        } else {
+            App::abort(500, 'Item not found or access denied.');
+        }
 	}
 
 }

@@ -1,5 +1,5 @@
 'use strict';
 
-// Declare app level module
-angular.module('suitcase', ['suitcase.controllers']);
+// Declare app level modules
+angular.module('suitcase', ['ngResource', 'suitcase.controllers']);
 
