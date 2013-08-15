@@ -11,7 +11,7 @@ class UserController extends BaseController {
         $stay_logged_in = Input::get('remember');
 
         if (Auth::attempt(array('username' => $username, 'password' => $password), $stay_logged_in)) {
-            return Redirect::route('item.index');
+            return Redirect::route('listpage');
         } else {
             return Redirect::route('login')
                                 ->exceptInput('password')
