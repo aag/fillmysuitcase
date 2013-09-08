@@ -69,3 +69,7 @@ body {
     list-style-type: none;
     list-style-position: none;
 }
+
+#list-container li.new-item {
+    padding-left: 20px;
+}

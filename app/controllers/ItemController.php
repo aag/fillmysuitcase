@@ -77,4 +77,20 @@ class ItemController extends \BaseController {
         }
 	}
 
+    /**
+     * Create a new Item and add it to the logged-in user's Items.
+     * 
+     * @access public
+     * @return Response
+     */
+    public function store()
+    {
+        $name = Input::only('name');
+        $item = new Item($name);
+
+        Auth::user()->items()->save($item);
+
+        return Response::json($item);
+    }
+
 }

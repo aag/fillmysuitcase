@@ -7,6 +7,12 @@
                     <input ng-model="item.name" ng-change="change(item)">
                 </form>
             </li>
+            <li class="new-item">
+                <form class="form-inline" ng-submit="submit()">
+                    <input placeholder="New Item" ng-model="newName">
+                    <button type="submit">Create</button>
+                </form>
+            </li>
         </ul>
     </div>
 
