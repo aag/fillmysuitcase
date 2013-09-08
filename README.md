@@ -28,4 +28,9 @@ Steps
 
 At this point you should be able to log in and use the site normally.
 
+### License
+
+Fill My Suitcase is licensed under the
+[MIT License](http://opensource.org/licenses/MIT).  See the LICENSE file in
+this directory for the full license text.
 
