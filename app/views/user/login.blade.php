@@ -6,7 +6,7 @@
     {{ Form::token() }}
 
     <h2 class="form-signin-heading">Log In</h2>
-    {{ Form::label('username', 'Username') }}
+    {{ Form::label('username', 'Username or Email Address') }}
     {{ Form::text('username', '', array('class' => 'input-block-level')) }}
 
     {{ Form::label('password', 'Password') }}

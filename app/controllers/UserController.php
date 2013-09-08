@@ -10,7 +10,8 @@ class UserController extends BaseController {
         $password = Input::get('password');
         $stay_logged_in = Input::get('remember');
 
-        if (Auth::attempt(array('username' => $username, 'password' => $password), $stay_logged_in)) {
+        if (Auth::attempt(array('username' => $username, 'password' => $password), $stay_logged_in) ||
+            Auth::attempt(array('email' => $username, 'password' => $password), $stay_logged_in)) {
             return Redirect::route('listpage');
         } else {
             return Redirect::route('login')
