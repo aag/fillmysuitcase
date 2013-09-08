@@ -12,7 +12,7 @@
 @if (!Session::has('success'))
 
     {{ Form::open(array('action' => array('UserController@setPassword', $token), 'class' => 'create-user-form')) }}
-    {{ Form::hidden('token', $token) }}
+    {{ Form::token() }}
 
     <h2 class="form-signin-heading">Reset Password</h2>
     {{ Form::label('email', 'Email Address') }}

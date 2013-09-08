@@ -37,9 +37,56 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     public static $rules = array(
         'username' => 'required|unique:users',
         'email'    => 'required|unique:users|email',
-        'password' => 'required|min:6|confirmed',
-        'password_confirmation' => 'required|min:6',
     );
+
+    /**
+     * The rules to use for validating the password.  This is not included
+     * in the model rules, because we don't want to require a confirmed
+     * password every time we change the User's data.
+     */
+    public static $passwordRules = array(
+        'password' => 'required|min:6|confirmed',
+    );
+
+    /**
+     * passwordValid accepts an array with 'password' and
+     * 'password_confirmation' elements and returns true if they pass the
+     * password validation rules.
+     * 
+     * @param mixed $inputs 
+     * @static
+     * @access public
+     * @return void
+     */
+    public function passwordValid($inputs) {
+        $passValidator = Validator::make($inputs, self::$passwordRules);
+        if($passValidator->fails()) {
+            $this->errors()->merge($passValidator->messages()->toArray());
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * passwordEmptyOrValid accepts an array with 'password' and
+     * 'password_confirmation' keys and returns true if the password in 
+     * $inputs is empty or valid.  If it's non-empty and valid, this user's
+     * password is set to the one in the Inputs.
+     * 
+     * @param Array $passInputs
+     * @access private
+     * @return boolean
+     */
+    private function passwordEmptyOrValid($inputs) {
+        if (!empty($inputs['password']) && !$this->passwordValid($inputs))
+        {
+            return false;
+        }
+
+        $this->password = $inputs['password'];
+        return true;
+    }
 
     /**
      * Tell Ardent to hash the password field before storing to the database.

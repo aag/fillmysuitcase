@@ -17,7 +17,7 @@
                 @if (!Auth::user())
                     <li><a href="{{ URL::route('login') }}">Log In</a></li>
                 @else
-                    <li><a href="#">{{ Auth::user()->username }}</a></li>
+                    <li><a href="{{ URL::route('user.edit') }}">{{ Auth::user()->username }}</a></li>
                     <li><a href="{{ URL::route('logout') }}">Log Out</a></li>
                 @endif
             </ul>

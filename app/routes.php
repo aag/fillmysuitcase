@@ -20,6 +20,9 @@ Route::get('/logout',  array('as' => 'logout', 'uses' => 'UserController@logout'
 Route::get('/user/create',  array('as' => 'createuser', 'uses' => 'UserController@showCreateForm'));
 Route::post('/user',        array('as' => 'storeuser', 'before' => 'csrf', 'uses' => 'UserController@storeNew'));
 
+Route::get('/account',  array('as' => 'user.edit', 'before' => 'auth', 'uses' => 'UserController@showEditForm'));
+Route::post('/account', array('as' => 'user.update', 'before' => array('auth', 'csrf'), 'uses' => 'UserController@storeEdit'));
+
 Route::get('/passwordreset',      array('as' => 'passwordreset', 'uses' => 'UserController@showPasswordResetForm'));
 Route::post('/passwordreset',     array('as' => 'sendpasswordreset', 'before' => 'csrf', 'uses' => 'UserController@sendPasswordEmail'));
 Route::get('/password/{token}',   array('as' => 'setpassword', 'uses' => 'UserController@showSetPasswordForm'));

@@ -32,7 +32,9 @@ class UserTest extends TestCase {
 
     public function testValidUserValidation()
     {
-        $this->assertTrue($this->validUser->validate());
+        $user = $this->validUser;
+        $attrs = $this->validAttribs;
+        $this->assertTrue($user->validate() && $user->passwordValid($attrs));
     }
 
     public function testEmptyUsernameIsInvalid()
@@ -50,7 +52,7 @@ class UserTest extends TestCase {
         unset($attrs['password']);
 
         $user = new User($attrs);
-        $this->assertFalse($user->validate());
+        $this->assertFalse($user->validate() && $user->passwordValid($attrs));
     }
 
     public function testShortPasswordIsInvalid()
@@ -59,7 +61,26 @@ class UserTest extends TestCase {
         $attrs['password'] = 'abcde';
 
         $user = new User($attrs);
-        $this->assertFalse($user->validate());
+        $this->assertFalse($user->validate() && $user->passwordValid($attrs));
+    }
+
+    public function testUnconfirmedPasswordIsInvalid()
+    {
+        $attrs = $this->validAttribs;
+        $attrs['password_confirmation'] = '';
+
+        $user = new User($attrs);
+        $this->assertFalse($user->validate() && $user->passwordValid($attrs));
+    }
+
+    public function testNonMatchingPasswordIsInvalid()
+    {
+        $attrs = $this->validAttribs;
+        $attrs['password'] = 'abcdef';
+        $attrs['password_confirmation'] = 'ghijkl';
+
+        $user = new User($attrs);
+        $this->assertFalse($user->validate() && $user->passwordValid($attrs));
     }
 
     public function testEmptyEmailIsInvalid()
