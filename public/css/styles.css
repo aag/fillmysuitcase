@@ -73,3 +73,7 @@ body {
 #list-container li.new-item {
     padding-left: 20px;
 }
+
+#list-container .confirm-delete {
+    display: inline-block;
+}

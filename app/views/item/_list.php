@@ -5,6 +5,12 @@
                 <form class="form-inline">
                     <input type="checkbox" class="check" ng-model="item.packed" ng-change="change(item)">
                     <input ng-model="item.name" ng-change="change(item)">
+                    <a href="" ng-click="delete(item)" ng-hide="item.confirmingDelete"><img src="/img/cross.png"></a>
+                    <div class="confirm-delete" ng-show="item.confirmingDelete">
+                        Are you sure?
+                        <button class="delete-yes" ng-click="confirmDelete(item)">Delete</button>
+                        <button class="delete-cancel" ng-click="cancelDelete(item)">Cancel</button>
+                    </div>
                 </form>
             </li>
             <li class="new-item">

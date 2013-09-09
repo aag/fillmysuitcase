@@ -25,4 +25,17 @@ angular.module('suitcase.controllers', []).
         });
     };
 
+    $scope.delete = function(item) {
+        item.confirmingDelete = true;
+    };
+
+    $scope.confirmDelete = function(item) {
+        item.$delete();
+    };
+
+    $scope.cancelDelete = function(item) {
+        delete item.confirmingDelete;
+    };
+
+
   });
