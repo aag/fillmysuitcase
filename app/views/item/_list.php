@@ -13,8 +13,8 @@
                     </a>
                     <div class="confirm-delete" ng-show="item.confirmingDelete">
                         Are you sure?
-                        <button class="delete-yes" ng-click="confirmDelete(item)">Delete</button>
-                        <button class="delete-cancel" ng-click="cancelDelete(item)">Cancel</button>
+                        <button class="delete-yes btn btn-danger" ng-click="confirmDelete(item)">Delete</button>
+                        <button class="delete-cancel btn" ng-click="cancelDelete(item)">Cancel</button>
                     </div>
                 </form>
             </li>
@@ -22,14 +22,14 @@
                 <form class="form-inline" ng-submit="submit()">
                     <div class="check-holder"></div>
                     <input placeholder="New Item" class="item-name" ng-model="newName">
-                    <button type="submit">Create</button>
+                    <button type="submit" class="btn">Create</button>
                 </form>
             </li>
         </ul>
         <div class="packing-finished" ng-hide="!!unpackedItems.length">
             <h4>Everything is packed. Bon voyage!</h4>
             <p>Reset the list for your next trip.</p>
-            <button class="reset-list btn-primary" ng-click="resetPacked()">Reset</button>
+            <button class="reset-list btn btn-primary" ng-click="resetPacked()">Reset</button>
         </div>
     </div>
 
