@@ -14,6 +14,10 @@ angular.module('suitcase.controllers', []).
 
     $scope.change = _.debounce(saveItem, 500);
 
+    $scope.checkChange = function(item) {
+        saveItem(item);
+    };
+
     $scope.submit = function() {
         var that = this;
         var newItem = new Item();
@@ -37,5 +41,15 @@ angular.module('suitcase.controllers', []).
         delete item.confirmingDelete;
     };
 
+    $scope.resetPacked = function() {
+        _.map(this.items, function(item) {
+            item.packed = false;
+            return item;
+        });
+
+        _.each(this.items, function(item) {
+            item.$save();
+        });
+    };
 
   });

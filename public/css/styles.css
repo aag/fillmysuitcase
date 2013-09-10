@@ -112,3 +112,12 @@ body {
 #list-container .delete-icon:hover {
     opacity: 0.75;
 }
+
+.packing-finished {
+    padding: 20px 20px;
+    background-color: #c3ffc9;
+    width: 400px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
