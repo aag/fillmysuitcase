@@ -2,7 +2,7 @@
 
 @section('content')
 
-    {{ Form::model($user, array('route' => 'user.update', 'class' => 'create-user-form')) }}
+    {{ Form::model($user, array('route' => 'user.update', 'class' => 'user-form')) }}
     {{ Form::token() }}
 
     <h2 class="form-signin-heading">Edit Account Info</h2>

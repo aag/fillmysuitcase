@@ -2,7 +2,7 @@
 
 @section('content')
 
-    {{ Form::open(array('action' => 'UserController@login', 'class' => 'create-user-form')) }}
+    {{ Form::open(array('action' => 'UserController@login', 'class' => 'user-form')) }}
     {{ Form::token() }}
 
     <h2 class="form-signin-heading">Log In</h2>

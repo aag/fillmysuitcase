@@ -16,7 +16,7 @@
 
 @if (!Session::has('success'))
 
-    {{ Form::open(array('action' => 'UserController@sendPasswordEmail', 'class' => 'create-user-form')) }}
+    {{ Form::open(array('action' => 'UserController@sendPasswordEmail', 'class' => 'user-form')) }}
     {{ Form::token() }}
 
     <h2 class="form-signin-heading">Reset Password</h2>
