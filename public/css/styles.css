@@ -61,8 +61,16 @@ body {
     margin-top: 20px;
 }
 
+#list {
+    margin-left: 80px;
+}
+
+#list-container .unpacked {
+    margin-top: 30px;
+}
+
 #list-container .packed {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 #list-container ul {
@@ -70,10 +78,37 @@ body {
     list-style-position: none;
 }
 
-#list-container li.new-item {
-    padding-left: 20px;
-}
-
 #list-container .confirm-delete {
     display: inline-block;
+}
+
+#list-container .checked-item {
+    display: inline-block;
+}
+
+#list-container .check {
+    margin-bottom: 5px;
+}
+
+#list-container form {
+    margin-bottom: 7px;
+}
+
+#list-container .item-name {
+    font-size: 18px;
+    height: auto;
+    padding: 2px 4px;
+}
+
+#list-container .check-holder {
+    display: inline-block;
+    width: 20px;
+}
+
+#list-container .delete-icon {
+    opacity: 0.3;
+}
+
+#list-container .delete-icon:hover {
+    opacity: 0.75;
 }
