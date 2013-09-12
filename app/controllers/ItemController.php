@@ -58,6 +58,24 @@ class ItemController extends \BaseController {
         }
 	}
 
+    /**
+     * Set all of the user's Items to unpacked.
+     * 
+     * @access public
+     * @return Response
+     */
+    public function unpackAll()
+    {
+        $items = Auth::user()->items;
+
+        foreach($items as $item) {
+            $item->packed = false;
+            $item->save();
+        }
+
+        return Response::json($items);
+    }
+
 	/**
      * Remove the specified Item from the DB if it exists and the current
      * user owns it.

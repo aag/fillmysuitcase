@@ -29,6 +29,7 @@ Route::get('/password/{token}',   array('as' => 'setpassword', 'uses' => 'UserCo
 Route::post('/password/{token}',  array('as' => 'dosetpassword', 'before' => 'csrf', 'uses' => 'UserController@setPassword'));
 
 Route::get('/list', array('as' => 'listpage', 'before' => 'auth', 'uses' => 'ItemController@listPage'));
+Route::post('/list/unpackall', array('as' => 'unpackall', 'before' => 'auth', 'uses' => 'ItemController@unpackAll'));
 Route::resource('item', 'ItemController', array('before' => 'auth', 'except' => array('edit', 'update')));
 
 // The Angular JS $resource service uses POST instead of PUT for updates

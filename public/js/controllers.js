@@ -4,7 +4,8 @@
 angular.module('suitcase.controllers', []).
   controller('ListCtrl', function($scope, $http, $resource) {
     var Item = $resource('/item/:id', 
-        {id: '@id'});
+                         {id: '@id'},
+                         {unpackAll: {method: 'POST', url: '/list/unpackall', isArray: true}});
     $scope.items = Item.query();
     $scope.newName = '';
 
@@ -50,13 +51,8 @@ angular.module('suitcase.controllers', []).
     };
 
     $scope.resetPacked = function() {
-        _.map(this.items, function(item) {
-            item.packed = false;
-            return item;
-        });
-
-        _.each(this.items, function(item) {
-            item.$save();
+        Item.unpackAll({}, function(response) {
+            $scope.items = response;
         });
     };
 
