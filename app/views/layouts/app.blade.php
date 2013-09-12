@@ -13,10 +13,11 @@
     <div class="container-narrow">
         <div class="masthead">
             <ul class="nav nav-pills pull-right">
-                <li class="{{ URL::getRequest()->is('/') ? 'active' : '' }}"><a href="{{ URL::route('root') }}">Home</a></li>
                 @if (!Auth::user())
+                    <li class="{{ URL::getRequest()->is('/') ? 'active' : '' }}"><a href="{{ URL::route('root') }}">Home</a></li>
                     <li><a href="{{ URL::route('login') }}">Log In</a></li>
                 @else
+                    <li class="{{ URL::getRequest()->is('list') ? 'active' : '' }}"><a href="{{ URL::route('listpage') }}">Home</a></li>
                     <li class="{{ URL::getRequest()->is('account') ? 'active' : '' }}"><a href="{{ URL::route('user.edit') }}">{{ Auth::user()->username }}</a></li>
                     <li><a href="{{ URL::route('logout') }}">Log Out</a></li>
                 @endif
