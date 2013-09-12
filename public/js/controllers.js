@@ -34,7 +34,15 @@ angular.module('suitcase.controllers', []).
     };
 
     $scope.confirmDelete = function(item) {
-        item.$delete();
+        _.each(this.items, function(scopeItem, i) {
+            if (scopeItem.id === item.id) {
+                // Send the delete to the server
+                item.$delete({id: item.id}, function() {
+                    // On success, remove from the scope's Item collection
+                    $scope.items.splice(i, 1);
+                });
+            }
+        });
     };
 
     $scope.cancelDelete = function(item) {

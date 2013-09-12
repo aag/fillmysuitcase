@@ -71,7 +71,7 @@ class ItemController extends \BaseController {
 
         if ($item) {
             $item->delete();
-            return Response::json(array("success" => true));
+            return Response::json(null);
         } else {
             App::abort(500, 'Item not found or access denied.');
         }
