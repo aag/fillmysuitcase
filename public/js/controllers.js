@@ -2,21 +2,28 @@
 'use strict';
 
 angular.module('suitcase.controllers', []).
-  controller('ListCtrl', function($scope, $http, $resource) {
+  controller('ListCtrl', function($scope, $http, $resource, $timeout) {
     var Item = $resource('/item/:id', 
                          {id: '@id'},
                          {unpackAll: {method: 'POST', url: '/list/unpackall', isArray: true}});
     $scope.items = Item.query();
     $scope.newName = '';
 
-    var saveItem = function(item) {
-        item.$save();
+    var saveItem = function(item, hideCheck) {
+        item.$save(function() {
+            if (!hideCheck) {
+                item.justSaved = true;
+                $timeout(function() {
+                    item.justSaved = false;
+                }, 1000);
+            }
+        });
     };
 
-    $scope.change = _.debounce(saveItem, 500);
+    $scope.change = _.debounce(saveItem, 1000);
 
     $scope.checkChange = function(item) {
-        saveItem(item);
+        saveItem(item, true);
     };
 
     $scope.submit = function() {

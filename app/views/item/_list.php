@@ -16,6 +16,7 @@
                         <button class="delete-yes btn btn-danger" ng-click="confirmDelete(item)">Delete</button>
                         <button class="delete-cancel btn" ng-click="cancelDelete(item)">Cancel</button>
                     </div>
+                    <img class="save-check" ng-show="item.justSaved" src="/img/check.png" alt="item saved" title="item saved">
                 </form>
             </li>
             <li ng-show="!!unpackedItems.length || !items.length" class="new-item">
@@ -38,7 +39,7 @@
         <ul class="packing-list">
             <li ng-repeat="item in items | filter:{packed:true}">
                 <form class="form-inline">
-                    <input type="checkbox" class="check" ng-model="item.packed" ng-change="change(item)">
+                    <input type="checkbox" class="check" ng-model="item.packed" ng-change="checkChange(item)">
                     <div class="checked-item">{{ item.name }}</div>
                 </form>
             </li>
