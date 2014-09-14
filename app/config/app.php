@@ -70,6 +70,8 @@ return array(
 
 	'key' => $SITE_CONFIG['key'],
 
+    'cipher' => MCRYPT_RIJNDAEL_128,
+
 	/*
 	|--------------------------------------------------------------------------
 	| Autoloaded Service Providers
