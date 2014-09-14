@@ -10,8 +10,13 @@ class UserController extends BaseController {
         $password = Input::get('password');
         $stay_logged_in = Input::get('remember');
 
+        // Workaround for Ardent. Auth::attempt() calls $user->save() to store
+        // the reminder_token, but with Ardent validation rules, this fails.
+        User::$rules = [];
+
         if (Auth::attempt(array('username' => $username, 'password' => $password), $stay_logged_in) ||
             Auth::attempt(array('email' => $username, 'password' => $password), $stay_logged_in)) {
+
             return Redirect::route('listpage');
         } else {
             return Redirect::route('login')
@@ -35,6 +40,10 @@ class UserController extends BaseController {
     {
         if (Auth::user())
         {
+            // Workaround for Ardent. Auth::attempt() calls $user->save() to store
+            // the reminder_token, but with Ardent validation rules, this fails.
+            User::$rules = [];
+
             Auth::logout();
         }
 
