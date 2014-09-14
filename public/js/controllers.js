@@ -15,12 +15,22 @@ angular.module('suitcase.controllers', []).
                 item.justSaved = true;
                 $timeout(function() {
                     item.justSaved = false;
-                }, 1000);
+                }, 2000);
             }
         });
     };
 
-    $scope.change = _.debounce(saveItem, 1000);
+    // Use an individual debounce function for each item, so that
+    // the user can edit multiple items during the debounce period.
+    var saveFuncs = {};
+    $scope.change = function(item) {
+        var id = item.id;
+        if (!saveFuncs[id]) {
+            saveFuncs[id] = _.debounce(saveItem, 1000);
+        }
+
+        saveFuncs[id](item);
+    };
 
     $scope.checkChange = function(item) {
         saveItem(item, true);
