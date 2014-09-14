@@ -5,14 +5,14 @@
 @if (Session::has('error'))
     <div class="page-errors alert alert-error">
         <h4>Error</h4>
-        <p>{{ trans(Session::get('reason')) }}</p>
+        <p>{{ Session::get('error') }}</p>
     </div>
 @endif
 
 @if (!Session::has('success'))
 
-    {{ Form::open(array('action' => array('UserController@setPassword', $token), 'class' => 'user-form')) }}
-    {{ Form::token() }}
+    {{ Form::open(array('action' => array('RemindersController@postReset', $token), 'class' => 'user-form')) }}
+    {{ Form::hidden('token', $token) }}
 
     <h2 class="form-signin-heading">Reset Password</h2>
     {{ Form::label('email', 'Email Address') }}
@@ -24,7 +24,7 @@
     {{ Form::label('password_confirmation', 'Confirm Password') }}
     {{ Form::password('password_confirmation', array('class' => 'input-block-level')) }}
 
-    {{ Form::submit('Save Password', array('class' => 'btn btn-primary btn-large')) }}
+    {{ Form::submit('Reset Password', array('class' => 'btn btn-primary btn-large')) }}
 
     {{ Form::close() }}
 

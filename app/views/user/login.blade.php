@@ -2,6 +2,12 @@
 
 @section('content')
 
+@if (Session::has('success'))
+    <div class="page-errors alert alert-success">
+        <p>{{ trans(Session::get('success')) }}</p>
+    </div>
+@endif
+
     {{ Form::open(array('action' => 'UserController@login', 'class' => 'user-form')) }}
     {{ Form::token() }}
 

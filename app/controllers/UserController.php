@@ -88,61 +88,6 @@ class UserController extends BaseController {
 	}
 
     /**
-     * Show the password reset form to the user.
-     *
-	 * @return Response
-     */
-    public function showPasswordResetForm()
-    {
-        return View::make('user.sendpasswordreset', array('token' => 'ATOKEN'));
-    }
-
-    /**
-     * Send the password reset email.
-     *
-	 * @return Response
-     */
-    public function sendPasswordEmail()
-    {
-        $credentials = array('email' => Input::get('email'));
-        return Password::remind($credentials,  function($message, $user)
-        {
-            $message->subject('FillMySuitcase Password Reset');
-        });
-    }
-
-    /**
-     * Show the form with password fields so the user can type a new password.
-     *
-     * @return Response
-     */
-    public function showSetPasswordForm($token)
-    {
-        return View::make('user.setpassword')
-                        ->with('token', $token);
-    }
-
-    /**
-     * Take the user's password reset inputs and save the new password.
-     *
-     * @return Response
-     */
-    public function setPassword($token)
-    {
-        $credentials = array('email' => Input::get('email'));
-
-        return Password::reset($credentials, function($user, $password)
-        {
-            $user->password = $password;
-            $user->password_confirmation = $password;
-            $user->save();
-
-            Session::flash('success-message', 'Your password has been reset successfully.');
-            return Redirect::route('login');
-        });
-    }
-
-    /**
      * showEditForm shows a form to the user to edit their own account
      * information.
      * 

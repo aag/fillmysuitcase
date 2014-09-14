@@ -24,11 +24,11 @@ return array(
 	|
 	| Here you may provide the host address of the SMTP server used by your
 	| applications. A default option is provided that is compatible with
-	| the Postmark mail service, which will provide reliable delivery.
+	| mailcatcher for development. http://mailcatcher.me/
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => '127.0.0.1',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -37,11 +37,11 @@ return array(
 	|
 	| This is the SMTP port used by your application to delivery e-mails to
 	| users of your application. Like the host we have set this value to
-	| stay compatible with the Postmark e-mail application by default.
+	| stay compatible with mailcatcher by default.
 	|
 	*/
 
-	'port' => 587,
+	'port' => 1025,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,10 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+    'from' => array(
+        'address' => 'noreply@fillmysuitcase.dev',
+        'name' => 'Fill My Suitcase'
+    ),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -64,10 +67,13 @@ return array(
 	| Here you may specify the encryption protocol that should be used when
 	| the application send e-mail messages. A sensible default using the
 	| transport layer security protocol should provide great security.
+    |
+    | For compatibility with mailcatcher in development, this options is set
+    | to no encryption. On production, change this to 'tls'.
 	|
 	*/
 
-	'encryption' => 'tls',
+	'encryption' => '',
 
 	/*
 	|--------------------------------------------------------------------------

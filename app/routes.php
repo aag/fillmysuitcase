@@ -23,10 +23,10 @@ Route::post('/user',        array('as' => 'storeuser', 'before' => 'csrf', 'uses
 Route::get('/account',  array('as' => 'user.edit', 'before' => 'auth', 'uses' => 'UserController@showEditForm'));
 Route::post('/account', array('as' => 'user.update', 'before' => array('auth', 'csrf'), 'uses' => 'UserController@storeEdit'));
 
-Route::get('/passwordreset',      array('as' => 'passwordreset', 'uses' => 'UserController@showPasswordResetForm'));
-Route::post('/passwordreset',     array('as' => 'sendpasswordreset', 'before' => 'csrf', 'uses' => 'UserController@sendPasswordEmail'));
-Route::get('/password/{token}',   array('as' => 'setpassword', 'uses' => 'UserController@showSetPasswordForm'));
-Route::post('/password/{token}',  array('as' => 'dosetpassword', 'before' => 'csrf', 'uses' => 'UserController@setPassword'));
+Route::get('/passwordreset',      array('as' => 'passwordreset', 'uses' => 'RemindersController@getRemind'));
+Route::post('/passwordreset',     array('as' => 'sendpasswordreset', 'before' => 'csrf', 'uses' => 'RemindersController@postRemind'));
+Route::get('/password/{token}',   array('as' => 'setpassword', 'uses' => 'RemindersController@getReset'));
+Route::post('/password/{token}',  array('as' => 'dosetpassword', 'before' => 'csrf', 'uses' => 'RemindersController@postReset'));
 
 Route::get('/list', array('as' => 'listpage', 'before' => 'auth', 'uses' => 'ItemController@listPage'));
 Route::post('/list/unpackall', array('as' => 'unpackall', 'before' => 'auth', 'uses' => 'ItemController@unpackAll'));

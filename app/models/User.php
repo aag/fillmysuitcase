@@ -60,7 +60,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
      */
     public function passwordValid($inputs) {
         $passValidator = Validator::make($inputs, self::$passwordRules);
-        if($passValidator->fails()) {
+        if ($passValidator->fails()) {
             $this->errors()->merge($passValidator->messages()->toArray());
             return false;
         }
@@ -78,7 +78,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
      * @access private
      * @return boolean
      */
-    private function passwordEmptyOrValid($inputs) {
+    public function passwordEmptyOrValid($inputs) {
         if (!empty($inputs['password']) && !$this->passwordValid($inputs))
         {
             return false;

@@ -2,21 +2,21 @@
 
 @section('content')
 
-@if (Session::has('success'))
+@if (Session::has('status'))
     <div class="page-errors alert alert-success">
         <h4>Email Sent</h4>
-        <p>An e-mail with the password reset has been sent.</p>
+        <p>{{ trans(Session::get('status')) }}</p>
     </div>
 @elseif (Session::has('error'))
     <div class="page-errors alert alert-error">
         <h4>Error</h4>
-        <p>{{ trans(Session::get('reason')) }}</p>
+        <p>{{ Session::get('error') }}</p>
     </div>
 @endif
 
 @if (!Session::has('success'))
 
-    {{ Form::open(array('action' => 'UserController@sendPasswordEmail', 'class' => 'user-form')) }}
+    {{ Form::open(array('action' => 'RemindersController@postRemind', 'class' => 'user-form')) }}
     {{ Form::token() }}
 
     <h2 class="form-signin-heading">Reset Password</h2>
