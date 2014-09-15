@@ -46,7 +46,13 @@
 
         @yield('content')
 
+        <hr>
+
+        <div class="footer">
+            This site is built on free software. <a href="https://github.com/aag/fillmysuitcase">Get the code</a>.
+        </div>
     </div>
+
     {{ Html::script('js/libs/jquery-1.9.1.min.js') }}
     {{ Html::script('js/bootstrap.min.js') }}
     {{ Html::script('js/underscore.min.js') }}
