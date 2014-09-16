@@ -9,7 +9,7 @@ The project is in an early alpha stage and is not ready for production use.
 ### Installation
 
 The application is built on Laravel 4 and AngularJS.  It requires Apache 
-running PHP >= 5.3.7 and the MCrypt PHP extension.  It also requires a database
+running PHP 5.4+ and the MCrypt PHP extension.  It also requires a database
 server with a PDO driver.  The default configuration uses MySQL.
 
 Steps
