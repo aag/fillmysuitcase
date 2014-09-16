@@ -129,3 +129,7 @@ body {
 .footer {
     color: #999;
 }
+
+.no-packed-message {
+    padding-left: 25px;
+}
