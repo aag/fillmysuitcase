@@ -52,6 +52,10 @@ angular.module('suitcase.controllers', []).
     };
 
     $scope.confirmDelete = function(item) {
+        if (!item.confirmingDelete) {
+            return;
+        }
+
         _.each(this.items, function(scopeItem, i) {
             if (scopeItem.id === item.id) {
                 // Send the delete to the server
