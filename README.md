@@ -19,12 +19,11 @@ Steps
    `./composer install`.
 3. Create a new Apache virtual host and point the root of the vhost to the
    `/public` subdirectory of the directory where you downloaded the code.
-4. Create a `fillmysuitcase` database in your database server and add a
-   fillmysuitecase user through the web interface by clicking on "Log In", then
-   "Create Account".
+4. Create a `fillmysuitcase` database on your database server.
 5. Edit `/app/config/database.php` and customize it for your database
    configuration.
-6. Visit your new vhost and create a new user by clicking "Log In" and 
+6. Run `php artisan migrate` from the directory where you downloaded the code.
+7. Visit your new vhost and create a new user by clicking "Log In" and 
    "Create Account".
 
 At this point you should be able to log in and use the site normally.
