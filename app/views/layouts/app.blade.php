@@ -54,8 +54,8 @@
     </div>
 
     {{ Html::script('js/libs/jquery-1.9.1.min.js') }}
-    {{ Html::script('js/bootstrap.min.js') }}
-    {{ Html::script('js/underscore.min.js') }}
+    {{ Html::script('js/libs/bootstrap.min.js') }}
+    {{ Html::script('js/libs/underscore.min.js') }}
 
     {{ Html::script('js/libs/angular.min.js') }}
     {{ Html::script('js/libs/angular-resource.min.js') }}
