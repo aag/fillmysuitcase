@@ -17,7 +17,7 @@ class CreateItemsTable extends Migration {
 			$table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name');
-            $table->boolean('packed');
+            $table->boolean('packed')->nullable();
 			$table->timestamps();
 
             $table->foreign('user_id')
