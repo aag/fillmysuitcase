@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => 'pgsql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,10 +65,11 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
-			'password' => '',
+			'host'     => $_ENV['database.connections.pgsql.host'],
+            'port'     => $_ENV['database.connections.pgsql.port'],
+			'database' => $_ENV['database.connections.pgsql.database'],
+			'username' => $_ENV['database.connections.pgsql.user'],
+			'password' => $_ENV['database.connections.pgsql.pass'],
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',

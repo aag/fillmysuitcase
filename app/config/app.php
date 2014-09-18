@@ -1,8 +1,5 @@
 <?php
 
-// Load the installation-specific settings
-require(__DIR__ . '/sitesettings.php');
-
 return array(
 
 	/*
@@ -29,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => $SITE_CONFIG['url'],
+	'url' => $_ENV['app.url'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -68,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => $SITE_CONFIG['key'],
+	'key' => $_ENV['app.key'],
 
     'cipher' => MCRYPT_RIJNDAEL_128,
 
