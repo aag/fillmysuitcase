@@ -77,7 +77,7 @@ class UserController extends BaseController {
         if ($passValid && $user->save())
         {
             Auth::login($user);
-            return Redirect::route('root');
+            return Redirect::route('listpage');
         }
         else
         {
