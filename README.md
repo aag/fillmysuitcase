@@ -4,7 +4,7 @@ Fill My Suitcase is a web application for keeping a packing list for traveling.
 The goal is to make it easy to bring exactly what you need when you pack luggage
 for a trip.
 
-The project is in an early alpha stage and is not ready for production use.
+The project is currently beta quality and is not recommended for production use.
 
 ### Installation
 
@@ -26,9 +26,18 @@ Steps
    `nginx-fillmysuitcase.conf` file in the root directory of the Fill My
    Suitcase code as a starting point. Update the `server_name` and `root`
    directives to fit your environment.
-4. Create a `fillmysuitcase` database on your database server and add a user
+4. Set the file permissions on the code so the web server can read all files
+   and write to the `/app/storage` directory. For example, if your web server
+   runs under the `www-data` user, you can execute these commands from the
+   top level directory of the Fill My Suitcase code:
+
+   ```
+   $ sudo chgrp -R www-data *
+   $ chmod -R 775 app/storage/
+   ```
+5. Create a `fillmysuitcase` database on your database server and add a user
    with access to the database.
-5. Create a `.env.php` file in the top-level directory of the Fill My Suitcase
+6. Create a `.env.php` file in the top-level directory of the Fill My Suitcase
    code and add your local configuration. It should look something like this:
    ```php
    <?php
@@ -52,14 +61,14 @@ Steps
     );
     ```
 
-6. On the console, run `php artisan key:generate` and enter the key it outputs
+7. On the console, run `php artisan key:generate` and enter the key it outputs
    as the `app => key` value in `.env.php` file.
-7. Update all the other values in `.env.php` to match your environment. If you
+8. Update all the other values in `.env.php` to match your environment. If you
    are not using PostgreSQL, update `app/config/database.php` to match your
    database configuration.
-8. Run `php artisan migrate` from the top-level directory of the Fill My
+9. Run `php artisan migrate` from the top-level directory of the Fill My
    Suitcase code.
-9. Visit your new vhost in a web browser and create a new user by clicking
+10. Visit your new vhost in a web browser and create a new user by clicking
    "Log In" and "Create Account".
 
 At this point you should be logged in and you can use the site normally.
