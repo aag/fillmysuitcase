@@ -46,7 +46,7 @@
         </ul>
         <div class="no-packed-message" ng-show="!!unpackedItems.length && (items.length - unpackedItems.length === 0)">
             <p>Nothing packed yet. Check off an item to move it here.</p>
-        <div>
+        </div>
     </div>
 </div>
 
