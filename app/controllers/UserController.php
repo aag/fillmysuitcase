@@ -40,8 +40,9 @@ class UserController extends BaseController {
     {
         if (Auth::user())
         {
-            // Workaround for Ardent. Auth::attempt() calls $user->save() to store
-            // the reminder_token, but with Ardent validation rules, this fails.
+            // Workaround for Ardent. Auth::logout() calls $user->save() to
+            // store the reminder_token, but with Ardent validation rules, this
+            // fails.
             User::$rules = [];
 
             Auth::logout();

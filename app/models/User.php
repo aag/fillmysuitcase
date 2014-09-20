@@ -43,6 +43,8 @@ class User extends Ardent implements UserInterface, RemindableInterface {
      * The rules to use for validating the password.  This is not included
      * in the model rules, because we don't want to require a confirmed
      * password every time we change the User's data.
+     *
+     * @var array
      */
     public static $passwordRules = array(
         'password' => 'required|min:6|confirmed',
