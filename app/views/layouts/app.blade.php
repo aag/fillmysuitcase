@@ -35,7 +35,7 @@
         <hr />
 
         @if (Session::has('errors'))
-        <div class="page-errors alert alert-error">
+        <div class="page-errors alert alert-danger">
             <h4>Errors</h4>
             <ul>
             @foreach (Session::get('errors')->getMessages() as $message)

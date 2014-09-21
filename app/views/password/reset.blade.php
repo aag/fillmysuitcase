@@ -3,7 +3,7 @@
 @section('content')
 
 @if (Session::has('error'))
-    <div class="page-errors alert alert-error">
+    <div class="page-errors alert alert-danger">
         <h4>Error</h4>
         <p>{{ Session::get('error') }}</p>
     </div>
