@@ -18,7 +18,7 @@
     {{ Form::label('password_confirmation', 'Confirm New Password') }}
     {{ Form::password('password_confirmation', array('class' => 'input-block-level')) }}
 
-    {{ Form::submit('Save', array('class' => 'btn btn-primary btn-large')) }}
+    {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg')) }}
 
     {{ Form::close() }}
 

@@ -14,7 +14,7 @@
                     <div class="confirm-delete" ng-show="item.confirmingDelete">
                         Are you sure?
                         <button class="delete-yes btn btn-danger" ng-click="confirmDelete(item)">Delete</button>
-                        <button class="delete-cancel btn" ng-click="cancelDelete(item)">Cancel</button>
+                        <button class="delete-cancel btn btn-default" ng-click="cancelDelete(item)">Cancel</button>
                     </div>
                     <img class="save-check" ng-show="item.justSaved" src="/img/check.png" alt="item saved" title="item saved">
                 </form>
@@ -23,7 +23,7 @@
                 <form class="form-inline" ng-submit="submit()">
                     <div class="check-holder"></div>
                     <input placeholder="New Item" class="item-name" ng-model="newName">
-                    <button type="submit" class="btn">Create</button>
+                    <button type="submit" class="btn btn-default create-item-button">Create</button>
                 </form>
             </li>
         </ul>

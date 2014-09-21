@@ -35,7 +35,7 @@ body {
 }
 
 .user-form {
-    max-width: 300px;
+    max-width: 350px;
     padding: 19px 29px 29px;
     margin: 0 auto 20px;
     background-color: #fff;
@@ -59,10 +59,25 @@ body {
     height: auto;
     margin-bottom: 15px;
     padding: 7px 9px;
+    width: 290px;
 }
 
 .user-form .create-account-message {
     margin-top: 20px;
+}
+
+.user-form label {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.user-form .remember-me-holder label {
+    margin-top: 0;
+}
+
+.user-form .remember-me-holder input {
+    position: relative;
+    margin-left: 0;
 }
 
 #list {
@@ -115,6 +130,11 @@ body {
 
 #list-container .delete-icon:hover {
     opacity: 0.75;
+}
+
+.create-item-button {
+    position: relative;
+    top: -2px;
 }
 
 .packing-finished {

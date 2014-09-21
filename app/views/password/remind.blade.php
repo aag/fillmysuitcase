@@ -23,7 +23,7 @@
     {{ Form::label('email', 'Email Address') }}
     {{ Form::text('email', '', array('class' => 'input-block-level')) }}
 
-    {{ Form::submit('Send Email', array('class' => 'btn btn-primary btn-large')) }}
+    {{ Form::submit('Send Email', array('class' => 'btn btn-primary btn-lg')) }}
 
     {{ Form::close() }}
 

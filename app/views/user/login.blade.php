@@ -18,11 +18,13 @@
     {{ Form::label('password', 'Password') }}
     {{ Form::password('password', array('class' => 'input-block-level')) }}
 
-    <label class="checkbox">
-        {{ Form::checkbox('remember', true) }} Remember me
-    </label>
+    <div class="remember-me-holder">
+        <label class="checkbox">
+            {{ Form::checkbox('remember', true) }} Remember me
+        </label>
+    </div>
 
-    {{ Form::submit('Log In', array('class' => 'btn btn-primary btn-large')) }}
+    {{ Form::submit('Log In', array('class' => 'btn btn-primary btn-lg')) }}
 
     <div class="create-account-message">
         Don't have an account yet?  <a href="{{ URL::route('createuser') }}">Create Account</a>

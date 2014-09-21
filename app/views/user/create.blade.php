@@ -18,7 +18,7 @@
     {{ Form::label('password_confirmation', 'Confirm Password') }}
     {{ Form::password('password_confirmation', array('class' => 'input-block-level')) }}
 
-    {{ Form::submit('Create Account', array('class' => 'btn btn-primary btn-large')) }}
+    {{ Form::submit('Create Account', array('class' => 'btn btn-primary btn-lg')) }}
 
     {{ Form::close() }}
 
