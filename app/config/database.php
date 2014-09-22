@@ -1,5 +1,32 @@
 <?php
 
+$pgsql = array();
+
+$pgsql['host'] = 'localhost';
+if (isset($_ENV['database.connections.pgsql.host'])) {
+    $pgsql['host'] = $_ENV['database.connections.pgsql.host'];
+}
+
+$pgsql['port'] = '5432';
+if (isset($_ENV['database.connections.pgsql.port'])) {
+    $pgsql['host'] = $_ENV['database.connections.pgsql.port'];
+}
+
+$pgsql['database'] = 'fillmysuitcase';
+if (isset($_ENV['database.connections.pgsql.database'])) {
+    $pgsql['host'] = $_ENV['database.connections.pgsql.database'];
+}
+
+$pgsql['user'] = 'root';
+if (isset($_ENV['database.connections.pgsql.user'])) {
+    $pgsql['host'] = $_ENV['database.connections.pgsql.user'];
+}
+
+$pgsql['pass'] = '';
+if (isset($_ENV['database.connections.pgsql.pass'])) {
+    $pgsql['host'] = $_ENV['database.connections.pgsql.pass'];
+}
+
 return array(
 
 	/*
@@ -65,11 +92,11 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => $_ENV['database.connections.pgsql.host'],
-            'port'     => $_ENV['database.connections.pgsql.port'],
-			'database' => $_ENV['database.connections.pgsql.database'],
-			'username' => $_ENV['database.connections.pgsql.user'],
-			'password' => $_ENV['database.connections.pgsql.pass'],
+			'host'     => $pgsql['host'],
+            'port'     => $pgsql['port'],
+			'database' => $pgsql['database'],
+			'username' => $pgsql['user'],
+			'password' => $pgsql['pass'],
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',

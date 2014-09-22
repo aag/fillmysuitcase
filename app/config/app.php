@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => $_ENV['app.url'],
+	'url' => isset($_ENV['app.url']) ? $_ENV['app.url'] : 'http://localhost/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => $_ENV['app.key'],
+	'key' => isset($_ENV['app.key']) ? $_ENV['app.key'] : '',
 
     'cipher' => MCRYPT_RIJNDAEL_128,
 
