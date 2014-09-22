@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => isset($_ENV['app.debug']) ? $_ENV['app.debug'] : true,
 
 	/*
 	|--------------------------------------------------------------------------

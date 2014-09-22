@@ -9,22 +9,22 @@ if (isset($_ENV['database.connections.pgsql.host'])) {
 
 $pgsql['port'] = '5432';
 if (isset($_ENV['database.connections.pgsql.port'])) {
-    $pgsql['host'] = $_ENV['database.connections.pgsql.port'];
+    $pgsql['port'] = $_ENV['database.connections.pgsql.port'];
 }
 
 $pgsql['database'] = 'fillmysuitcase';
 if (isset($_ENV['database.connections.pgsql.database'])) {
-    $pgsql['host'] = $_ENV['database.connections.pgsql.database'];
+    $pgsql['database'] = $_ENV['database.connections.pgsql.database'];
 }
 
 $pgsql['user'] = 'root';
 if (isset($_ENV['database.connections.pgsql.user'])) {
-    $pgsql['host'] = $_ENV['database.connections.pgsql.user'];
+    $pgsql['user'] = $_ENV['database.connections.pgsql.user'];
 }
 
 $pgsql['pass'] = '';
 if (isset($_ENV['database.connections.pgsql.pass'])) {
-    $pgsql['host'] = $_ENV['database.connections.pgsql.pass'];
+    $pgsql['pass'] = $_ENV['database.connections.pgsql.pass'];
 }
 
 return array(
