@@ -20,6 +20,10 @@
 
     {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg')) }}
 
+    <div class="delete-account-link-holder">
+        <a href="{{ URL::route('user.delete') }}">Delete Account</a>
+    </div>
+
     {{ Form::close() }}
 
 @stop

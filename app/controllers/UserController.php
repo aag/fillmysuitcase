@@ -131,5 +131,49 @@ class UserController extends BaseController {
                                 ->withErrors($user->errors());
         }
     }
+
+    /**
+     * showDeleteForm displays a confirmation form to the user to delete their
+     * own account.
+     * 
+     * @access public
+     * @return void
+     */
+    public function showDeleteForm()
+    {
+        $user = Auth::user();
+        return View::make('user.delete', array('user' => $user));
+    }
+
+    /**
+     * delete checks that the submitted password is valid for the current user,
+     * and if so, deletes the account and logs out the user.
+     * 
+     * @access public
+     * @return void
+     */
+    public function delete()
+    {
+        $user = Auth::user();
+        $password = Input::get('password');
+
+        if ($user->isPassword($password)) {
+            // Workaround for Ardent. Auth::logout() calls $user->save() to
+            // store the reminder_token, but with Ardent validation rules, this
+            // fails.
+            User::$rules = [];
+            Auth::logout();
+
+            $user->delete();
+
+            return Redirect::route('root')
+                                ->with('success-message', 'Your account has been deleted.');
+        } else {
+            return Redirect::route('user.delete')
+                                ->exceptInput('password')
+                                ->withErrors(array('' => 'Incorrect password'));
+        }
+    }
+
 }
 

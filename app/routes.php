@@ -23,6 +23,9 @@ Route::post('/user',        array('as' => 'storeuser', 'before' => 'csrf', 'uses
 Route::get('/account',  array('as' => 'user.edit', 'before' => 'auth', 'uses' => 'UserController@showEditForm'));
 Route::post('/account', array('as' => 'user.update', 'before' => array('auth', 'csrf'), 'uses' => 'UserController@storeEdit'));
 
+Route::get('/account/delete',  array('as' => 'user.delete', 'before' => 'auth', 'uses' => 'UserController@showDeleteForm'));
+Route::post('/account/delete', array('as' => 'user.dodelete', 'before' => array('auth', 'csrf'), 'uses' => 'UserController@delete'));
+
 Route::get('/passwordreset',      array('as' => 'passwordreset', 'uses' => 'RemindersController@getRemind'));
 Route::post('/passwordreset',     array('as' => 'sendpasswordreset', 'before' => 'csrf', 'uses' => 'RemindersController@postRemind'));
 Route::get('/password/{token}',   array('as' => 'setpassword', 'uses' => 'RemindersController@getReset'));

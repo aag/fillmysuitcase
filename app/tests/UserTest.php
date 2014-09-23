@@ -24,6 +24,7 @@ class UserTest extends TestCase {
 
     public function tearDown()
     {
+        $this->validUser->delete();
     }
 
 	public function testUserCreation()
@@ -103,7 +104,15 @@ class UserTest extends TestCase {
         $this->assertFalse($user->validate());
     }
 
+    public function testIsPassword()
+    {
+        // Make Ardent hash the password
+        $this->validUser->save();
 
-
+        $this->assertTrue($this->validUser->isPassword($this->validAttribs['password']));
+        $this->assertFalse($this->validUser->isPassword(''));
+        $this->assertFalse($this->validUser->isPassword(' '));
+        $this->assertFalse($this->validUser->isPassword(' ' . $this->validAttribs['password']));
+    }
 
 }

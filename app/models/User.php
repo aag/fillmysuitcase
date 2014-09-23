@@ -91,6 +91,19 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     }
 
     /**
+     * isPassword returns true if the given string is the user's current
+     * password, else returns false.
+     * 
+     * @param mixed $password 
+     * @access public
+     * @return void
+     */
+    public function isPassword($password)
+    {
+        return Hash::check($password, $this->getAuthPassword());
+    }
+
+    /**
      * Tell Ardent to hash the password field before storing to the database.
      */
     public $autoHashPasswordAttributes = true;
