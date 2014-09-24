@@ -30,6 +30,13 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     );
 
     /**
+     * The maximum number of items that a single user can have.
+     *
+     * @var int
+     */
+    protected static $maxItems = 200;
+
+    /**
      * The rules to use for validating this model (used by Ardent).
      *
      * @var array
@@ -185,6 +192,18 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     public function items()
     {
         return $this->hasMany('Item');
+    }
+
+    /**
+     * getMaxItemCount returns the maximum number of items this user is allowed
+     * to have.
+     * 
+     * @access public
+     * @return int
+     */
+    public function getMaxItems()
+    {
+        return self::$maxItems;
     }
 
 }

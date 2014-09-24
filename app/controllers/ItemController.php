@@ -108,6 +108,12 @@ class ItemController extends \BaseController {
      */
     public function store()
     {
+        $user = Auth::user();
+
+        if ($user->items()->count() >= $user->getMaxItems()) {
+            App::abort(500, 'The user has too many items.');
+        }
+
         $name = Input::only('name');
         $item = new Item($name);
 
