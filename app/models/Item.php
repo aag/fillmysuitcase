@@ -30,6 +30,15 @@ class Item extends Ardent {
     );
 
     /**
+     * The rules to use for validating this model (used by Ardent).
+     *
+     * @var array
+     */
+    public static $rules = array(
+        'name' => 'required|max:100',
+    );
+
+    /**
      * toArray overrides the default toArray implementation so we can
      * convert DB booleans to PHP booleans.
      *

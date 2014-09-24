@@ -50,9 +50,14 @@ class ItemController extends \BaseController {
         if ($item) {
             $item->name = Input::get('name', $item->name);
             $item->packed = Input::get('packed', $item->packed);
-            $item->save();
+            $success = $item->save();
 
-            return Response::json($item);
+            if ($success) {
+                return Response::json($item);
+            } else {
+                App::abort(500, join(',', $item->errors()->all()));
+            }
+
         } else {
             App::abort(500, 'Item not found or access denied.');
         }
@@ -106,9 +111,13 @@ class ItemController extends \BaseController {
         $name = Input::only('name');
         $item = new Item($name);
 
-        Auth::user()->items()->save($item);
+        $success = Auth::user()->items()->save($item);
 
-        return Response::json($item);
+        if ($success) {
+            return Response::json($item);
+        } else {
+            App::abort(500, join(',', $item->errors()->all()));
+        }
     }
 
 }
