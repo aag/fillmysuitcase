@@ -20,6 +20,8 @@
 
     {{ Form::submit('Create Account', array('class' => 'btn btn-primary btn-lg')) }}
 
+    <div class="privacy-message">We will never sell or give away your email address.</div>
+
     {{ Form::close() }}
 
 @stop

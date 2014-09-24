@@ -86,6 +86,10 @@ body {
     font-size: 12px;
 }
 
+.user-form .privacy-message {
+    margin-top: 15px;
+}
+
 #list {
     margin-left: 80px;
 }
