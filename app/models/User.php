@@ -195,15 +195,15 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     }
 
     /**
-     * getMaxItemCount returns the maximum number of items this user is allowed
-     * to have.
+     * hasMaxItems returns true if the user already has the maximum number of
+     * items allowed.
      * 
      * @access public
-     * @return int
+     * @return bool
      */
-    public function getMaxItems()
+    public function hasMaxItems()
     {
-        return self::$maxItems;
+        return ($this->items()->count() >= self::$maxItems);
     }
 
 }

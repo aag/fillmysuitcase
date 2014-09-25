@@ -55,7 +55,7 @@ class ItemController extends \BaseController {
             if ($success) {
                 return Response::json($item);
             } else {
-                App::abort(500, join(',', $item->errors()->all()));
+                return Response::json(['usermessage' => 'Could not save item'], 500);
             }
 
         } else {
@@ -110,8 +110,8 @@ class ItemController extends \BaseController {
     {
         $user = Auth::user();
 
-        if ($user->items()->count() >= $user->getMaxItems()) {
-            App::abort(500, 'The user has too many items.');
+        if ($user->hasMaxItems()) {
+            return Response::json(['usermessage' => 'You already have the maximum number of items in your list'], 500);
         }
 
         $name = Input::only('name');
@@ -122,7 +122,7 @@ class ItemController extends \BaseController {
         if ($success) {
             return Response::json($item);
         } else {
-            App::abort(500, join(',', $item->errors()->all()));
+            return Response::json(['usermessage' => 'Could not save item'], 500);
         }
     }
 
