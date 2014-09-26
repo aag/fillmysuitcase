@@ -17,11 +17,11 @@ class ItemTest extends TestCase {
     {
     }
 
-	public function testValidItemCreation()
-	{
-		$this->assertEquals($this->validAttribs['name'], $this->validItem->name);
-		$this->assertEquals($this->validAttribs['packed'], $this->validItem->packed);
-	}
+    public function testValidItemCreation()
+    {
+        $this->assertEquals($this->validAttribs['name'], $this->validItem->name);
+        $this->assertEquals($this->validAttribs['packed'], $this->validItem->packed);
+    }
 
     public function testValidItemValidation()
     {

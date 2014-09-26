@@ -1,6 +1,6 @@
 <?php
 
 return array(
-	'url' => 'http://localhost/',
-	'key' => 'abcdefghijklmnopqrstuvwxyz',
+    'url' => 'http://localhost/',
+    'key' => 'abcdefghijklmnopqrstuvwxyz',
 );

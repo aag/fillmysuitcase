@@ -27,11 +27,11 @@ class UserTest extends TestCase {
         $this->validUser->delete();
     }
 
-	public function testUserCreation()
-	{
-		$this->assertEquals($this->validAttribs['username'], $this->validUser->username);
-		$this->assertEquals($this->validAttribs['email'], $this->validUser->email);
-	}
+    public function testUserCreation()
+    {
+        $this->assertEquals($this->validAttribs['username'], $this->validUser->username);
+        $this->assertEquals($this->validAttribs['email'], $this->validUser->email);
+    }
 
     public function testValidUserValidation()
     {
