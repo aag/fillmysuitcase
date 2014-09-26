@@ -48,7 +48,7 @@ class ItemController extends \BaseController {
         $item = Auth::user()->items()->where('id', $id)->first();
 
         if ($item) {
-            $item->name = Input::get('name', $item->name);
+            $item->name = trim(Input::get('name', $item->name));
             $item->packed = Input::get('packed', $item->packed);
             $success = $item->save();
 
@@ -114,8 +114,8 @@ class ItemController extends \BaseController {
             return Response::json(['usermessage' => 'You already have the maximum number of items in your list'], 500);
         }
 
-        $name = Input::only('name');
-        $item = new Item($name);
+        $name = trim(Input::get('name'));
+        $item = new Item(['name' => $name]);
 
         $success = Auth::user()->items()->save($item);
 
