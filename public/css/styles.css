@@ -91,7 +91,11 @@ body {
 }
 
 #list {
-    margin-left: 80px;
+    margin-left: 40px;
+}
+
+#list ul.packing-list {
+    padding-left: 0;
 }
 
 #list-container .unpacked {
@@ -127,6 +131,7 @@ body {
     font-size: 18px;
     height: auto;
     padding: 2px 4px;
+    width: 380px;
 }
 
 #list-container .check-holder {
