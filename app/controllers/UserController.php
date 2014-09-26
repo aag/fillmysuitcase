@@ -52,22 +52,22 @@ class UserController extends BaseController {
     }
     
     /**
-	 * Show the form for creating a new user.
-	 *
-	 * @return Response
-	 */
-	public function showCreateForm()
-	{
+     * Show the form for creating a new user.
+     *
+     * @return Response
+     */
+    public function showCreateForm()
+    {
         return View::make('user.create');
-	}
+    }
 
-	/**
-	 * Store a newly created user in the DB.
-	 *
-	 * @return Response
-	 */
-	public function storeNew()
-	{
+    /**
+     * Store a newly created user in the DB.
+     *
+     * @return Response
+     */
+    public function storeNew()
+    {
         $inputs = Input::only('username', 'email', 'password', 'password_confirmation');
         $passInputs = Input::only('password', 'password_confirmation');
         $user = new User($inputs);
@@ -86,7 +86,7 @@ class UserController extends BaseController {
                                 ->withInput()
                                 ->withErrors($user->errors());
         }
-	}
+    }
 
     /**
      * showEditForm shows a form to the user to edit their own account

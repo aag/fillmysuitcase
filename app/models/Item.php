@@ -6,19 +6,19 @@ use LaravelBook\Ardent\Ardent;
 
 class Item extends Ardent {
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'items';
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'items';
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('user_id');
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = array('user_id');
 
     /**
      * The attributes that should be mass-assignable.
