@@ -20,11 +20,21 @@ class UserTest extends TestCase {
             'password' => 'unittestpass2',
             'password_confirmation' => 'unittestpass2',
         );
+
+        $goodPass = '☺♘✓"V:%§!$&@€()[]{}\/#*+~FrK;?s6F:=-L\BG$L\w*96l-c-o^$2R\'~rDzo#diWSR=l5*59~WoVfS/gq1aLTykRGP-J3iw;07}ate*Nd>gvnj$[EEDepDwz;mVud4/OL7g\'*)xM.E+5RvWzHH4';
+        $this->validAttribsLongPassword = array(
+            'username' => 'unittestuser',
+            'email'    => 'ut@test.com',
+            'password' => $goodPass,
+            'password_confirmation' => $goodPass,
+        );
+        $this->validUserLongPassword = new User($this->validAttribsLongPassword);
     }
 
     public function tearDown()
     {
         $this->validUser->delete();
+        $this->validUserLongPassword->delete();
     }
 
     public function testUserCreation()
@@ -113,6 +123,18 @@ class UserTest extends TestCase {
         $this->assertFalse($this->validUser->isPassword(''));
         $this->assertFalse($this->validUser->isPassword(' '));
         $this->assertFalse($this->validUser->isPassword(' ' . $this->validAttribs['password']));
+    }
+
+    // Make sure really long passwords with strange characters work
+    public function testLongComplicatedPassword()
+    {
+        $user = $this->validUserLongPassword;
+        $attrs = $this->validAttribsLongPassword;
+        $this->assertTrue($user->validate() && $user->passwordValid($attrs));
+
+        // Make sure the hashing works too
+        $user->save();
+        $this->assertTrue($user->isPassword($this->validAttribsLongPassword['password']));
     }
 
 }
