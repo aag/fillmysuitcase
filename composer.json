@@ -2,8 +2,9 @@
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
+    "prefer-stable": true,
 	"require": {
-		"laravel/framework": "4.2.8",
+		"laravel/framework": "4.2.11",
         "laravelbook/ardent": "2.4.2"
 	},
     "require-dev": {
