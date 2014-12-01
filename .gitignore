@@ -1,6 +1,5 @@
 /bootstrap/compiled.php
 /vendor
-composer.lock
 .DS_Store
 .env.php
 .env.*.php
