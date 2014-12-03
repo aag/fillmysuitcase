@@ -21,6 +21,8 @@ class UserTest extends TestCase {
             'password_confirmation' => 'unittestpass2',
         );
 
+        // Bcrypt won't actually use the whole string when hashing, but make
+        // sure the system accepts really long passwords.
         $goodPass = '☺♘✓"V:%§!$&@€()[]{}\/#*+~FrK;?s6F:=-L\BG$L\w*96l-c-o^$2R\'~rDzo#diWSR=l5*59~WoVfS/gq1aLTykRGP-J3iw;07}ate*Nd>gvnj$[EEDepDwz;mVud4/OL7g\'*)xM.E+5RvWzHH4';
         $this->validAttribsLongPassword = array(
             'username' => 'unittestuser',
