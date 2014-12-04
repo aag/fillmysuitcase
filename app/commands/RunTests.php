@@ -23,7 +23,7 @@ class RunTests extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Run all available tests.';
+	protected $description = 'Run all automated tests';
 
 	/**
 	 * Create a new command instance.
