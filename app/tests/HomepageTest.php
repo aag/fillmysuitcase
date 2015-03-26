@@ -1,13 +1,13 @@
 <?php
 
-class ExampleTest extends TestCase {
+class HomepageTest extends TestCase {
 
     /**
-     * A basic functional test example.
+     * A basic functional test of the homepage.
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testHomepageGetResponse()
     {
         $crawler = $this->client->request('GET', '/');
 
