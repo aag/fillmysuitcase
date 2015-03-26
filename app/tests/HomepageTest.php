@@ -9,7 +9,7 @@ class HomepageTest extends TestCase {
      */
     public function testHomepageGetResponse()
     {
-        $crawler = $this->client->request('GET', '/');
+        $this->client->request('GET', '/');
 
         $this->assertTrue($this->client->getResponse()->isOk());
     }
