@@ -2,10 +2,11 @@ language: php
 php:
   - 5.5
 install:
-  - php ./composer.phar install
+  - php composer.phar install
 addons:
   postgresql: "9.3"
 before_script:
   - cp app/config/testing/database.php.travis app/config/testing/database.php
   - psql -c 'create database fillmysuitcase_testing;' -U postgres
+  - php artisan migrate
 
