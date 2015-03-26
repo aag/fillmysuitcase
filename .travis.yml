@@ -8,5 +8,5 @@ addons:
 before_script:
   - cp app/config/testing/database.php.travis app/config/testing/database.php
   - psql -c 'create database fillmysuitcase_testing;' -U postgres
-  - php artisan migrate
+  - php artisan migrate --env="testing"
 
