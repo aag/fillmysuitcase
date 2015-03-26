@@ -1,5 +1,7 @@
 ## Fill My Suitcase
 
+[![Build Status](https://travis-ci.org/aag/fillmysuitcase.svg?branch=master)](https://travis-ci.org/aag/fillmysuitcase) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Fill My Suitcase is a web application for keeping a packing list for traveling.
 The goal is to make it easy to bring exactly what you need when you pack luggage
 for a trip.
