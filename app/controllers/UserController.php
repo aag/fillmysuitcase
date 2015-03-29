@@ -30,6 +30,11 @@ class UserController extends BaseController {
      */
     public function showLoginForm()
     {
+        if (Auth::user())
+        {
+            return Redirect::route('listpage');
+        }
+
         return View::make('user.login');
     }
 
