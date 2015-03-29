@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="container-fluid main-container">
+
 @if (Session::has('status'))
     <div class="page-errors alert alert-success">
         <h4>Email Sent</h4>
@@ -28,6 +30,8 @@
     {{ Form::close() }}
 
 @endif
+
+</div>
 
 @stop
 

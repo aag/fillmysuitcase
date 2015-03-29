@@ -16,49 +16,58 @@
     <![endif]-->
 </head>
 
-<body>
-    <div class="container-narrow">
-        <div class="masthead">
-            <ul class="nav nav-pills pull-right">
-                @if (!Auth::user())
-                    <li class="{{ URL::getRequest()->is('/') ? 'active' : '' }}"><a href="{{ URL::route('root') }}">Home</a></li>
-                    <li><a href="{{ URL::route('login') }}">Log In</a></li>
-                @else
-                    <li class="{{ URL::getRequest()->is('list') ? 'active' : '' }}"><a href="{{ URL::route('listpage') }}">My List</a></li>
-                    <li class="{{ URL::getRequest()->is('account') ? 'active' : '' }}"><a href="{{ URL::route('user.edit') }}">{{{ Auth::user()->username }}}</a></li>
-                    <li><a href="{{ URL::route('logout') }}">Log Out</a></li>
-                @endif
-            </ul>
-            <h3 class="muted rootlink"><a href="{{ URL::route('root') }}">FillMySuitcase</a></h3>
-        </div>
+<body class="page-type-@yield('page-type')">
+    <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-links-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ URL::route('root') }}">FillMySuitcase</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-links-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        @if (!Auth::user())
+                            <li><a href="{{ URL::route('login') }}">Log In</a></li>
+                        @else
+                            <li class="{{ URL::getRequest()->is('list') ? 'active' : '' }}"><a href="{{ URL::route('listpage') }}">My List</a></li>
+                            <li class="{{ URL::getRequest()->is('account') ? 'active' : '' }}"><a href="{{ URL::route('user.edit') }}">{{{ Auth::user()->username }}}</a></li>
+                            <li><a href="{{ URL::route('logout') }}">Log Out</a></li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-        <hr />
+    @if (Session::has('errors'))
+    <div class="page-errors alert alert-danger">
+        <h4>Errors</h4>
+        <ul>
+        @foreach (Session::get('errors')->getMessages() as $message)
+            <li>{{ $message[0] }}</li>
+        @endforeach
+        </ul>
+    </div>
+    @endif
 
-        @if (Session::has('errors'))
-        <div class="page-errors alert alert-danger">
-            <h4>Errors</h4>
-            <ul>
-            @foreach (Session::get('errors')->getMessages() as $message)
-                <li>{{ $message[0] }}</li>
-            @endforeach
-            </ul>
-        </div>
-        @endif
+    @if (Session::has('success-message'))
+    <div class="page-errors alert alert-success">
+        {{ Session::get('success-message') }}
+    </div>
+    @endif
 
-        @if (Session::has('success-message'))
-        <div class="page-errors alert alert-success">
-            {{ Session::get('success-message') }}
-        </div>
-        @endif
+    @yield('content')
 
-        @yield('content')
-
-        <hr>
-
-        <div class="footer">
+    <footer class="footer">
+        <div class="container-fluid">
             This site is built on free software. <a href="https://github.com/aag/fillmysuitcase">Get the code</a>.
         </div>
-    </div>
+    </footer>
 
     {{ Html::script('js/libs/jquery-1.9.1.min.js') }}
     {{ Html::script('js/libs/bootstrap.min.js') }}

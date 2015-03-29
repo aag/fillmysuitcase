@@ -1,33 +1,155 @@
-body {
-    padding-top: 20px;
-    padding-bottom: 40px;
+.main-container {
+    margin-top: 100px;
 }
 
-.masthead .rootlink a {
-    color: #999;
+.navbar-default {
+    position: relative;
+    padding: 0 !important;
+    width: 100%;
+    background: none repeat scroll 0px 0px transparent;
+    border: medium none;
+    box-shadow: none;
+    z-index: 2;
+    top: 0;
 }
 
-.masthead .rootlink a:hover {
-    text-decoration: none;
+.navbar-default > .container-fluid,
+.footer > .container-fluid {
+    max-width: 804px;
 }
 
-.container-narrow {
-    margin: 0 auto;
-    max-width: 700px;
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-brand {
+    text-shadow: none;
+    font-size: 16px;
 }
 
-.container-narrow > hr {
-    margin: 30px 0;
+.page-type-home .navbar-default .navbar-nav > li > a,
+.page-type-home .navbar-default .navbar-brand {
+    color: #ddd;
 }
 
-.jumbotron {
-    margin: 60px 0;
+.page-type-home .navbar-default .navbar-nav > li > a:hover,
+.page-type-home .navbar-default .navbar-brand:hover {
+    color: #fff;
+}
+
+.navbar-default .navbar-header {
+    margin-left: 15px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ddd;
+}
+
+.navbar-default .navbar-toggle {
+    background-color: rgba(0, 160, 176, 0.5);
+}
+
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+    background-color: rgba(0, 160, 176, 1);
+}
+
+.navbar-collapse {
+    border-top: none;
+}
+
+.navbar-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin: 0;
+    z-index: 9999;
+}
+
+.jumbotron-home {
+    color: #fff;
+    background-color: #000;
+    background-image: url("/img/backpack.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center top;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: cover !important;
+    height: auto;
+    padding-top: 120px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.jumbotron-home .impact-text {
+    font-size: 40px;
+    line-height: 1;
+}
+
+.jumbotron-home .subtitle {
+    color: #bbb;
+    font-size: 16px;
+    margin-top: 30px;
+    padding: 0 40px;
+}
+
+@media (max-width: 767px) {
+    .nav.navbar-nav {
+        background: none repeat scroll 0% 0% rgba(0, 160, 176, 1);
+        padding: 20px;
+        margin: 0px -15px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .navbar-brand {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        margin: 0;
+    }
+
+    .navbar-toggle[aria-expanded="true"] ~ .navbar-brand {
+        display: none;
+    }
+
+    .jumbotron-home {
+        margin: 0;
+        margin-top: -70px;
+        padding-top: 80px;
+    }
+}
+
+@media (min-width: 768px) {
+    .jumbotron-home {
+        height: 810px;
+    }
+
+    .jumbotron-home .impact-text {
+        font-size: 72px;
+    }    
+
+    .jumbotron-home .subtitle {
+        font-size: 20px;
+    }
+
+    .navbar-default {
+        margin-top: 10px;
+        position: absolute;
+    }
+}
+
+.shortblurb {
+    padding: 0 40px;
+    margin: 50px auto;
+    max-width: 804px;
     text-align: center;
 }
 
-.jumbotron h1 {
-    font-size: 72px;
-    line-height: 1;
+.shortblurb h3 {
+    font-size: 32px;
+}
+
+.shortblurb p {
+    font-size: 16px;
 }
 
 .page-errors h4 {
@@ -161,8 +283,12 @@ body {
             border-radius: 5px;
 }
 
-.footer {
+.footer > .container-fluid {
     color: #999;
+    border-top: 1px solid #eee;
+    margin-top: 50px;
+    padding: 10px 0;
+    text-align: center;
 }
 
 .no-packed-message {

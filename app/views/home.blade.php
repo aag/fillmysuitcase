@@ -1,26 +1,27 @@
 @extends('layouts.app')
 
+@section('page-type')home @stop
+
 @section('content')
-    <div class="jumbotron">
-        <h1>Pack exactly what you need</h1>
+    <div class="jumbotron jumbotron-home">
+        <h1 class="impact-text">Pack right for every trip.</h1>
+        <h3 class="subtitle">Put your packing list online and never pack too much or too little.</h3>
     </div>
-    <div>
-        <p>
-            Have you ever gone on a trip and forgotten something important? Maybe
-            you have the opposite problem and pack too much. The problem is that
-            every time you pack for a trip, you have to start over from the
-            beginning and remember what to bring. It's hard to remember what
-            you packed last time, so you pack too little or too much.
-        </p>
-        <p>
-            Fill My Suitcase is a packing list that you use every time you pack.
-            If you forget something on this trip, add it to your list and you'll
-            never forget it again. Did you take something and not use it? Take
-            it off of your list and never pack it again.
-        </p>
+    <div class="shortblurb">
+        <h3>What does it do?</h3>
+        <p>Most people pack way too much when they travel, forget to bring
+            essential things, or both. FillMySuitcase helps you pack
+            everything you need, but nothing you don't. It's an online packing
+            list that you use every time you travel.
     </div>
-    <div class="list-link">
-        <h3><a href="{{ URL::route('listpage') }}">Go to your packing list</a></h3>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2 col-sm-4"></div>
+            <div class="col-xs-8 col-sm-4">
+                <a class="btn btn-primary btn-lg btn-block" href="{{ URL::route('login') }}">Get started</a>
+            </div>
+            <div class="col-xs-2 col-sm-4"></div>
+        </div>
     </div>
 @stop
 

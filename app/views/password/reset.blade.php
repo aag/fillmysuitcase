@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="container-fluid main-container">
+
 @if (Session::has('error'))
     <div class="page-errors alert alert-danger">
         <h4>Error</h4>
@@ -29,6 +31,8 @@
     {{ Form::close() }}
 
 @endif
+
+</div>
 
 @stop
 

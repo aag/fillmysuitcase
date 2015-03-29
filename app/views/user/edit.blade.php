@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="container-fluid main-container">
+
     {{ Form::model($user, array('route' => 'user.update', 'class' => 'user-form')) }}
     {{ Form::token() }}
 
@@ -25,6 +27,8 @@
     </div>
 
     {{ Form::close() }}
+
+</div>
 
 @stop
 

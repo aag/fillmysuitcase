@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="container-fluid main-container">
+
 @if (Session::has('success'))
     <div class="page-errors alert alert-success">
         <p>{{ trans(Session::get('success')) }}</p>
@@ -35,5 +37,7 @@
     </div>
 
     {{ Form::close() }}
+
+</div>
 @stop
 

@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="container-fluid main-container">
+
     {{ Form::open(array('action' => 'UserController@storeNew', 'class' => 'user-form')) }}
     {{ Form::token() }}
 
@@ -23,6 +25,8 @@
     <div class="privacy-message">We will never sell or give away your email address.</div>
 
     {{ Form::close() }}
+
+</div>
 
 @stop
 

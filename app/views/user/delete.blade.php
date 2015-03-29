@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="container-fluid main-container">
+
     {{ Form::model($user, array('route' => 'user.dodelete', 'class' => 'user-form')) }}
     {{ Form::token() }}
 
@@ -19,6 +21,8 @@
     {{ Form::submit('Delete My Account', array('class' => 'btn btn-danger btn-lg')) }}
 
     {{ Form::close() }}
+
+</div>
 
 @stop
 
