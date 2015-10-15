@@ -1,7 +1,3 @@
-.main-container {
-    margin-top: 100px;
-}
-
 .navbar-default {
     position: relative;
     padding: 0 !important;
@@ -11,10 +7,10 @@
     box-shadow: none;
     z-index: 2;
     top: 0;
+    margin-top: 10px;
 }
 
-.navbar-default > .container-fluid,
-.footer > .container-fluid {
+.navbar-default > .container {
     max-width: 804px;
 }
 
@@ -26,7 +22,7 @@
 
 .page-type-home .navbar-default .navbar-nav > li > a,
 .page-type-home .navbar-default .navbar-brand {
-    color: #ddd;
+    color: #eee;
 }
 
 .page-type-home .navbar-default .navbar-nav > li > a:hover,
@@ -38,17 +34,32 @@
     margin-left: 15px;
 }
 
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #ddd;
-}
-
 .navbar-default .navbar-toggle {
-    background-color: rgba(0, 160, 176, 0.5);
+    background-color: rgba(230, 230, 230, 0.3);
+    border-color: #777;
 }
 
 .navbar-default .navbar-toggle:focus,
 .navbar-default .navbar-toggle:hover {
-    background-color: rgba(0, 160, 176, 1);
+    background-color: rgba(230, 230, 230, 0.5);
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #777;
+}
+
+.page-type-home .navbar-default .navbar-toggle {
+    background-color: rgba(128, 128, 128, 0.3);
+    border-color: #eee;
+}
+
+.page-type-home .navbar-default .navbar-toggle:focus,
+.page-type-home .navbar-default .navbar-toggle:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+.page-type-home .navbar-default .navbar-toggle .icon-bar {
+    background-color: #eee;
 }
 
 .navbar-collapse {
@@ -87,18 +98,26 @@
 }
 
 .jumbotron-home .subtitle {
-    color: #bbb;
+    color: #eee;
     font-size: 16px;
     margin-top: 30px;
     padding: 0 40px;
 }
 
 @media (max-width: 767px) {
+    .navbar-default {
+        margin-top: 0;
+    }
+
     .nav.navbar-nav {
-        background: none repeat scroll 0% 0% rgba(0, 160, 176, 1);
+        background: none repeat scroll 0% 0% #f8f8f8;
         padding: 20px;
         margin: 0px -15px;
         border-bottom: 1px solid #ddd;
+    }
+
+    .page-type-home .nav.navbar-nav {
+        background: none repeat scroll 0% 0% #808080;
     }
 
     .navbar-brand {
@@ -132,8 +151,7 @@
         font-size: 20px;
     }
 
-    .navbar-default {
-        margin-top: 10px;
+    .page-type-home .navbar-default {
         position: absolute;
     }
 }
@@ -157,20 +175,6 @@
     margin-bottom: 5px;
 }
 
-.user-form {
-    max-width: 350px;
-    padding: 19px 29px 29px;
-    margin: 0 auto 20px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
-    -webkit-border-radius: 5px;
-       -moz-border-radius: 5px;
-            border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-            box-shadow: 0 1px 2px rgba(0,0,0,.05);
-}
-
 .user-form .form-signin-heading,
 .user-form .checkbox {
     margin-bottom: 10px;
@@ -182,7 +186,7 @@
     height: auto;
     margin-bottom: 15px;
     padding: 7px 9px;
-    width: 290px;
+    width: 100%;
 }
 
 .user-form .create-account-message {
@@ -284,7 +288,11 @@
             border-radius: 5px;
 }
 
-.footer > .container-fluid {
+.footer {
+    margin-top: 100px;
+}
+
+.footer > .container {
     color: #999;
     border-top: 1px solid #eee;
     margin-top: 50px;
