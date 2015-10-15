@@ -6,8 +6,10 @@
     <div class="row">
 
         @if (Session::has('success'))
-            <div class="page-errors alert alert-success">
-                <p>{{ trans(Session::get('success')) }}</p>
+            <div class="col-sm-6 col-sm-offset-3">
+                <div class="page-errors alert alert-success">
+                    <p>{{ trans(Session::get('success')) }}</p>
+                </div>
             </div>
         @endif
 

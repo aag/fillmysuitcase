@@ -47,19 +47,23 @@
     </header>
 
     @if (Session::has('errors'))
-    <div class="page-errors alert alert-danger">
-        <h4>Errors</h4>
-        <ul>
-        @foreach (Session::get('errors')->getMessages() as $message)
-            <li>{{ $message[0] }}</li>
-        @endforeach
-        </ul>
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="page-errors alert alert-danger">
+            <h4>Errors</h4>
+            <ul>
+            @foreach (Session::get('errors')->getMessages() as $message)
+                <li>{{ $message[0] }}</li>
+            @endforeach
+            </ul>
+        </div>
     </div>
     @endif
 
     @if (Session::has('success-message'))
-    <div class="page-errors alert alert-success">
-        {{ Session::get('success-message') }}
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="page-errors alert alert-success">
+            {{ Session::get('success-message') }}
+        </div>
     </div>
     @endif
 
