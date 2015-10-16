@@ -75,7 +75,7 @@
         </div>
     </footer>
 
-    {{ Html::script('js/libs/jquery-1.9.1.min.js') }}
+    {{ Html::script('js/libs/jquery-2.1.4.min.js') }}
     {{ Html::script('js/libs/bootstrap.min.js') }}
     {{ Html::script('js/libs/underscore.min.js') }}
 
