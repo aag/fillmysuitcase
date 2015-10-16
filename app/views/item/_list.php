@@ -2,7 +2,7 @@
     <div class="unpacked">
         <h3 ng-show="!!unpackedItems.length || !items.length">Not Packed</h3>
         <ul class="packing-list">
-            <li ng-repeat="item in unpackedItems = (items | filter:{packed:false})">
+            <li ng-repeat="item in unpackedItems = (items | filter:{packed:false} | orderBy:'id')">
                 <form class="form-inline">
                     <div class="check-holder">
                         <input type="checkbox" class="check" ng-model="item.packed" ng-change="checkChange(item)">
@@ -37,7 +37,7 @@
     <div class="packed">
         <h3>Already Packed</h3>
         <ul class="packing-list">
-            <li ng-repeat="item in items | filter:{packed:true}">
+            <li ng-repeat="item in items | filter:{packed:true} | orderBy:'id'">
                 <form class="form-inline">
                     <input type="checkbox" class="check" ng-model="item.packed" ng-change="checkChange(item)">
                     <div class="checked-item">{{ item.name }}</div>
