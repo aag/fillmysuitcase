@@ -73,6 +73,28 @@ Steps
 
 At this point you should be logged in and you can use the site normally.
 
+### Development
+
+To run the application in the development environment, you need to add your
+development machine's hostname to the array passed to
+`$app->detectEnvironment()` in `boostrap/start.php`
+
+### Tests
+
+The functional and integration tests run against an in-memory SQLite database,
+so you will need to have the PHP SQLite extension installed. On Debian-derived
+Linux systems, you can install it with this command:
+
+```
+$ sudo apt-get install php5-sqlite
+```
+
+You can then run all the tests with artisan:
+
+```
+$ php artisan test
+```
+
 ### License
 
 Fill My Suitcase is licensed under the

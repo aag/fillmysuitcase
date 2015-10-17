@@ -1,13 +1,13 @@
 <?php
 
 return array(
+    'default' => 'sqlite',
+
     'connections' => array(
-        'pgsql' => array(
-            'host'     => 'localhost',
-            'port'     => '5433',
-            'database' => 'fillmysuitcase_testing',
-            'username' => 'tester',
-            'password' => 'tester',
+        'sqlite' => array(
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
         ),
     ),
 );
