@@ -217,10 +217,6 @@
     margin-top: 15px;
 }
 
-#list {
-    margin-left: 40px;
-}
-
 #list ul.packing-list {
     padding-left: 0;
 }
@@ -247,7 +243,13 @@
 }
 
 #list-container .check {
-    margin-bottom: 5px;
+    position: absolute;
+    right: 0;
+    top: 6px;
+}
+
+#list-container .already-packed .check {
+    top: -2px;
 }
 
 #list-container form {
@@ -258,7 +260,7 @@
     font-size: 18px;
     height: auto;
     padding: 2px 4px;
-    width: 380px;
+    width: 100%;
 }
 
 #list-container .check-holder {
@@ -267,16 +269,13 @@
 }
 
 #list-container .delete-icon {
+    position: relative;
+    top: 5px;
     opacity: 0.3;
 }
 
 #list-container .delete-icon:hover {
     opacity: 0.75;
-}
-
-.create-item-button {
-    position: relative;
-    top: -2px;
 }
 
 .packing-finished {

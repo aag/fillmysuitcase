@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container-fluid main-container">
+<div class="container main-container">
 
-    <h2>Your Packing List</h2>
+    <h1>Your Packing List</h1>
 
     <div id="list-container">
         @include('item._list')
