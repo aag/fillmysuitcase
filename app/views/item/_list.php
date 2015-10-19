@@ -5,22 +5,26 @@
             <li ng-repeat="item in unpackedItems = (items | filter:{packed:false} | orderBy:'id')">
                 <div class="row">
                     <form class="form-inline">
-                        <div class="col-xs-1">
-                            <input type="checkbox" class="check item-check" ng-model="item.packed" ng-change="checkChange(item)">
+                        <div class="col-xs-2 col-sm-1">
+                            <div class="checkbox-holder">
+                                <input type="checkbox" class="check item-check" ng-model="item.packed" ng-change="checkChange(item)">
+                            </div>
                         </div>
                         <div class="col-xs-8 col-sm-6 col-md-5 col-lg-4">
                             <input class="item-name" ng-model="item.name" ng-change="change(item)">
                         </div>
-                        <div class="col-xs-2 col-sm-5 col-md-6 col-lg-7">
-                            <a href="" ng-click="delete(item)" ng-hide="item.confirmingDelete">
+                        <div class="col-xs-2" ng-hide="item.confirmingDelete">
+                            <a href="" ng-click="delete(item)">
                                 <img class="delete-icon" alt="Delete item" title="Delete item" src="/img/cross.png">
                             </a>
-                            <div class="confirm-delete" ng-show="item.confirmingDelete">
+                            <img class="save-check" ng-show="item.justSaved" src="/img/check.png" alt="item saved" title="item saved">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-2 col-sm-5 col-sm-offset-0 col-md-6 col-lg-7" ng-show="item.confirmingDelete">
+                            <div class="confirm-delete">
                                 Are you sure?
                                 <button class="delete-yes btn btn-danger" ng-click="confirmDelete(item)">Delete</button>
                                 <button class="delete-cancel btn btn-default" ng-click="cancelDelete(item)">Cancel</button>
                             </div>
-                            <img class="save-check" ng-show="item.justSaved" src="/img/check.png" alt="item saved" title="item saved">
                         </div>
                     </form>
                 </div>
@@ -28,7 +32,7 @@
             <li ng-show="!!unpackedItems.length || !items.length" class="new-item">
                 <div class="row">
                     <form class="form-inline" ng-submit="submit()">
-                        <div class="col-xs-1"></div>
+                        <div class="col-xs-2 col-sm-1"></div>
                         <div class="col-xs-8 col-sm-6 col-md-5 col-lg-4">
                             <input placeholder="New Item" class="item-name" ng-model="newName">
                         </div>

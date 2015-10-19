@@ -236,15 +236,18 @@
 
 #list-container .confirm-delete {
     display: inline-block;
+    margin-bottom: 5px;
 }
 
 #list-container .checked-item {
     display: inline-block;
 }
 
+#list-container .checkbox-holder {
+    text-align: right;
+}
 #list-container .check {
-    position: absolute;
-    right: 0;
+    position: relative;
     top: 6px;
 }
 
