@@ -11,7 +11,7 @@
                         <div class="col-xs-8 col-sm-6 col-md-5 col-lg-4">
                             <input class="item-name" ng-model="item.name" ng-change="change(item)">
                         </div>
-                        <div class="col-xs-3 col-sm-5 col-md-6 col-lg-7">
+                        <div class="col-xs-2 col-sm-5 col-md-6 col-lg-7">
                             <a href="" ng-click="delete(item)" ng-hide="item.confirmingDelete">
                                 <img class="delete-icon" alt="Delete item" title="Delete item" src="/img/cross.png">
                             </a>
@@ -32,8 +32,8 @@
                         <div class="col-xs-8 col-sm-6 col-md-5 col-lg-4">
                             <input placeholder="New Item" class="item-name" ng-model="newName">
                         </div>
-                        <div class="col-xs-3">
-                            <button type="submit" class="btn btn-default create-item-button">Create</button>
+                        <div class="col-xs-2">
+                            <button type="submit" class="btn btn-default create-item-button">Add</button>
                         </div>
                     </form>
                 </div>
