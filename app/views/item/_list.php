@@ -39,10 +39,14 @@
                 </div>
             </li>
         </ul>
-        <div class="packing-finished" ng-hide="!!unpackedItems.length || !items.length">
-            <h4>Everything is packed. Bon voyage!</h4>
-            <p>Reset the list for your next trip.</p>
-            <button class="reset-list btn btn-primary" ng-click="resetPacked()">Reset</button>
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+                <div class="packing-finished" ng-hide="!!unpackedItems.length || !items.length">
+                    <h2>Bon voyage!</h2>
+                    <p>Reset the list for your next trip.</p>
+                    <button class="reset-list btn btn-primary" ng-click="resetPacked()">Reset</button>
+                </div>
+            </div>
         </div>
     </div>
 
