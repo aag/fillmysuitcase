@@ -33,10 +33,10 @@
                 <div class="row">
                     <form class="form-inline" ng-submit="submit()">
                         <div class="col-xs-2 col-sm-1"></div>
-                        <div class="col-xs-8 col-sm-6 col-md-5 col-lg-4">
+                        <div class="col-xs-7 col-sm-6 col-md-5 col-lg-4">
                             <input placeholder="New Item" class="item-name" ng-model="newName">
                         </div>
-                        <div class="col-xs-2">
+                        <div class="col-xs-3 col-sm-2">
                             <button type="submit" class="btn btn-default create-item-button">Add</button>
                         </div>
                     </form>
