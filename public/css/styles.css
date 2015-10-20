@@ -112,6 +112,10 @@
         border-bottom: 1px solid #ddd;
     }
 
+    .nav.navbar-nav li {
+        max-width: calc(100% - 65px);
+    }
+
     .page-type-home .nav.navbar-nav {
         background: none repeat scroll 0% 0% #808080;
     }
