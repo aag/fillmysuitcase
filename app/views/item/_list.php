@@ -14,10 +14,12 @@
                             <input class="item-name" ng-model="item.name" ng-change="change(item)">
                         </div>
                         <div class="col-xs-2" ng-hide="item.confirmingDelete">
-                            <a href="" ng-click="delete(item)">
-                                <img class="delete-icon" alt="Delete item" title="Delete item" src="/img/cross.png">
-                            </a>
-                            <img class="save-check" ng-show="item.justSaved" src="/img/check.png" alt="item saved" title="item saved">
+                            <div class="item-icon-holder">
+                                <a href="" ng-click="delete(item)" ng-hide="item.justSaved">
+                                    <img class="delete-icon" alt="Delete item" title="Delete item" src="/img/cross.png">
+                                </a>
+                                <img class="save-check" ng-show="item.justSaved" src="/img/check.png" alt="item saved" title="item saved">
+                            </div>
                         </div>
                         <div class="col-xs-10 col-xs-offset-2 col-sm-5 col-sm-offset-0 col-md-6 col-lg-7" ng-show="item.confirmingDelete">
                             <div class="confirm-delete">

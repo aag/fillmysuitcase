@@ -272,9 +272,12 @@
     width: 20px;
 }
 
+#list-container .item-icon-holder {
+    padding-top: 5px;
+}
+
 #list-container .delete-icon {
     position: relative;
-    top: 5px;
     opacity: 0.3;
 }
 
