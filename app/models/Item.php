@@ -30,6 +30,15 @@ class Item extends Ardent {
     );
 
     /**
+     * Default values for attributes that are not set at construction.
+     * 
+     * @var array
+     */
+    protected $attributes = array(
+        'packed' => false,
+    );
+
+    /**
      * The rules to use for validating this model (used by Ardent).
      *
      * @var array
