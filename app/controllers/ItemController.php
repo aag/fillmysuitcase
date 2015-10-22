@@ -48,8 +48,18 @@ class ItemController extends \BaseController {
         $item = Auth::user()->items()->where('id', $id)->first();
 
         if ($item) {
-            $item->name = trim(Input::get('name', $item->name));
-            $item->packed = Input::get('packed', $item->packed);
+            $newItemData = [
+                'name' => trim(Input::get('name', $item->name)),
+                'packed' => Input::get('packed', $item->packed),
+            ];
+
+            $validator = $item->getValidator($newItemData);
+            if ($validator->fails()) {
+                return Response::json(['usermessage' => 'Item is invalid'], 500);
+            }
+
+            $item->name = $newItemData['name'];
+            $item->packed = $newItemData['packed'];
             $success = $item->save();
 
             if ($success) {
@@ -114,8 +124,16 @@ class ItemController extends \BaseController {
             return Response::json(['usermessage' => 'You already have the maximum number of items in your list'], 500);
         }
 
-        $name = trim(Input::get('name'));
-        $item = new Item(['name' => $name]);
+        $itemData = [
+            'name' => trim(Input::get('name')),
+        ];
+
+        $item = new Item($itemData);
+
+        $validator = $item->getValidator($itemData);
+        if ($validator->fails()) {
+            return Response::json(['usermessage' => 'Item is invalid'], 500);
+        }
 
         $success = Auth::user()->items()->save($item);
 

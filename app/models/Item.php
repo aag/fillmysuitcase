@@ -1,10 +1,7 @@
 <?php
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
-use LaravelBook\Ardent\Ardent;
-
-class Item extends Ardent {
+class Item extends Eloquent {
+    use ValidatorBuilder;
 
     /**
      * The database table used by the model.
@@ -39,13 +36,16 @@ class Item extends Ardent {
     );
 
     /**
-     * The rules to use for validating this model (used by Ardent).
+     * The rules to use for validating this model.
      *
      * @var array
      */
-    public static $rules = array(
-        'name' => 'required|max:100',
-    );
+    public function getValidationRules()
+    {
+        return [
+            'name' => 'required|max:100',
+        ];
+    }
 
     /**
      * toArray overrides the default toArray implementation so we can
