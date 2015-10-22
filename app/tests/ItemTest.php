@@ -21,7 +21,7 @@ class ItemTest extends TestCase {
         );
         $validItem = new Item($validAttribs);
 
-        $this->assertTrue($validItem->getValidator($validAttribs)->passes());
+        $this->assertTrue($validItem->isValid($validAttribs));
     }
 
     public function testEmptyNameIsInvalid()
@@ -31,7 +31,7 @@ class ItemTest extends TestCase {
         ];
         $item = new Item($attribs);
 
-        $this->assertTrue($item->getValidator($attribs)->fails());
+        $this->assertFalse($item->isValid($attribs));
     }
 
     public function testUnsetPackedIsDefaultFalse()
@@ -53,7 +53,7 @@ class ItemTest extends TestCase {
             'name' => $longName,
         ];
         $item = new Item($attribs);
-        $this->assertTrue($item->getValidator($attribs)->passes());
+        $this->assertTrue($item->isValid($attribs));
     }
 
     public function testLongNameIsInvalid()
@@ -68,7 +68,7 @@ class ItemTest extends TestCase {
         ];
         $item = new Item($attribs);
 
-        $this->assertTrue($item->getValidator($attribs)->fails());
+        $this->assertFalse($item->isValid($attribs));
     }
 
 }
