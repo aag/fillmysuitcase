@@ -2,9 +2,9 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
-use LaravelBook\Ardent\Ardent;
 
-class User extends Ardent implements UserInterface, RemindableInterface {
+class User extends Eloquent implements UserInterface, RemindableInterface {
+    use SelfValidator;
 
     /**
      * The database table used by the model.
@@ -37,16 +37,6 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     protected static $maxItems = 200;
 
     /**
-     * The rules to use for validating this model (used by Ardent).
-     *
-     * @var array
-     */
-    public static $rules = array(
-        'username' => 'required|unique:users',
-        'email'    => 'required|unique:users|email',
-    );
-
-    /**
      * The rules to use for validating the password.  This is not included
      * in the model rules, because we don't want to require a confirmed
      * password every time we change the User's data.
@@ -56,6 +46,19 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     public static $passwordRules = array(
         'password' => 'required|min:6|confirmed',
     );
+
+    /**
+     * The rules to use for validating this model.
+     *
+     * @var array
+     */
+    public function getValidationRules()
+    {
+        return [
+            'username' => 'required|unique:users|max:64',
+            'email'    => 'required|unique:users|email',
+        ];
+    }
 
     /**
      * passwordValid accepts an array with 'password' and
@@ -78,26 +81,6 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     }
 
     /**
-     * passwordEmptyOrValid accepts an array with 'password' and
-     * 'password_confirmation' keys and returns true if the password in 
-     * $inputs is empty or valid.  If it's non-empty and valid, this user's
-     * password is set to the one in the Inputs.
-     * 
-     * @param Array $passInputs
-     * @access private
-     * @return boolean
-     */
-    public function passwordEmptyOrValid($inputs) {
-        if (!empty($inputs['password']) && !$this->passwordValid($inputs))
-        {
-            return false;
-        }
-
-        $this->password = $inputs['password'];
-        return true;
-    }
-
-    /**
      * isPassword returns true if the given string is the user's current
      * password, else returns false.
      * 
@@ -111,16 +94,16 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     }
 
     /**
-     * Tell Ardent to hash the password field before storing to the database.
+     * When setting the password, hash it before setting it on the model.
+     * 
+     * @param string $password 
+     * @access public
+     * @return void
      */
-    public $autoHashPasswordAttributes = true;
-    public static $passwordAttributes = array('password');
-
-    /**
-     * Tell Ardent to remove the password_confirmation field before storing
-     * to the database.
-     */
-    public $autoPurgeRedundantAttributes = true;
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
 
     /**
      * Get the unique identifier for the user.

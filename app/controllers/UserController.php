@@ -10,10 +10,6 @@ class UserController extends BaseController {
         $password = Input::get('password');
         $stayLoggedIn = Input::get('remember');
 
-        // Workaround for Ardent. Auth::attempt() calls $user->save() to store
-        // the reminder_token, but with Ardent validation rules, this fails.
-        User::$rules = [];
-
         if (Auth::attempt(array('username' => $username, 'password' => $password), $stayLoggedIn) ||
             Auth::attempt(array('email' => $username, 'password' => $password), $stayLoggedIn)) {
 
@@ -45,11 +41,6 @@ class UserController extends BaseController {
     {
         if (Auth::user())
         {
-            // Workaround for Ardent. Auth::logout() calls $user->save() to
-            // store the reminder_token, but with Ardent validation rules, this
-            // fails.
-            User::$rules = [];
-
             Auth::logout();
         }
 
@@ -73,14 +64,14 @@ class UserController extends BaseController {
      */
     public function storeNew()
     {
-        $inputs = Input::only('username', 'email', 'password', 'password_confirmation');
-        $passInputs = Input::only('password', 'password_confirmation');
+        $inputs = Input::only('username', 'email', 'password');
         $user = new User($inputs);
+        $userValid = $user->isValid($inputs);
 
+        $passInputs = Input::only('password', 'password_confirmation');
         $passValid = $user->passwordValid($passInputs);
-        
-        // The save fails if the inputs don't pass validation due to Ardent.
-        if ($passValid && $user->save())
+
+        if ($userValid && $passValid && $user->save())
         {
             Auth::login($user);
             return Redirect::route('listpage');
@@ -118,16 +109,23 @@ class UserController extends BaseController {
     {
         $user = Auth::user();
         $inputs = Input::only('username', 'email');
+        $userValid = $user->isValidUpdate($inputs);
         $user->fill($inputs);
 
         $passInputs = Input::only('password', 'password_confirmation');
-        $passValid = $user->passwordEmptyOrValid($passInputs);
+        $passValid = empty($passInputs['password']) ||
+                        $user->passwordValid($passInputs);
+
+        if ($passValid) {
+            $user->password = $passInputs['password'];
+        }
         
-        // The updateUniques() fails if the inputs don't pass validation due
-        // to Ardent.
-        if ($passValid && $user->updateUniques())
+        if ($userValid && $passValid && $user->save())
         {
-            return View::make('user.edit', array('user' => $user));
+            return View::make('user.edit', [
+                'user' => $user,
+                'updated' => true,
+            ]);
         }
         else
         {
@@ -163,10 +161,6 @@ class UserController extends BaseController {
         $password = Input::get('password');
 
         if ($user->isPassword($password)) {
-            // Workaround for Ardent. Auth::logout() calls $user->save() to
-            // store the reminder_token, but with Ardent validation rules, this
-            // fails.
-            User::$rules = [];
             Auth::logout();
 
             $user->delete();

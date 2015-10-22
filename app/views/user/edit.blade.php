@@ -2,11 +2,19 @@
 
 @section('content')
 
-<div class="container-fluid main-container">
+<div class="container main-container">
     <div class="row">
 
+        @if (isset($updated) && $updated)
+            <div class="col-sm-6 col-sm-offset-3">
+                <div class="page-errors alert alert-success">
+                    <p>{{{ trans("Your account has been updated") }}}</p>
+                </div>
+            </div>
+        @endif
+
         <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
- 
+
             {{ Form::model($user, array('route' => 'user.update', 'class' => 'user-form')) }}
             {{ Form::token() }}
 

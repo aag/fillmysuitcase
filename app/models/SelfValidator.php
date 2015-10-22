@@ -24,7 +24,27 @@ trait SelfValidator
     }
 
     /**
-     * isValid returns true if the given data is valid for this object. If it
+     * Get a Validator for the attributes in the given array that are different
+     * from the existing data in the object.
+     * 
+     * @param array $data 
+     * @access public
+     * @return Validator
+     */
+    public function getUpdateValidator($data)
+    {
+        $updateRules = [];
+        foreach ($this->getValidationRules() as $name => $rule) {
+            if ($this->attributes[$name] !== $data[$name]) {
+                $updateRules[$name] = $rule;
+            }
+        }
+
+        return Validator::make($data, $updateRules);
+    }
+
+    /**
+     * Returns true if the given data is valid for this object. If it
      * is not valid, the error messages from the validator are stored in the
      * object.
      * 
@@ -36,7 +56,31 @@ trait SelfValidator
     {
         $validator = $this->getValidator($data);
         if ($validator->fails()) {
-            $this->messages = $validator->messages();
+            $this->errors()->merge($validator->messages()->toArray());
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Returns true if the given data is valid update data for this object. If
+     * it is not valid, the error messages from the validator are stored in the
+     * object.
+     *
+     * This function is especially useful if you have unique constraints in
+     * your class. With this method, the unique validation will not fail if
+     * the unique attributes are not being changed.
+     * 
+     * @param array $data 
+     * @access public
+     * @return bool
+     */
+    public function isValidUpdate($data)
+    {
+        $validator = $this->getUpdateValidator($data);
+        if ($validator->fails()) {
+            $this->errors()->merge($validator->messages()->toArray());
             return false;
         }
 
