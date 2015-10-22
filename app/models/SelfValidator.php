@@ -50,7 +50,7 @@ trait SelfValidator
      * @access public
      * @return MessageBag
      */
-    public function messages()
+    public function errors()
     {
         if (is_null($this->messages)) {
             $this->messages = new MessageBag();
