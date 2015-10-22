@@ -1,7 +1,7 @@
 <?php
 
 class Item extends Eloquent {
-    use ValidatorBuilder;
+    use SelfValidator;
 
     /**
      * The database table used by the model.

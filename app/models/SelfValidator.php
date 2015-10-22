@@ -6,7 +6,7 @@ use Illuminate\Support\MessageBag;
  *  This is a trait to that creates a standardized way to do validation
  *  in classes.
  */
-trait ValidatorBuilder
+trait SelfValidator
 {
     private $messages;
 
