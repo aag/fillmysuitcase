@@ -65,7 +65,7 @@
                         <div class="col-xs-1">
                             <input type="checkbox" class="check" ng-model="item.packed" ng-change="checkChange(item)">
                         </div>
-                        <div class="col-xs-8 col-sm-6 col-md-5 col-lg-4">
+                        <div class="col-xs-11">
                             <div class="checked-item">{{ item.name }}</div>
                         </div>
                     </form>
