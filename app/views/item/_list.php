@@ -62,10 +62,12 @@
             <li ng-repeat="item in items | filter:{packed:true} | orderBy:'id'">
                 <div class="row">
                     <form class="form-inline">
-                        <div class="col-xs-1">
-                            <input type="checkbox" class="check" ng-model="item.packed" ng-change="checkChange(item)">
+                        <div class="col-xs-2 col-sm-1">
+                            <div class="checkbox-holder">
+                                <input type="checkbox" class="check" ng-model="item.packed" ng-change="checkChange(item)">
+                            </div>
                         </div>
-                        <div class="col-xs-11">
+                        <div class="col-xs-10 col-sm-11">
                             <div class="checked-item">{{ item.name }}</div>
                         </div>
                     </form>
