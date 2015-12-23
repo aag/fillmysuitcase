@@ -1,65 +1,36 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+
+<div class="container main-container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="/auth/register">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            {!! Form::open(array('url' => '/auth/register', 'class' => 'user-form')) !!}
+            {!! Form::token() !!}
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Name</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                            </div>
-                        </div>
+            <h1 class="form-signin-heading">Create Account</h1>
+            {!! Form::label('name', 'Name') !!}
+            {!! Form::text('name', '', array('class' => 'input-block-level')) !!}
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                            </div>
-                        </div>
+            {!! Form::label('email', 'Email Address') !!}
+            {!! Form::text('email', '', array('class' => 'input-block-level')) !!}
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Password</label>
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-                            </div>
-                        </div>
+            {!! Form::label('password', 'Password') !!}
+            {!! Form::password('password', array('class' => 'input-block-level')) !!}
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
-                            </div>
-                        </div>
+            {!! Form::label('password_confirmation', 'Confirm Password') !!}
+            {!! Form::password('password_confirmation', array('class' => 'input-block-level')) !!}
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            {!! Form::submit('Create Account', array('class' => 'btn btn-primary btn-lg')) !!}
+
+            <div class="privacy-message">We will never sell or give away your email address.</div>
+
+            {!! Form::close() !!}
         </div>
+
     </div>
 </div>
-@endsection
+
+@stop
+

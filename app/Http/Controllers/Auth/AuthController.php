@@ -21,6 +21,12 @@ class AuthController extends Controller {
     use AuthenticatesAndRegistersUsers;
 
     /**
+     * Where to redirect the browser after successfully logging
+     * in or creating an account.
+     */
+    private $redirectPath = "/list";
+
+    /**
      * Create a new authentication controller instance.
      *
      * @param  \Illuminate\Contracts\Auth\Guard  $auth

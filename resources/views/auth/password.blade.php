@@ -1,50 +1,38 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid main-container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    <form class="form-horizontal" role="form" method="POST" action="/password/email">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+        <div class="col-sm-6 col-sm-offset-3">
+            @if (Session::has('status'))
+                <div class="page-errors alert alert-success">
+                    <h4>Email Sent</h4>
+                    <p>{!! trans(Session::get('status')) !!}</p>
                 </div>
-            </div>
+            @elseif (Session::has('error'))
+                <div class="page-errors alert alert-danger">
+                    <h4>Error</h4>
+                    <p>{!! Session::get('error') !!}</p>
+                </div>
+            @endif
         </div>
+
+        @if (!Session::has('success'))
+            <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                {!! Form::open(array('url' => '/password/email', 'class' => 'user-form')) !!}
+                {!! Form::token() !!}
+
+                <h1 class="form-signin-heading">Reset Password</h1>
+                {!! Form::label('email', 'Email Address') !!}
+                {!! Form::text('email', '', array('class' => 'input-block-level')) !!}
+
+                {!! Form::submit('Send Email', array('class' => 'btn btn-primary btn-lg')) !!}
+
+                {!! Form::close() !!}
+            </div>
+        @endif
+
     </div>
 </div>
 @endsection

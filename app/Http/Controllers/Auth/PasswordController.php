@@ -21,6 +21,12 @@ class PasswordController extends Controller {
     use ResetsPasswords;
 
     /**
+     * Where to redirect the browser after successfully resetting
+     * the password.
+     */
+    private $redirectPath = "/";
+
+    /**
      * Create a new password controller instance.
      *
      * @param  \Illuminate\Contracts\Auth\Guard  $auth
