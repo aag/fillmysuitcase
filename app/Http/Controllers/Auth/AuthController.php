@@ -1,12 +1,15 @@
-<?php namespace App\Http\Controllers\Auth;
+<?php
+
+namespace App\Http\Controllers\Auth;
 
 use App\User;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Validator;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-class AuthController extends Controller {
-
+class AuthController extends Controller
+{
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -18,13 +21,14 @@ class AuthController extends Controller {
     |
     */
 
-    use AuthenticatesAndRegistersUsers;
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
-     * Where to redirect the browser after successfully logging
-     * in or creating an account.
+     * Where to redirect users after login / registration.
+     *
+     * @var string
      */
-    private $redirectPath = "/list";
+    protected $redirectTo = '/list';
 
     /**
      * Create a new authentication controller instance.
@@ -33,7 +37,7 @@ class AuthController extends Controller {
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
     /**
@@ -42,7 +46,7 @@ class AuthController extends Controller {
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function validator(array $data)
+    protected function validator(array $data)
     {
         return Validator::make($data, User::getAllValidationRules());
     }
@@ -53,7 +57,7 @@ class AuthController extends Controller {
      * @param  array  $data
      * @return User
      */
-    public function create(array $data)
+    protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
@@ -61,5 +65,4 @@ class AuthController extends Controller {
             'password' => bcrypt($data['password']),
         ]);
     }
-
 }

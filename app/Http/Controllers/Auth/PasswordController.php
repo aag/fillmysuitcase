@@ -1,12 +1,12 @@
-<?php namespace App\Http\Controllers\Auth;
+<?php
+
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
-class PasswordController extends Controller {
-
+class PasswordController extends Controller
+{
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
@@ -24,7 +24,7 @@ class PasswordController extends Controller {
      * Where to redirect the browser after successfully resetting
      * the password.
      */
-    private $redirectPath = "/";
+    private $redirectTo = "/";
 
     /**
      * Create a new password controller instance.
@@ -33,10 +33,6 @@ class PasswordController extends Controller {
      */
     public function __construct()
     {
-        $this->auth = $auth;
-        $this->passwords = $passwords;
-
         $this->middleware('guest');
     }
-
 }

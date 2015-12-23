@@ -14,7 +14,7 @@
         @endif
 
         <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-            {!! Form::open(array('url' => '/auth/login', 'class' => 'user-form')) !!}
+            {!! Form::open(array('url' => '/login', 'class' => 'user-form')) !!}
             {!! Form::token() !!}
 
             <h1 class="form-signin-heading">Log In</h1>
@@ -34,11 +34,11 @@
             {!! Form::submit('Log In', array('class' => 'btn btn-primary btn-lg')) !!}
 
             <div class="create-account-message">
-                Don't have an account yet?  <a href="/auth/register">Create Account</a>
+                Don't have an account yet?  <a href="/register">Create Account</a>
             </div>
 
             <div class="create-account-message">
-                Forgot your password?  <a href="/password/email">Send Reminder</a>
+                Forgot your password?  <a href="/password/reset">Send Reminder</a>
             </div>
 
             {!! Form::close() !!}

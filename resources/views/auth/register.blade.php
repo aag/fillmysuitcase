@@ -6,7 +6,7 @@
     <div class="row">
 
         <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-            {!! Form::open(array('url' => '/auth/register', 'class' => 'user-form')) !!}
+            {!! Form::open(array('url' => '/register', 'class' => 'user-form')) !!}
             {!! Form::token() !!}
 
             <h1 class="form-signin-heading">Create Account</h1>

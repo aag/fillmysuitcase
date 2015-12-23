@@ -16,7 +16,7 @@
 
         @if (!Session::has('success'))
             <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                {!! Form::open(array('url' => array('/password/reset', $token), 'class' => 'user-form')) !!}
+                {!! Form::open(array('url' => '/password/reset', 'class' => 'user-form')) !!}
                 {!! Form::hidden('token', $token) !!}
 
                 <h1 class="form-signin-heading">Reset Password</h1>
