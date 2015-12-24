@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-xs-2 col-sm-4"></div>
             <div class="col-xs-8 col-sm-4">
-                <a class="btn btn-primary btn-lg btn-block" href="/auth/login">Get started</a>
+                <a class="btn btn-primary btn-lg btn-block" href="/login">Get started</a>
             </div>
             <div class="col-xs-2 col-sm-4"></div>
         </div>
