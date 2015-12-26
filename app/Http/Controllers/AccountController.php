@@ -42,7 +42,7 @@ class AccountController extends Controller {
             $changedInfo = $user->getChangedProperties(
                 $request->only('name', 'email')
             );
-            $changedRules = array_intersect(
+            $changedRules = array_intersect_key(
                 User::getInfoValidationRules(),
                 $changedInfo
             );
