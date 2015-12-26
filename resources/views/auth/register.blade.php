@@ -4,12 +4,17 @@
 
 <div class="container main-container">
     <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <h1 class="form-page-heading">Create Account</h1>
+        </div>
+    </div>
+ 
+    <div class="row">
 
         <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
             {!! Form::open(array('url' => '/register', 'class' => 'user-form')) !!}
             {!! Form::token() !!}
 
-            <h1 class="form-signin-heading">Create Account</h1>
             {!! Form::label('username', 'Username') !!}
             {!! Form::text('username', '', array('class' => 'input-block-level')) !!}
 

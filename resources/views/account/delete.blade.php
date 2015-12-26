@@ -4,10 +4,14 @@
 
 <div class="container-fluid main-container">
     <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <h1 class="form-page-heading">Delete Account</h1>
+        </div>
+    </div>
+
+    <div class="row">
 
         <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-            <h1 class="form-signin-heading">Delete Account</h1>
-
             <p>Are you sure? Deleting your account permanently removes your login
                 information and packing list.</p>
 

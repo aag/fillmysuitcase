@@ -4,20 +4,17 @@
 
 <div class="container main-container">
     <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <h1 class="form-page-heading">Log In</h1>
+        </div>
+    </div>
 
-        @if (Session::has('success'))
-            <div class="col-sm-6 col-sm-offset-3">
-                <div class="page-errors alert alert-success">
-                    <p>{!! trans(Session::get('success')) !!}</p>
-                </div>
-            </div>
-        @endif
+    <div class="row">
 
         <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
             {!! Form::open(array('url' => '/login', 'class' => 'user-form')) !!}
             {!! Form::token() !!}
 
-            <h1 class="form-signin-heading">Log In</h1>
 
             {!! Form::label('email', 'Email Address') !!}
             {!! Form::text('email', '', array('class' => 'input-block-level')) !!}

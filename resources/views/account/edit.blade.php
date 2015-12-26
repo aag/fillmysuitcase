@@ -6,10 +6,14 @@
 
 <div class="container main-container">
     <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <h1 class="form-page-heading">Edit Account Info</h1>
+        </div>
+    </div>
+
+    <div class="row">
 
         <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-            <h1>Edit Account Info</h1>
-
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Edit Username or Email Address</h2>

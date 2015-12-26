@@ -188,7 +188,10 @@
     margin-bottom: 5px;
 }
 
-.user-form .form-signin-heading,
+.form-page-heading {
+    margin-bottom: 40px;
+}
+
 .user-form .checkbox {
     margin-bottom: 40px;
 }
