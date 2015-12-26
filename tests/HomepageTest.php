@@ -1,6 +1,11 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
 class HomepageTest extends TestCase {
+
+    use DatabaseMigrations, DatabaseTransactions;
 
     /**
      * A basic functional test of the homepage.
@@ -9,9 +14,8 @@ class HomepageTest extends TestCase {
      */
     public function testHomepageGetResponse()
     {
-        $response = $this->call('GET', '/');
-
-        $this->assertTrue($response->isOk());
+        $response = $this->visit('/')
+                         ->assertResponseOk();
     }
 
 }
