@@ -8,8 +8,8 @@ The project is currently beta quality and is not recommended for production use.
 
 ### Installation
 
-The application is built on Laravel 4 and AngularJS.  It requires Apache or
-Nginx running PHP 5.4+ and the MCrypt PHP extension.  It also requires a
+The application is built on Laravel 5.2 and AngularJS.  It requires Apache or
+Nginx running PHP 5.5.9+ and the MCrypt PHP extension.  It also requires a
 database server with a PDO driver.  The default configuration uses PostgreSQL.
 
 Steps
@@ -37,47 +37,19 @@ Steps
    ```
 5. Create a `fillmysuitcase` database on your database server and add a user
    with access to the database.
-6. Create a `.env.php` file in the top-level directory of the Fill My Suitcase
-   code and add your local configuration. It should look something like this:
-   ```php
-   <?php
-
-    return array(
-        'app' => array(
-            'key' => '',
-            'url' => 'http://localhost/',
-        ),
-        'database' => array(
-            'connections' => array(
-                'pgsql' => array(
-                    'host' => 'localhost',
-                    'port' => '5432',
-                    'database' => 'fillmysuitcase',
-                    'user' => 'fillmysuitcase',
-                    'pass' => '',
-                )
-            )
-        )
-    );
-    ```
-
-7. On the console, run `php artisan key:generate` and enter the key it outputs
-   as the `app => key` value in `.env.php` file.
-8. Update all the other values in `.env.php` to match your environment. If you
-   are not using PostgreSQL, update `app/config/database.php` to match your
-   database configuration.
+6. Copy the `.env.example` file in the top-level directory of the Fill My
+   Suitcase code to a file named `.env`.
+7. On the console, run `php artisan key:generate`. This will generate a
+   random encryption key and store it as the `APP_KEY` in the `.env` file.
+8. Update all the other values in `.env` to match your environment. If you
+   are not using PostgreSQL, add the `DB_CONNECTION` variable and set it to the
+   correct value (e.g. `mysql`).
 9. Run `php artisan migrate` from the top-level directory of the Fill My
    Suitcase code.
 10. Visit your new vhost in a web browser and create a new user by clicking
    "Log In" and "Create Account".
 
 At this point you should be logged in and you can use the site normally.
-
-### Development
-
-To run the application in the development environment, you need to add your
-development machine's hostname to the array passed to
-`$app->detectEnvironment()` in `boostrap/start.php`
 
 ### Tests
 
@@ -89,10 +61,10 @@ Linux systems, you can install it with this command:
 $ sudo apt-get install php5-sqlite
 ```
 
-You can then run all the tests with artisan:
+You can then run all the tests with phpunit:
 
 ```
-$ php artisan test
+$ ./vendor/bin/phpunit
 ```
 
 ### License
