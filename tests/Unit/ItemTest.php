@@ -1,8 +1,10 @@
 <?php
 
+namespace Tests\Unit;
+
 use App\Models\Item;
 
-class ItemTest extends TestCase {
+class ItemTest extends \Tests\TestCase {
 
     public function testValidItemCreation()
     {

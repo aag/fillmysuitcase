@@ -1,10 +1,13 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+namespace Tests\Functional;
 
-class AccountpageTest extends TestCase {
+use \App\User;
+use \Illuminate\Foundation\Testing\WithoutMiddleware;
+use \Illuminate\Foundation\Testing\DatabaseMigrations;
+use \Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class AccountpageTest extends \Tests\TestCase {
 
     use DatabaseMigrations, DatabaseTransactions;
 
@@ -16,7 +19,7 @@ class AccountpageTest extends TestCase {
 
     public function testAccountPageDisplayWhenLoggedIn()
     {
-        $user = factory(App\User::class)->make();
+        $user = factory(User::class)->make();
 
         $this->actingAs($user)
              ->visit('/account')

@@ -1,9 +1,11 @@
 <?php
 
+namespace Tests\Functional;
+
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class HomepageTest extends TestCase {
+class HomepageTest extends \Tests\TestCase {
 
     use DatabaseMigrations, DatabaseTransactions;
 

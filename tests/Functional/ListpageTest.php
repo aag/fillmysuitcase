@@ -1,10 +1,13 @@
 <?php
 
+namespace Tests\Functional;
+
+use App\User;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ListpageTest extends TestCase {
+class ListpageTest extends \Tests\TestCase {
 
     use DatabaseMigrations, DatabaseTransactions;
 
@@ -16,7 +19,7 @@ class ListpageTest extends TestCase {
 
     public function testListPageDisplayWhenLoggedIn()
     {
-        $user = factory(App\User::class)->make();
+        $user = factory(User::class)->make();
 
         $this->actingAs($user)
              ->visit('/list')
