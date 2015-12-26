@@ -10,8 +10,8 @@
             {!! Form::token() !!}
 
             <h1 class="form-signin-heading">Create Account</h1>
-            {!! Form::label('name', 'Name') !!}
-            {!! Form::text('name', '', array('class' => 'input-block-level')) !!}
+            {!! Form::label('username', 'Username') !!}
+            {!! Form::text('username', '', array('class' => 'input-block-level')) !!}
 
             {!! Form::label('email', 'Email Address') !!}
             {!! Form::text('email', '', array('class' => 'input-block-level')) !!}

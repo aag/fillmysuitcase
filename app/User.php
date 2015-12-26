@@ -13,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password',
     ];
 
     /**
@@ -36,7 +36,7 @@ class User extends Authenticatable
      * @var array
      */
     const INFO_VALIDATION_RULES = [
-        'name' => 'required|max:255|unique:users',
+        'username' => 'required|max:255|unique:users',
         'email' => 'required|email|max:255|unique:users',
     ];
 

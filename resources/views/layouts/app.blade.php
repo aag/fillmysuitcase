@@ -36,7 +36,7 @@
                                 <li><a href="/login">Log In</a></li>
                             @else
                                 <li class="{{ URL::getRequest()->is('list') ? 'active' : '' }}"><a href="{{ URL::route('listpage') }}">My List</a></li>
-                                <li class="{{ URL::getRequest()->is('account') ? 'active' : '' }}"><a href="/account">{{ Auth::user()->name }}</a></li>
+                                <li class="{{ URL::getRequest()->is('account') ? 'active' : '' }}"><a href="/account">{{ Auth::user()->username }}</a></li>
                                 <li><a href="/logout">Log Out</a></li>
                             @endif
                         </ul>

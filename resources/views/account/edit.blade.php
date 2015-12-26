@@ -12,14 +12,14 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2 class="panel-title">Edit Name or Email Address</h2>
+                    <h2 class="panel-title">Edit Username or Email Address</h2>
                 </div>
                 <div class="panel-body">
                     {!! Form::model($user, array('route' => 'account.posteditinfo', 'class' => 'user-form')) !!}
                     {!! Form::token() !!}
 
-                    {!! Form::label('name', 'Name') !!}
-                    {!! Form::text('name', null, array('class' => 'input-block-level')) !!}
+                    {!! Form::label('username', 'Username') !!}
+                    {!! Form::text('username', null, array('class' => 'input-block-level')) !!}
 
                     {!! Form::label('email', 'Email Address') !!}
                     {!! Form::text('email', null, array('class' => 'input-block-level')) !!}

@@ -40,7 +40,7 @@ class AccountController extends Controller {
 
         if (Auth::validate($credentials)) {
             $changedInfo = $user->getChangedProperties(
-                $request->only('name', 'email')
+                $request->only('username', 'email')
             );
             $changedRules = array_intersect_key(
                 User::getInfoValidationRules(),
