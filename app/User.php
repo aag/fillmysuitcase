@@ -118,6 +118,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Returns the maximum number of items that this user can have.
+     * 
+     * @access public
+     * @return int
+     */
+    public function getNumMaxItems()
+    {
+        return self::$maxItems;
+    }
+
+    /**
      * Accepts an array of property names to values and returns the ones
      * which are different from the current user object.
      * 
