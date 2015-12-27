@@ -33,17 +33,25 @@ class User extends Authenticatable
     protected static $maxItems = 200;
 
     /**
+     * Note: this should actually be a class constant, but since you can't
+     * have arrays as class constants until PHP 5.6, we'll use a private
+     * static instead, so we can support PHP 5.5.
+     *
      * @var array
      */
-    const INFO_VALIDATION_RULES = [
+    private static $infoValidationRules = [
         'username' => 'required|max:255|unique:users',
         'email' => 'required|email|max:255|unique:users',
     ];
 
     /**
+     * Note: this should actually be a class constant, but since you can't
+     * have arrays as class constants until PHP 5.6, we'll use a private
+     * static instead, so we can support PHP 5.5.
+     *
      * @var array
      */
-    const PASS_VALIDATION_RULES = [
+    private static $passValidationRules = [
         'password' => 'required|confirmed|min:6',
     ];
 
@@ -56,7 +64,7 @@ class User extends Authenticatable
      */
     public static function getInfoValidationRules()
     {
-        return self::INFO_VALIDATION_RULES;
+        return self::$infoValidationRules;
     }
 
     /**
@@ -68,7 +76,7 @@ class User extends Authenticatable
      */
     public static function getPasswordValidationRules()
     {
-        return self::PASS_VALIDATION_RULES;
+        return self::$passValidationRules;
     }
 
     /**
@@ -81,8 +89,8 @@ class User extends Authenticatable
     public static function getAllValidationRules()
     {
         return array_merge(
-            self::INFO_VALIDATION_RULES,
-            self::PASS_VALIDATION_RULES
+            self::$infoValidationRules,
+            self::$passValidationRules
         );
     }
 
