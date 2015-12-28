@@ -14,9 +14,10 @@ class UnitTest extends \Tests\TestCase {
             'password' => bcrypt('testpass'),
             'remember_token' => 'REMEMBERME',
         );
-        $validItem = new User($validAttribs);
+        $validUser = new User($validAttribs);
 
-        $this->assertEquals('TestUser', $validItem->username);
+        $this->assertEquals('TestUser', $validUser->username);
+        $this->assertEquals('test@example.com', $validUser->email);
+        $this->assertTrue(app('hash')->check('testpass', $validUser->password));
     }
-
 }
