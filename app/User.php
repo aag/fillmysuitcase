@@ -141,7 +141,11 @@ class User extends Authenticatable
         $changed = [];
 
         foreach ($properties as $name => $value) {
-            if (isset($this->$name) && $this->$name !== $value) {
+            if ($name === 'password') {
+                if (!app('hash')->check($value, $this->password)) {
+                    $changed[$name] = $value;
+                }
+            } elseif (isset($this->$name) && $this->$name !== $value) {
                 $changed[$name] = $value;
             }
         }

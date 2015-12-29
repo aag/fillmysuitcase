@@ -37,4 +37,76 @@ class UnitTest extends \Tests\TestCase {
 
         $this->assertTrue(app('hash')->check($longPass, $validUser->password));
     }
+
+    public function testGetChangedPropertiesNoChange()
+    {
+        $validAttribs = array(
+            'username' => 'TestUser',
+            'email' => 'test@example.com',
+            'password' => bcrypt('testpass'),
+        );
+        $validUser = new User($validAttribs);
+
+        $unchangedAttribs = $validAttribs;
+        unset($unchangedAttribs['password']);
+
+        $this->assertEmpty($validUser->getChangedProperties($unchangedAttribs));
+    }
+
+    public function testGetChangedPropertiesUsernameChanged()
+    {
+        $validAttribs = array(
+            'username' => 'TestUser',
+            'email' => 'test@example.com',
+            'password' => bcrypt('testpass'),
+        );
+        $validUser = new User($validAttribs);
+
+        $this->assertEquals(
+            ['username' => 'TestUser2'],
+            $validUser->getChangedProperties(['username' => 'TestUser2'])
+        );
+    }
+
+    public function testGetChangedPropertiesAllChanged()
+    {
+        $validAttribs = array(
+            'username' => 'TestUser',
+            'email' => 'test@example.com',
+            'password' => bcrypt('testpass'),
+        );
+        $validUser = new User($validAttribs);
+
+        $changedAttribs = [
+            'username' => 'TestUser2',
+            'email' => 'test2@example.com',
+            'password' => 'testpass2',
+        ];
+
+        $this->assertEquals(
+            $changedAttribs,
+            $validUser->getChangedProperties($changedAttribs)
+        );
+    }
+
+    public function testGetChangedPropertiesPasswordNotChanged()
+    {
+        $validAttribs = array(
+            'username' => 'TestUser',
+            'email' => 'test@example.com',
+            'password' => bcrypt('testpass'),
+        );
+        $validUser = new User($validAttribs);
+
+        $unchangedPasswordAttrib = [
+            'password' => 'testpass',
+        ];
+
+        $this->assertEmpty(
+            $validUser->getChangedProperties($unchangedPasswordAttrib)
+        );
+    }
+
 }
+
+
