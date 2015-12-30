@@ -2,10 +2,10 @@
 
 namespace Tests\Functional;
 
-use \App\User;
-use \Illuminate\Foundation\Testing\WithoutMiddleware;
-use \Illuminate\Foundation\Testing\DatabaseMigrations;
-use \Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Models\User;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AccountpageTest extends \Tests\TestCase {
 

@@ -2,8 +2,8 @@
 
 namespace Tests\Integration;
 
-use App\User;
 use App\Models\Item;
+use App\Models\User;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
