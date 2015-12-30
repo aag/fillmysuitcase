@@ -1,0 +1,45 @@
+.form-page-heading {
+    margin-bottom: 40px;
+}
+
+.user-form {
+    .checkbox {
+        margin-bottom: 40px;
+    }
+
+    input {
+        &[type="text"], &[type="password"] {
+            font-size: 16px;
+            height: auto;
+            margin-bottom: 15px;
+            padding: 7px 9px;
+            width: 100%;
+        }
+    }
+
+    .create-account-message {
+        margin-top: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    .remember-me-holder {
+        label {
+            margin-top: 0;
+        }
+
+        input {
+            position: relative;
+            margin-left: 0;
+        }
+    }
+}
+
+.user-form .privacy-message {
+    margin-top: 15px;
+}
+
+

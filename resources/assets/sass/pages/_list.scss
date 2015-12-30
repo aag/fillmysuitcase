@@ -1,0 +1,83 @@
+#list ul.packing-list {
+    padding-left: 0;
+}
+
+#list-container {
+    .unpacked {
+        margin-top: 30px;
+    }
+
+    .packed {
+        margin-top: 50px;
+    }
+
+    ul {
+        list-style-type: none;
+        list-style-position: none;
+    }
+
+    .confirm-delete {
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+
+    .checked-item {
+        display: inline-block;
+    }
+
+    .checkbox-holder {
+        text-align: right;
+    }
+
+    .check {
+        position: relative;
+        top: 6px;
+    }
+
+    .already-packed .check {
+        top: -2px;
+    }
+
+    form {
+        margin-bottom: 7px;
+    }
+
+    .item-name {
+        font-size: 18px;
+        height: auto;
+        padding: 2px 4px;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .check-holder {
+        display: inline-block;
+        width: 20px;
+    }
+
+    .item-icon-holder {
+        padding-top: 5px;
+    }
+
+    .delete-icon {
+        position: relative;
+        opacity: 0.3;
+
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+}
+
+.packing-finished {
+    padding: 20px 20px;
+    background-color: #c3ffc9;
+    width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.no-packed-message {
+    padding-left: 25px;
+}

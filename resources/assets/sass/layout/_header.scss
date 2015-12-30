@@ -1,0 +1,108 @@
+.navbar-default {
+    position: relative;
+    padding: 0 !important;
+    width: 100%;
+    background: none repeat scroll 0px 0px transparent;
+    border: medium none;
+    box-shadow: none;
+    z-index: 2;
+    top: 0;
+    margin-top: 10px;
+
+    .navbar-nav > li > a, .navbar-brand {
+        text-shadow: none;
+        font-size: 16px;
+    }
+
+    .navbar-nav > .active > a {
+        background-image: none;
+        box-shadow: none;
+        background-color: transparent;
+        border-bottom: 3px solid #777;
+
+        &:focus {
+            background-image: none;
+            box-shadow: none;
+            background-color: transparent;
+            border-bottom: 3px solid #777;
+        }
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
+    .navbar-header {
+        margin-left: 15px;
+    }
+
+    .navbar-toggle {
+        background-color: rgba(230, 230, 230, 0.3);
+        border-color: #777;
+
+        &:focus,
+        &:hover {
+            background-color: rgba(230, 230, 230, 0.5);
+        }
+
+        .icon-bar {
+            background-color: #777;
+        }
+    }
+
+}
+
+.navbar-nav > li > a {
+    padding-bottom: 5px;
+}
+
+.navbar-collapse {
+    border-top: none;
+}
+
+.navbar-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin: 0;
+    z-index: 9999;
+}
+
+@media (max-width: 767px) {
+    .navbar-default {
+        margin-top: 0;
+    }
+
+    .nav.navbar-nav {
+        background: none repeat scroll 0% 0% #f8f8f8;
+        padding: 20px;
+        margin: 0px -15px;
+        border-bottom: 1px solid #ddd;
+        li {
+            max-width: calc(100% - 65px);
+        }
+    }
+
+    .navbar-default .navbar-nav > .active > a {
+        border-bottom: 2px solid #555;
+
+        &:focus {
+            border-bottom: 2px solid #555;
+        }
+    }
+
+    .navbar-brand {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        margin: 0;
+    }
+
+    .navbar-toggle[aria-expanded="true"] ~ .navbar-brand {
+        display: none;
+    }
+
+}
+
+
+

@@ -2,7 +2,8 @@
 'use strict';
 
 angular.module('suitcase.controllers', []).
-  controller('ListCtrl', function($scope, $http, $resource, $timeout) {
+  controller('ListCtrl', ['$scope', '$http', '$resource', '$timeout',
+                  function($scope,   $http,   $resource,   $timeout) {
     var Item = $resource('/item/:id', 
                          {id: '@id'},
                          {unpackAll: {method: 'POST', url: '/list/unpackall', isArray: true}});
@@ -77,4 +78,4 @@ angular.module('suitcase.controllers', []).
         });
     };
 
-  });
+  }]);

@@ -1,0 +1,114 @@
+.page-type-home {
+    .navbar-default {
+        .navbar-nav > li > a, .navbar-brand {
+            color: #eee;
+        }
+
+        .navbar-nav > li > a:hover, .navbar-brand:hover {
+            color: #fff;
+        }
+    }
+
+    .messages-holder {
+        position: absolute;
+        z-index: 100;
+        width: 80%;
+        left: 10%;
+        top: 70px;
+    }
+}
+
+.page-type-home .navbar-default .navbar-toggle {
+    background-color: rgba(128, 128, 128, 0.3);
+    border-color: #eee;
+
+    &:focus,
+    &:hover {
+        background-color: rgba(128, 128, 128, 0.5);
+    }
+
+    .icon-bar {
+        background-color: #eee;
+    }
+}
+
+.jumbotron-home {
+    color: #fff;
+    background-color: #000;
+    background-image: url("/img/backpack.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center top;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: cover !important;
+    height: auto;
+    padding-top: 120px;
+    padding-bottom: 8em;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+
+    .impact-text {
+        font-size: 40px;
+        line-height: 1;
+    }
+
+    .subtitle {
+        color: #eee;
+        font-size: 16px;
+        margin-top: 30px;
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 767px) {
+    .page-type-home .nav.navbar-nav {
+        background: none repeat scroll 0% 0% #808080;
+    }
+
+    .jumbotron-home {
+        margin: 0;
+        margin-top: -70px;
+        padding-top: 80px;
+    }
+
+    .messages-holder + .jumbotron-home {
+        padding-top: 120px;
+    }
+}
+
+@media (min-width: 768px) {
+    .jumbotron-home {
+        height: 810px;
+
+        .impact-text {
+            font-size: 72px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+        }
+    }
+
+    .page-type-home .navbar-default {
+        position: absolute;
+    }
+}
+
+.shortblurb {
+    padding: 0 40px;
+    margin: 50px auto;
+    max-width: 804px;
+    text-align: center;
+
+    h3 {
+        font-size: 32px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+

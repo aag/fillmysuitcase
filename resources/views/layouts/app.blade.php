@@ -5,9 +5,7 @@
     <title>FillMySuitcase</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {!! Html::style('css/bootstrap.min.css', array('media' => 'screen')) !!}
-    {!! Html::style('css/bootstrap-theme.min.css', array('media' => 'screen')) !!}
-    {!! Html::style('css/styles.css') !!}
+    {!! Html::style(elixir('css/styles.css')) !!}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -84,13 +82,12 @@
     </footer>
 
     {!! Html::script('js/libs/jquery-2.1.4.min.js') !!}
-    {!! Html::script('js/libs/bootstrap.min.js') !!}
     {!! Html::script('js/libs/underscore.min.js') !!}
 
     {!! Html::script('js/libs/angular.min.js') !!}
     {!! Html::script('js/libs/angular-resource.min.js') !!}
-    {!! Html::script('js/app.js') !!}
-    {!! Html::script('js/controllers.js') !!}
+
+    {!! Html::script(elixir('js/all.js')) !!}
 </body>
 </html>
 
