@@ -16,6 +16,22 @@
     font-size: 16px;
 }
 
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus {
+    background-image: none;
+    box-shadow: none; 
+    background-color: transparent;
+    border-bottom: 3px solid #555;
+}
+
+.navbar-default .navbar-nav > .active > a:hover {
+    background-color: transparent;
+}
+
+.navbar-nav > li > a {
+    padding-bottom: 5px;
+}
+
 .page-type-home .navbar-default .navbar-nav > li > a,
 .page-type-home .navbar-default .navbar-brand {
     color: #eee;
@@ -122,6 +138,11 @@
 
     .nav.navbar-nav li {
         max-width: calc(100% - 65px);
+    }
+
+    .navbar-default .navbar-nav > .active > a,
+    .navbar-default .navbar-nav > .active > a:focus {
+        border-bottom: 2px solid #555;
     }
 
     .page-type-home .nav.navbar-nav {
