@@ -21,7 +21,7 @@
     background-image: none;
     box-shadow: none; 
     background-color: transparent;
-    border-bottom: 3px solid #555;
+    border-bottom: 3px solid #777;
 }
 
 .navbar-default .navbar-nav > .active > a:hover {
