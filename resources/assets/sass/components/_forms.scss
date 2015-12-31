@@ -8,10 +8,11 @@
     }
 
     input {
-        &[type="text"], &[type="password"] {
+        &[type="text"],
+        &[type="password"],
+        &[type="email"] {
             font-size: 16px;
             height: auto;
-            margin-bottom: 15px;
             padding: 7px 9px;
             width: 100%;
         }
@@ -27,6 +28,8 @@
     }
 
     .remember-me-holder {
+        margin-bottom: 10px;
+
         label {
             margin-top: 0;
         }

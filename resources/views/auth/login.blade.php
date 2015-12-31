@@ -12,33 +12,48 @@
     <div class="row">
 
         <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-            {!! Form::open(array('url' => '/login', 'class' => 'user-form')) !!}
-            {!! Form::token() !!}
+            <form class="user-form" role="form" method="POST" action="{{ url('/login') }}">
+                {!! csrf_field() !!}
 
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                    <label class="control-label">E-Mail Address</label>
+                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
 
-            {!! Form::label('email', 'Email Address') !!}
-            {!! Form::text('email', '', array('class' => 'input-block-level')) !!}
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                </div>
 
-            {!! Form::label('password', 'Password') !!}
-            {!! Form::password('password', array('class' => 'input-block-level')) !!}
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <label class="control-label">Password</label>
+                    <input type="password" class="form-control" name="password" value="{{ old('password') }}">
+                    
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
 
-            <div class="remember-me-holder">
-                <label class="checkbox">
-                    {!! Form::checkbox('remember', true) !!} Remember me
-                </label>
-            </div>
+                <div class="remember-me-holder">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember Me
+                    </label>
+                </div>
 
-            {!! Form::submit('Log In', array('class' => 'btn btn-primary btn-lg')) !!}
+                <button type="submit" class="btn btn-primary btn-lg">Log In</button>
 
-            <div class="create-account-message">
-                Don't have an account yet?  <a href="/register">Create Account</a>
-            </div>
+                <div class="create-account-message">
+                    Don't have an account yet?  <a href="/register">Create Account</a>
+                </div>
 
-            <div class="create-account-message">
-                Forgot your password?  <a href="/password/reset">Send Reminder</a>
-            </div>
+                <div class="create-account-message">
+                    Forgot your password?  <a href="/password/reset">Send Reminder</a>
+                </div>
 
-            {!! Form::close() !!}
+            </form>
         </div>
 
     </div>
