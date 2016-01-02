@@ -22,15 +22,22 @@
     <div class="row">
 
         <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-            {!! Form::open(array('url' => '/password/email', 'class' => 'user-form')) !!}
-            {!! Form::token() !!}
+            <form class="user-form" role="form" method="POST" action="{{ url('/password/email') }}">
+                {!! csrf_field() !!}
 
-            {!! Form::label('email', 'Email Address') !!}
-            {!! Form::text('email', '', array('class' => 'input-block-level')) !!}
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                    <label class="control-label">Email Address</label>
+                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
 
-            {!! Form::submit('Send Email', array('class' => 'btn btn-primary btn-lg')) !!}
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                </div>
 
-            {!! Form::close() !!}
+                <button type="submit" class="btn btn-primary btn-lg">Send Email</button>
+            </form>
         </div>
 
     </div>
