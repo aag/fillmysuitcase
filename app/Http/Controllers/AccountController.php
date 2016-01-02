@@ -170,7 +170,7 @@ class AccountController extends Controller {
         } else {
             return redirect()->route('account.getdelete')
                                 ->exceptInput('password')
-                                ->withErrors(array('' => 'Incorrect password'));
+                                ->withErrors(array('password' => 'Incorrect password'));
         }
     }
 

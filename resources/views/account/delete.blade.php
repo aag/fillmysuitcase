@@ -18,15 +18,23 @@
             <p>To delete your account, enter your password and click the delete
                 button.</p>
 
-            {!! Form::model($user, array('route' => 'account.postdelete', 'class' => 'user-form')) !!}
-            {!! Form::token() !!}
+            <form class="user-form" role="form" method="POST" action="{{ url('/account/delete') }}">
+                {!! csrf_field() !!}
 
-            {!! Form::label('password', 'Password') !!}
-            {!! Form::password('password', array('class' => 'input-block-level')) !!}
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <label class="control-label">Password</label>
+                    <input type="password" class="form-control" name="password" value="{{ old('password') }}">
+                    
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
 
-            {!! Form::submit('Delete My Account', array('class' => 'btn btn-danger btn-lg')) !!}
+                <button type="submit" class="btn btn-danger btn-lg">Delete My Account</button>
 
-            {!! Form::close() !!}
+            </form>
 
         </div>
 
