@@ -5,12 +5,12 @@
     <title>FillMySuitcase</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {!! Html::style(elixir('css/styles.css')) !!}
+    <link href="{{ elixir('css/styles.css') }}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-        {!! Html::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') !!}
-        {!! Html::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') !!}
+        <link href="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" rel="stylesheet">
+        <link href="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" rel="stylesheet">
     <![endif]-->
 </head>
 
@@ -81,13 +81,13 @@
         </div>
     </footer>
 
-    {!! Html::script('js/libs/jquery-2.1.4.min.js') !!}
-    {!! Html::script('js/libs/underscore.min.js') !!}
+    <script src="/js/libs/jquery-2.1.4.min.js"></script>
+    <script src="/js/libs/underscore.min.js"></script>
 
-    {!! Html::script('js/libs/angular.min.js') !!}
-    {!! Html::script('js/libs/angular-resource.min.js') !!}
+    <script src="/js/libs/angular.min.js"></script>
+    <script src="/js/libs/angular-resource.min.js"></script>
 
-    {!! Html::script(elixir('js/all.js')) !!}
+    <script src="{{ elixir('js/all.js') }}"></script>
 </body>
 </html>
 
