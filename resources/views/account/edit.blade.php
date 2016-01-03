@@ -19,21 +19,45 @@
                     <h2 class="panel-title">Edit Username or Email Address</h2>
                 </div>
                 <div class="panel-body">
-                    {!! Form::model($user, array('route' => 'account.posteditinfo', 'class' => 'user-form')) !!}
-                    {!! Form::token() !!}
+                    <form class="user-form" role="form" method="POST" action="{{ url('/account/editinfo') }}">
+                        {!! csrf_field() !!}
 
-                    {!! Form::label('username', 'Username') !!}
-                    {!! Form::text('username', null, array('class' => 'input-block-level')) !!}
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label class="control-label">Username</label>
+                            <input type="text" class="form-control" name="username" value="{{ $username }}">
 
-                    {!! Form::label('email', 'Email Address') !!}
-                    {!! Form::text('email', null, array('class' => 'input-block-level')) !!}
+                            @if ($errors->has('username'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('username') }}</strong>
+                                </span>
+                            @endif
+                        </div>
 
-                    {!! Form::label('password', 'Current Password') !!}
-                    {!! Form::password('password', array('class' => 'input-block-level')) !!}
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label class="control-label">Email Address</label>
+                            <input type="email" class="form-control" name="email" value="{{ $email }}">
 
-                    {!! Form::submit('Save', array('class' => 'btn btn-primary')) !!}
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                        </div>
 
-                    {!! Form::close() !!}
+                        <div class="form-group{{ $errors->has('info_current_password') ? ' has-error' : '' }}">
+                            <label class="control-label">Current Password</label>
+                            <input type="password" class="form-control" name="info_current_password" value="">
+                            
+                            @if ($errors->has('info_current_password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('info_current_password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+
+                    </form>
                 </div>
             </div>
 
@@ -42,21 +66,45 @@
                     <h2 class="panel-title">Change Password</h2>
                 </div>
                 <div class="panel-body">
-                    {!! Form::model($user, array('route' => 'account.postchangepassword', 'class' => 'user-form')) !!}
-                    {!! Form::token() !!}
+                    <form class="user-form" role="form" method="POST" action="{{ url('/account/changepassword') }}">
+                        {!! csrf_field() !!}
 
-                    {!! Form::label('current_password', 'Current Password') !!}
-                    {!! Form::password('current_password', array('class' => 'input-block-level')) !!}
+                        <div class="form-group{{ $errors->has('password_current_password') ? ' has-error' : '' }}">
+                            <label class="control-label">Current Password</label>
+                            <input type="password" class="form-control" name="password_current_password" value="">
+                            
+                            @if ($errors->has('password_current_password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password_current_password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
 
-                    {!! Form::label('password', 'New Password') !!}
-                    {!! Form::password('password', array('class' => 'input-block-level')) !!}
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label class="control-label">New Password</label>
+                            <input type="password" class="form-control" name="password" value="">
+                            
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
 
-                    {!! Form::label('password_confirmation', 'Confirm New Password') !!}
-                    {!! Form::password('password_confirmation', array('class' => 'input-block-level')) !!}
+                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                            <label class="control-label">Confirm New Password</label>
+                            <input type="password" class="form-control" name="password_confirmation" value="">
+                            
+                            @if ($errors->has('password_confirmation'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                </span>
+                            @endif
+                        </div>
 
-                    {!! Form::submit('Save', array('class' => 'btn btn-primary')) !!}
+                        <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
 
-                    {!! Form::close() !!}
+                    </form>
                 </div>
             </div>
 

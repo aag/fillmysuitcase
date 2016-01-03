@@ -13,12 +13,21 @@ class AccountController extends Controller {
      * information.
      * 
      * @access public
+     * @param Request $request
      * @return void
      */
-    public function getEdit()
+    public function getEdit(Request $request)
     {
         $user = Auth::user();
-        return view('account.edit', array('user' => $user));
+        
+        $username = $request->old('username', $user->username);
+        $email = $request->old('email', $user->email);
+
+        return view('account.edit', [
+            'user' => $user,
+            'username' => $username,
+            'email' => $email,
+        ]);
     }
 
     /**
@@ -35,7 +44,7 @@ class AccountController extends Controller {
         $user = Auth::user();
         $credentials = [
             'email' => $user->email,
-            'password' => $request->input('password'),
+            'password' => $request->input('info_current_password'),
         ];
 
         if (Auth::validate($credentials)) {
@@ -52,11 +61,13 @@ class AccountController extends Controller {
             $user->save();
 
             return redirect()->route('account.getedit')
-                                ->with('success-message', 'Your account information has been updated.');
+                ->with('success-message', 'Your account information has been updated.');
         } else {
             return redirect()->route('account.getedit')
-                                ->exceptInput('password')
-                                ->withErrors(array('' => 'Incorrect current password'));
+                ->exceptInput('info_current_password')
+                ->withErrors([
+                    'info_current_password' => 'Incorrect current password'
+                ]);
         }
     }
 
@@ -74,7 +85,7 @@ class AccountController extends Controller {
         $user = Auth::user();
         $credentials = [
             'email' => $user->email,
-            'password' => $request->input('current_password'),
+            'password' => $request->input('password_current_password'),
         ];
 
         if (Auth::validate($credentials)) {
@@ -84,50 +95,13 @@ class AccountController extends Controller {
             $user->save();
 
             return redirect()->route('account.getedit')
-                                ->with('success-message', 'Your password has been changed.');
+                ->with('success-message', 'Your password has been changed.');
         } else {
             return redirect()->route('account.getedit')
-                                ->exceptInput('password')
-                                ->withErrors(array('' => 'Incorrect current password'));
-        }
-    }
-
-    /**
-     * Handles the user edit form submission.  If it includes
-     * invalid user data, the user is shown the form again with error
-     * messages.
-     * 
-     * @access public
-     * @param Request $request
-     * @return void
-     */
-    public function postEdit(Request $request)
-    {
-        $user = Auth::user();
-        $inputs = $request->only('username', 'email');
-        $userValid = $user->isValidUpdate($inputs);
-        $user->fill($inputs);
-
-        $passInputs = $request->only('password', 'password_confirmation');
-        $passValid = empty($passInputs['password']) ||
-                        $user->passwordValid($passInputs);
-
-        if ($passValid) {
-            $user->password = $passInputs['password'];
-        }
-        
-        if ($userValid && $passValid && $user->save())
-        {
-            return View::make('account.edit', [
-                'user' => $user,
-                'updated' => true,
-            ]);
-        }
-        else
-        {
-            return Redirect::route('account.getedit')
-                                ->withInput()
-                                ->withErrors($user->errors());
+                ->exceptInput('password_current_password')
+                ->withErrors(
+                    ['password_current_password' => 'Incorrect current password']
+                );
         }
     }
 
@@ -166,11 +140,11 @@ class AccountController extends Controller {
             $user->delete();
 
             return redirect()->route('root')
-                                ->with('success-message', 'Your account has been deleted.');
+                ->with('success-message', 'Your account has been deleted.');
         } else {
             return redirect()->route('account.getdelete')
-                                ->exceptInput('password')
-                                ->withErrors(array('password' => 'Incorrect password'));
+                ->exceptInput('password')
+                ->withErrors(array('password' => 'Incorrect password'));
         }
     }
 
