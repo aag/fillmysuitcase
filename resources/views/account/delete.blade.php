@@ -22,8 +22,8 @@
                 {!! csrf_field() !!}
 
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <label class="control-label">Password</label>
-                    <input type="password" class="form-control" name="password" value="{{ old('password') }}">
+                    <label for="password" class="control-label">Password</label>
+                    <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}">
                     
                     @if ($errors->has('password'))
                         <span class="help-block">

@@ -23,8 +23,8 @@
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label class="control-label">Username</label>
-                            <input type="text" class="form-control" name="username" value="{{ $username }}">
+                            <label for="username" class="control-label">Username</label>
+                            <input id="username" type="text" class="form-control" name="username" value="{{ $username }}">
 
                             @if ($errors->has('username'))
                                 <span class="help-block">
@@ -34,8 +34,8 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="control-label">Email Address</label>
-                            <input type="email" class="form-control" name="email" value="{{ $email }}">
+                            <label for="email" class="control-label">Email Address</label>
+                            <input id="email" type="email" class="form-control" name="email" value="{{ $email }}">
 
                             @if ($errors->has('email'))
                                 <span class="help-block">
@@ -45,8 +45,8 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('info_current_password') ? ' has-error' : '' }}">
-                            <label class="control-label">Current Password</label>
-                            <input type="password" class="form-control" name="info_current_password" value="">
+                            <label for="id_current_password" class="control-label">Current Password</label>
+                            <input id="id_current_password" type="password" class="form-control" name="info_current_password" value="">
                             
                             @if ($errors->has('info_current_password'))
                                 <span class="help-block">
@@ -70,8 +70,8 @@
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('password_current_password') ? ' has-error' : '' }}">
-                            <label class="control-label">Current Password</label>
-                            <input type="password" class="form-control" name="password_current_password" value="">
+                            <label for="password_current_password" class="control-label">Current Password</label>
+                            <input id="password_current_password" type="password" class="form-control" name="password_current_password" value="">
                             
                             @if ($errors->has('password_current_password'))
                                 <span class="help-block">
@@ -81,8 +81,8 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="control-label">New Password</label>
-                            <input type="password" class="form-control" name="password" value="">
+                            <label for="password" class="control-label">New Password</label>
+                            <input id="password" type="password" class="form-control" name="password" value="">
                             
                             @if ($errors->has('password'))
                                 <span class="help-block">
@@ -92,8 +92,8 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label class="control-label">Confirm New Password</label>
-                            <input type="password" class="form-control" name="password_confirmation" value="">
+                            <label for="password_confirmation" class="control-label">Confirm New Password</label>
+                            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" value="">
                             
                             @if ($errors->has('password_confirmation'))
                                 <span class="help-block">
