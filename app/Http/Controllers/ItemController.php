@@ -52,31 +52,30 @@ class ItemController extends Controller {
      */
     public function update(Request $request, $id)
     {
-        $item = Auth::user()->items()->where('id', $id)->first();
+        $item = Item::findOrFail($id);
 
-        if ($item) {
-            $newItemData = [
-                'name' => trim($request->input('name', $item->name)),
-                'packed' => $request->input('packed', $item->packed),
-            ];
+        if (Auth::user()->cannot('update-item', $item)) {
+            abort(403);
+        }
 
-            $validator = $item->getValidator($newItemData);
-            if ($validator->fails()) {
-                return response()->json(['usermessage' => 'Item is invalid'], 500);
-            }
+        $newItemData = [
+            'name' => trim($request->input('name', $item->name)),
+            'packed' => $request->input('packed', $item->packed),
+        ];
 
-            $item->name = $newItemData['name'];
-            $item->packed = $newItemData['packed'];
-            $success = $item->save();
+        $validator = $item->getValidator($newItemData);
+        if ($validator->fails()) {
+            return response()->json(['usermessage' => 'Item is invalid'], 500);
+        }
 
-            if ($success) {
-                return response()->json($item);
-            } else {
-                return response()->json(['usermessage' => 'Could not save item'], 500);
-            }
+        $item->name = $newItemData['name'];
+        $item->packed = $newItemData['packed'];
+        $success = $item->save();
 
+        if ($success) {
+            return response()->json($item);
         } else {
-            App::abort(500, 'Item not found or access denied.');
+            return response()->json(['usermessage' => 'Could not save item'], 500);
         }
     }
 
@@ -107,14 +106,14 @@ class ItemController extends Controller {
      */
     public function destroy($id)
     {
-        $item = Auth::user()->items()->where('id', $id)->first();
+        $item = Item::findOrFail($id);
 
-        if ($item) {
-            $item->delete();
-            return response()->json(null);
-        } else {
-            App::abort(500, 'Item not found or access denied.');
+        if (Auth::user()->cannot('update-item', $item)) {
+            abort(403);
         }
+
+        $item->delete();
+        return response()->json(null);
     }
 
     /**
