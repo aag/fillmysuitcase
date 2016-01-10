@@ -40,6 +40,17 @@ class Item extends Model {
     );
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'user_id' => 'integer',
+        'packed' => 'boolean',
+    ];
+
+    /**
      * The rules to use for validating this model.
      *
      * @var array
@@ -49,22 +60,6 @@ class Item extends Model {
         return [
             'name' => 'required|max:100',
         ];
-    }
-
-    /**
-     * toArray overrides the default toArray implementation so we can
-     * convert DB booleans to PHP booleans.
-     *
-     * This is needed for proper JSON encoding.
-     * 
-     * @access public
-     * @return array
-     */
-    public function toArray()
-    {
-        $array = parent::toArray();
-        $array['packed'] = (boolean) $this->packed;
-        return $array;
     }
 
 }
