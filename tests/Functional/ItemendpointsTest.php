@@ -123,4 +123,35 @@ class ItemendpointsTest extends \Tests\TestCase {
             ]);
     }
 
+    public function testShowItem()
+    {
+        $item = new Item(['name' => 'show test']);
+
+        $user = factory(User::class)->make();
+        $user->save();
+        $user->items()->save($item);
+
+        $this->actingAs($user)
+            ->get("/item/{$item->id}")
+            ->seeJson([
+                'name' => 'show test',
+                'packed' => false,
+            ]);
+    }
+
+    public function testShowItemAuthorization()
+    {
+        $item = new Item(['name' => 'show auth test']);
+
+        $userWithItem = factory(User::class)->make();
+        $userWithItem->save();
+        $userWithItem->items()->save($item);
+
+        $userWithoutItem = factory(User::class)->make();
+
+        $this->actingAs($userWithoutItem)
+            ->get("/item/{$item->id}")
+            ->dontSee('show auth test')
+            ->assertResponseStatus(403);
+    }
 }

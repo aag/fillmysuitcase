@@ -39,7 +39,11 @@ class ItemController extends Controller {
      */
     public function show($id)
     {
-        $item = Auth::user()->items()->where('id', $id)->first();
+        $item = Item::findOrFail($id);
+        if (Auth::user()->cannot('view-item', $item)) {
+            abort(403);
+        }
+
         return response()->json($item);
     }
 
