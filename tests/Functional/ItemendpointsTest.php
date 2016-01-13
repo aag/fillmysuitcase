@@ -30,6 +30,32 @@ class ItemendpointsTest extends \Tests\TestCase {
         $this->assertEquals('create test', $userItems->first()->name);
     }
 
+    public function testCreateMoreThanMaxItems()
+    {
+        $user = factory(User::class)->make();
+        $user->save();
+
+        $items = [];
+        $numItemsToAdd = $user->getNumMaxItems();
+        for ($i = 0; $i < $numItemsToAdd; $i++) {
+            $item = new Item(['name' => str_random(8)]);
+            $items[] = $item;
+        }
+
+        $user->items()->saveMany($items);
+
+        $this->actingAs($user)
+            ->post('/item', ['name' => 'create too many items test'])
+            ->seeJson([
+                'usermessage' => 'You cannot add any more items',
+            ]) 
+            ->assertResponseStatus(500);
+
+        $userItems = $user->items();
+
+        $this->assertEquals($user->getNumMaxItems(), $userItems->count());
+    }
+
     public function testEditItemName()
     {
         $item = new Item(['name' => 'edit name test']);

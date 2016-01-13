@@ -132,8 +132,8 @@ class ItemController extends Controller {
     {
         $user = Auth::user();
 
-        if ($user->hasMaxItems()) {
-            return response()->json(['usermessage' => 'You already have the maximum number of items in your list'], 500);
+        if ($user->cannot('add-item')) {
+            return response()->json(['usermessage' => 'You cannot add any more items'], 500);
         }
 
         $itemData = [
