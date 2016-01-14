@@ -23,6 +23,8 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
+    // Insert routes for account management (login, account creation, password
+    // workflow, etc.)
     Route::auth();
 
     Route::get('/', [
@@ -30,58 +32,54 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HomeController@showHome'
     ]);
 
-    Route::get('/account', [
-        'as' => 'account.getedit',
-        'middleware' => 'auth',
-        'uses' => 'AccountController@getEdit'
-    ]);
+    Route::group(['middleware' => 'auth'], function () {
 
-    Route::post('/account/editinfo', [
-        'as' => 'account.posteditinfo',
-        'middleware' => 'auth',
-        'uses' => 'AccountController@postEditInfo'
-    ]);
+        Route::get('/account', [
+            'as' => 'account.getedit',
+            'uses' => 'AccountController@getEdit'
+        ]);
 
-    Route::post('/account/changepassword', [
-        'as' => 'account.postchangepassword',
-        'middleware' => 'auth',
-        'uses' => 'AccountController@postChangePassword'
-    ]);
+        Route::post('/account/editinfo', [
+            'as' => 'account.posteditinfo',
+            'uses' => 'AccountController@postEditInfo'
+        ]);
 
-    Route::get('/account/delete', [
-        'as' => 'account.getdelete',
-        'middleware' => 'auth',
-        'uses' => 'AccountController@getDelete'
-    ]);
+        Route::post('/account/changepassword', [
+            'as' => 'account.postchangepassword',
+            'uses' => 'AccountController@postChangePassword'
+        ]);
 
-    Route::post('/account/delete', [
-        'as' => 'account.postdelete',
-        'middleware' => 'auth',
-        'uses' => 'AccountController@postDelete'
-    ]);
+        Route::get('/account/delete', [
+            'as' => 'account.getdelete',
+            'uses' => 'AccountController@getDelete'
+        ]);
 
-    Route::get('/list', [
-        'as' => 'listpage',
-        'middleware' => 'auth',
-        'uses' => 'ItemController@listPage'
-    ]);
+        Route::post('/account/delete', [
+            'as' => 'account.postdelete',
+            'uses' => 'AccountController@postDelete'
+        ]);
 
-    Route::post('/list/unpackall', [
-        'as' => 'unpackall',
-        'middleware' => 'auth',
-        'uses' => 'ItemController@unpackAll'
-    ]);
+        Route::get('/list', [
+            'as' => 'listpage',
+            'uses' => 'ItemController@listPage'
+        ]);
 
-    Route::resource('item', 'ItemController', [
-        'middleware' => 'auth',
-        'except' => ['edit', 'update']
-    ]);
+        Route::post('/list/unpackall', [
+            'as' => 'unpackall',
+            'uses' => 'ItemController@unpackAll'
+        ]);
 
-    // The Angular JS $resource service uses POST instead of PUT for updates
-    Route::post('/item/{id}', [
-        'as' => 'item.update',
-        'uses' => 'ItemController@update'
-    ]);
+        Route::resource('item', 'ItemController', [
+            'except' => ['edit', 'update']
+        ]);
+
+        // The Angular JS $resource service uses POST instead of PUT for updates
+        Route::post('/item/{id}', [
+            'as' => 'item.update',
+            'uses' => 'ItemController@update'
+        ]);
+
+    });
 
 });
 
