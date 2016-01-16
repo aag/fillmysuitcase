@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ListpageTest extends \Tests\TestCase {
 
-    use DatabaseMigrations, DatabaseTransactions;
+    use DatabaseMigrations;
 
     public function testListPageRedirectWhenNotLoggedIn()
     {

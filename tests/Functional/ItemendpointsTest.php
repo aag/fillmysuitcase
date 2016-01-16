@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ItemendpointsTest extends \Tests\TestCase {
 
-    use DatabaseMigrations, DatabaseTransactions;
+    use DatabaseMigrations;
 
     public function testCreateItem()
     {

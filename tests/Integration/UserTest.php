@@ -11,7 +11,7 @@ use Validator;
 
 class UserTest extends \Tests\TestCase {
 
-    use DatabaseMigrations, DatabaseTransactions;
+    use DatabaseMigrations;
 
     /**
      * Takes an array of user property names and values, then returns true

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class HomepageTest extends \Tests\TestCase {
 
-    use DatabaseMigrations, DatabaseTransactions;
+    use DatabaseMigrations;
 
     /**
      * A basic functional test of the homepage.
