@@ -60,6 +60,11 @@ task('deploy:gulp', function() {
     //writeln('<info>'.$output.'</info>');
 })->desc('Execute gulp');
 
+task('deploy:fpm_restart', function() {
+    $output = run('sudo service php5-fpm restart');
+    //writeln('<info>'.$output.'</info>');
+})->desc('Restart PHP-FPM');
+
 task('deploy:up', function () {
     $output = run('php {{deploy_path}}/current/artisan up');
     writeln('<info>'.$output.'</info>');
@@ -85,6 +90,7 @@ task('deploy', [
     'deploy:npm_install',
     'deploy:gulp',
     'deploy:symlink',
+    'deploy:fpm_restart',
     'cleanup',
 ])->desc('Deploy your project');
 
