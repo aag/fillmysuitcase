@@ -48,6 +48,13 @@ task('deploy:migrate', function() {
     writeln('<info>'.$output.'</info>');
 })->desc('Migrate the database to the newest version');
 
+task('deploy:optimize', function() {
+    cd('{{release_path}}');
+    run('php artisan config:cache');
+    run('php artisan route:cache');
+    run('php artisan optimize --force');
+})->desc('Generate the route cache');
+
 task('deploy:npm_install', function() {
     cd('{{release_path}}');
     $output = run('npm install');
@@ -86,6 +93,7 @@ task('deploy', [
     'deploy:shared',
     'deploy:writable',
     'deploy:vendors',
+    'deploy:optimize',
     'deploy:migrate',
     'deploy:npm_install',
     'deploy:gulp',
