@@ -14,8 +14,7 @@ class ItemendpointsTest extends \Tests\TestCase {
 
     public function testCreateItem()
     {
-        $user = factory(User::class)->make();
-        $user->save();
+        $user = factory(User::class)->create();
 
         $this->actingAs($user)
             ->post('/item', ['name' => 'create test'])
