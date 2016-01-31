@@ -31,8 +31,7 @@ class ItemendpointsTest extends \Tests\TestCase {
 
     public function testCreateMoreThanMaxItems()
     {
-        $user = factory(User::class)->make();
-        $user->save();
+        $user = factory(User::class)->create();
 
         $items = [];
         $numItemsToAdd = $user->getNumMaxItems();
@@ -59,8 +58,7 @@ class ItemendpointsTest extends \Tests\TestCase {
     {
         $item = new Item(['name' => 'edit name test']);
 
-        $user = factory(User::class)->make();
-        $user->save();
+        $user = factory(User::class)->create();
         $user->items()->save($item);
 
         $this->actingAs($user)
@@ -79,8 +77,7 @@ class ItemendpointsTest extends \Tests\TestCase {
     {
         $item = new Item(['name' => 'edit name test']);
 
-        $userWithItem = factory(User::class)->make();
-        $userWithItem->save();
+        $userWithItem = factory(User::class)->create();
         $userWithItem->items()->save($item);
 
         $userWithoutItem = factory(User::class)->make();
@@ -99,8 +96,7 @@ class ItemendpointsTest extends \Tests\TestCase {
     {
         $item = new Item(['name' => 'delete test']);
 
-        $user = factory(User::class)->make();
-        $user->save();
+        $user = factory(User::class)->create();
         $user->items()->save($item);
 
         $this->assertEquals(1, $user->items()->count());
@@ -116,8 +112,7 @@ class ItemendpointsTest extends \Tests\TestCase {
     {
         $item = new Item(['name' => 'delete test']);
 
-        $userWithItem = factory(User::class)->make();
-        $userWithItem->save();
+        $userWithItem = factory(User::class)->create();
         $userWithItem->items()->save($item);
 
         $userWithoutItem = factory(User::class)->make();
@@ -135,8 +130,7 @@ class ItemendpointsTest extends \Tests\TestCase {
         $item2 = new Item(['name' => 'list test 2']);
         $item3 = new Item(['name' => 'list test 3']);
 
-        $user = factory(User::class)->make();
-        $user->save();
+        $user = factory(User::class)->create();
         $user->items()->saveMany([$item1, $item2, $item3]);
 
         $this->actingAs($user)
@@ -152,8 +146,7 @@ class ItemendpointsTest extends \Tests\TestCase {
     {
         $item = new Item(['name' => 'show test']);
 
-        $user = factory(User::class)->make();
-        $user->save();
+        $user = factory(User::class)->create();
         $user->items()->save($item);
 
         $this->actingAs($user)
@@ -168,8 +161,7 @@ class ItemendpointsTest extends \Tests\TestCase {
     {
         $item = new Item(['name' => 'show auth test']);
 
-        $userWithItem = factory(User::class)->make();
-        $userWithItem->save();
+        $userWithItem = factory(User::class)->create();
         $userWithItem->items()->save($item);
 
         $userWithoutItem = factory(User::class)->make();

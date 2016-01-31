@@ -23,7 +23,7 @@ class AccountpageTest extends \Tests\TestCase {
 
         $this->actingAs($user)
              ->visit('/account')
-             ->see($user->username); 
+             ->see('Change Password'); 
     }
 
 }
