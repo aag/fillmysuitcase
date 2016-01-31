@@ -19,7 +19,7 @@ Once you have installed npm, you can install gulp globally with this command:
 $ sudo npm install --global gulp
 ```
 
-Steps
+**Installation Steps**
 
 1. Download the code from Github.
 2. Navigate to the directory with the code in a command prompt and execute
