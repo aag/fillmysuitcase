@@ -4,7 +4,7 @@
 require 'recipe/common.php';
 
 // Define a server for deployment.
-server('prod', 'definingterms.com', 22)
+server('prod', 'fillmysuitca.se', 22)
     ->user('deployer')
     ->forwardAgent()
     ->stage('production')

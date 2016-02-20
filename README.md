@@ -75,6 +75,17 @@ You can then run all the tests with phpunit:
 $ ./vendor/bin/phpunit
 ```
 
+### Deploying
+
+A deploy script is already set up to use [Deployer](http://deployer.org/), but
+you will need to customize it for your server. First, edit `deployer.php` and
+change the `server()` details. Once you have it configured, run this command
+to deploy:
+
+```
+$ ./deployer.phar deploy production
+```
+
 ### License
 
 Fill My Suitcase is licensed under the
