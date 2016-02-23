@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('meta-tags')
+    <meta name="description" content="FillMySuitcase is a website that helps you pack your luggage each time you travel.">
+@endpush
+
 @section('page-type')home @stop
 
 @section('content')
