@@ -9,13 +9,13 @@
 @section('content')
     <div class="jumbotron jumbotron-home">
         <h1 class="impact-text">Pack right for every trip.</h1>
-        <h3 class="subtitle">Put your packing list online and never pack too much or too little.</h3>
+        <p class="subtitle">Put your packing list online and never pack too much or too little.</p>
     </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
                 <div class="homepage-blurb">
-                    <h3>What is FillMySuitcase?</h3>
+                    <h2>What is FillMySuitcase?</h2>
                     <p>Most people pack way too much when they travel, forget to bring
                         essential things, or both. FillMySuitcase helps you pack
                         everything you need, but nothing you don't. It's an online packing
@@ -38,7 +38,7 @@
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
                 <div class="homepage-blurb">
-                    <h3>How does it work?</h3>
+                    <h2>How does it work?</h2>
                     <p>FillMySuitcase is designed to be used with a particular method of
                         packing, called the <strong>One List, Two Pass</strong> method.
                         One List refers to using the same packing list for
@@ -47,7 +47,7 @@
                     </p>
                 </div>
                 <div class="long-explanation">
-                    <p>The One List, Two Pass method has three simple rules:</p>
+                    <h3>The One List, Two Pass method has three simple rules:</h3>
                     <ol>
                         <li>
                             <h4>
