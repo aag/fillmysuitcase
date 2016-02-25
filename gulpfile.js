@@ -23,6 +23,10 @@ elixir(function(mix) {
     mix.version([
         'css/styles.css',
         'js/all.js',
-        'img/backpack.jpg'
+        'img/backpack.jpg',
+        'img/cross.png',
+        'img/check.png',
+        'img/glyphicons-halflings-white.png',
+        'img/glyphicons-halflings.png'
     ]);
 });
