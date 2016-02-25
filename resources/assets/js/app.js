@@ -4,11 +4,11 @@
 angular.module(
     'suitcase',
     ['ngResource', 'suitcase.controllers'],
-    function($interpolateProvider) {
+    ['$interpolateProvider', function($interpolateProvider) {
         // Customize the AngularJS symbols so they don't clash with the Blade
         // templating engine.
         $interpolateProvider.startSymbol('{%');
         $interpolateProvider.endSymbol('%}');
-    }
+    }]
 );
 
