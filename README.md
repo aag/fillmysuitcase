@@ -4,7 +4,7 @@ Fill My Suitcase is a web application for keeping a packing list for traveling.
 The goal is to make it easy to bring exactly what you need when you pack luggage
 for a trip.
 
-The project is currently beta quality and is not recommended for production use.
+This software runs the site [https://fillmysuitca.se](https://fillmysuitca.se)
 
 ### Installation
 
