@@ -86,13 +86,13 @@
     </footer>
 
     @if (config('view.cdn_js_libs'))
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.min.js"></script>
     @else
-        <script src="/js/libs/jquery-2.2.0.min.js"></script>
+        <script src="/js/libs/jquery-2.2.2.min.js"></script>
         <script src="/js/libs/underscore.min.js"></script>
 
         <script src="/js/libs/angular.min.js"></script>
