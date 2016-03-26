@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="suitcase">
 <head>
-    <title>FillMySuitcase</title>
+    <title>Fill My Suitcase</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +30,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ URL::route('root') }}">FillMySuitcase</a>
+                        <a class="navbar-brand" href="{{ URL::route('root') }}">Fill My Suitcase</a>
                     </div>
                     <div class="collapse navbar-collapse" id="navbar-links-collapse">
                         <ul class="nav navbar-nav navbar-right">
