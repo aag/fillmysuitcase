@@ -23,8 +23,12 @@ $ sudo npm install --global gulp
 
 1. Download the code from Github.
 2. Navigate to the directory with the code in a command prompt and execute
-   `./composer install`.
-3. Run `gulp` in a command prompt to compile the static assets.
+   `./composer.phar install`.
+3. Run these commands in a command prompt to compile the static assets:
+   ```
+   $ npm install
+   $ gulp
+   ```
 4. Set up your web server.
    * If you're using Apache, create a new virtual host and point the root of
    the vhost to the `/public` subdirectory of the Fill My Suitcase code. Make
@@ -35,13 +39,14 @@ $ sudo npm install --global gulp
    Suitcase code as a starting point. Update the `server_name` and `root`
    directives to fit your environment.
 5. Set the file permissions on the code so the web server can read all files
-   and write to the `/app/storage` directory. For example, if your web server
+   and write to the storage and cache files. For example, if your web server
    runs under the `www-data` user, you can execute these commands from the
    top level directory of the Fill My Suitcase code:
 
    ```
    $ sudo chgrp -R www-data *
-   $ chmod -R 775 app/storage/
+   $ chmod -R 775 storage/
+   $ chmod -R 775 bootstrap/cache/
    ```
 6. Create a `fillmysuitcase` database on your database server and add a user
    with access to the database.
@@ -62,8 +67,15 @@ At this point you should be logged in and you can use the site normally.
 ### Tests
 
 The functional and integration tests run against an in-memory SQLite database,
-so you will need to have the PHP SQLite extension installed. On Debian-derived
-Linux systems, you can install it with this command:
+so you will need to have the PHP SQLite extension installed. On newer
+Debian-derived Linux systems (e.g. Ubuntu 16.04+), you can install it with
+this command:
+
+```
+$ sudo apt-get install php-sqlite3
+```
+
+On older Debian-derived Linux systems, you will need to use this command:
 
 ```
 $ sudo apt-get install php5-sqlite
