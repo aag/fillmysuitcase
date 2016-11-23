@@ -25,6 +25,7 @@ $ sudo npm install --global gulp
 2. Navigate to the directory with the code in a command prompt and execute
    `./composer.phar install`.
 3. Run these commands in a command prompt to compile the static assets:
+
    ```
    $ npm install
    $ gulp
