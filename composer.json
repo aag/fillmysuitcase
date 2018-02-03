@@ -5,8 +5,12 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "5.2.45"
+        "php": ">=5.6.4",
+        "doctrine/inflector": "1.1.0",
+        "doctrine/instantiator": "1.0.5",
+        "laravel/framework": "5.2.45",
+        "phpdocumentor/reflection-docblock": "3.3.2",
+        "phpunit/php-token-stream": "1.4.12"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -41,10 +45,8 @@
             "php artisan optimize"
         ],
         "pre-update-cmd": [
-            "php artisan clear-compiled"
         ],
         "post-update-cmd": [
-            "php artisan optimize"
         ]
     },
     "config": {
