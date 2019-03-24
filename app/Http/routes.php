@@ -25,7 +25,11 @@
 Route::group(['middleware' => 'web'], function () {
     // Insert routes for account management (login, account creation, password
     // workflow, etc.)
-    Route::auth();
+    Auth::routes();
+
+    // By default the logout URL requires the POST method, but we want to
+    // be able to use a simple link to do the logout.
+    Route::get('/logout', 'Auth\LoginController@logout');
 
     Route::get('/', [
         'as' => 'root',
@@ -80,6 +84,5 @@ Route::group(['middleware' => 'web'], function () {
         ]);
 
     });
-
 });
 

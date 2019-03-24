@@ -8,7 +8,7 @@
         "php": ">=5.6.4",
         "doctrine/inflector": "1.1.0",
         "doctrine/instantiator": "1.0.5",
-        "laravel/framework": "5.2.45",
+        "laravel/framework": "5.3.*",
         "phpdocumentor/reflection-docblock": "3.3.2",
         "phpunit/php-token-stream": "1.4.12"
     },
@@ -16,8 +16,8 @@
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.7.27",
-        "symfony/css-selector": "2.8.*|3.0.*",
-        "symfony/dom-crawler": "2.8.*|3.0.*"
+        "symfony/css-selector": "3.1.*",
+        "symfony/dom-crawler": "3.1.*"
     },
     "autoload": {
         "classmap": [
@@ -45,8 +45,10 @@
             "php artisan optimize"
         ],
         "pre-update-cmd": [
+            "php artisan clear-compiled"
         ],
         "post-update-cmd": [
+            "php artisan optimize"
         ]
     },
     "config": {

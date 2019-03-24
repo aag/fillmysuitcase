@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Contracts\Auth\Access\Gate as GateContract;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -17,24 +17,23 @@ class AuthServiceProvider extends ServiceProvider
     ];
 
     /**
-     * Register any application authentication / authorization services.
+     * Register any authentication / authorization services.
      *
-     * @param  \Illuminate\Contracts\Auth\Access\Gate  $gate
      * @return void
      */
-    public function boot(GateContract $gate)
+    public function boot()
     {
-        $this->registerPolicies($gate);
+        $this->registerPolicies();
 
-        $gate->define('update-item', function($user, $item) {
+        Gate::define('update-item', function($user, $item) {
             return $user->id === $item->user_id;
         });
 
-        $gate->define('view-item', function($user, $item) {
+        Gate::define('view-item', function($user, $item) {
             return $user->id === $item->user_id;
         });
 
-        $gate->define('add-item', function($user) {
+        Gate::define('add-item', function($user) {
             return !$user->hasMaxItems();
         });
     }
