@@ -92,6 +92,9 @@ instead of from a CDN. You can enable this behavior by adding this line to your
 VIEW_CDN_JS_LIBS=false
 ```
 
+If you have [NVM](https://github.com/creationix/nvm) installed, run `nvm use`
+to use the same version of Node as on the Travis CI server.
+
 ### Tests
 
 The functional and integration tests run against an in-memory SQLite database,
