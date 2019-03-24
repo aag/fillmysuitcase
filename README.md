@@ -83,6 +83,15 @@ $ sudo npm install --global gulp
 
 At this point you should be logged in and you can use the site normally.
 
+### Development
+
+During local development, it's faster to load the JS libs from local files
+instead of from a CDN. You can enable this behavior by adding this line to your
+`.env` file:
+```
+VIEW_CDN_JS_LIBS=false
+```
+
 ### Tests
 
 The functional and integration tests run against an in-memory SQLite database,
