@@ -4,7 +4,7 @@ php:
   - 7.2
   - 7.3
 before_install:
-  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && (cd && source ~/.nvm/nvm.sh) && nvm install
   - nvm use
   - npm install -g gulp
 install:
