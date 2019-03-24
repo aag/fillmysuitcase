@@ -50,7 +50,25 @@ $ sudo npm install --global gulp
    $ chmod -R 775 bootstrap/cache/
    ```
 6. Create a `fillmysuitcase` database on your database server and add a user
-   with access to the database.
+   with access to the database. If you're using PostgreSQL, you can use these
+   commands:
+   ```
+   $ sudo su - postgresql
+   $ psql
+   postgres-# CREATE DATABASE fillmysuitcase;
+   postgres-# \q
+   $ psql fillmysuitcase
+   fillmysuitcase=# CREATE USER fillmysuitcase WITH PASSWORD '{RANDOM_PASSWORD}';
+   fillmysuitcase=# GRANT ALL PRIVILEGES ON DATABASE "fillmysuitcase" to fillmysuitcase;
+   fillmysuitcase=# \q
+   ```
+
+   Make sure md5 authentication is enabled for all non-root users by editing
+   `/etc/postgresql/{VERSION}/main/pg_hba.conf` and ensuring that this line
+   exists:
+   ```
+   local  all  all  md5
+   ```
 7. Copy the `.env.example` file in the top-level directory of the Fill My
    Suitcase code to a file named `.env`.
 8. On the console, run `php artisan key:generate`. This will generate a
