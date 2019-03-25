@@ -18,7 +18,7 @@ class ItemendpointsTest extends \Tests\TestCase {
 
         $this->actingAs($user)
             ->post('/item', ['name' => 'create test'])
-            ->seeJson([
+            ->assertJson([
                 'name' => 'create test',
                 'packed' => false,
             ]); 
@@ -44,10 +44,10 @@ class ItemendpointsTest extends \Tests\TestCase {
 
         $this->actingAs($user)
             ->post('/item', ['name' => 'create too many items test'])
-            ->seeJson([
+            ->assertJson([
                 'usermessage' => 'You cannot add any more items',
             ]) 
-            ->assertResponseStatus(500);
+            ->assertStatus(500);
 
         $userItems = $user->items();
 
@@ -63,7 +63,7 @@ class ItemendpointsTest extends \Tests\TestCase {
 
         $this->actingAs($user)
             ->post("/item/{$item->id}", ['name' => 'EDITED NAME'])
-            ->seeJson([
+            ->assertJson([
                 'name' => 'EDITED NAME',
             ]); 
 
@@ -84,7 +84,7 @@ class ItemendpointsTest extends \Tests\TestCase {
 
         $this->actingAs($userWithoutItem)
             ->post("/item/{$item->id}", ['name' => 'EDITED NAME'])
-            ->assertResponseStatus(403);
+            ->assertStatus(403);
 
         $userItems = $userWithItem->items();
 
@@ -103,7 +103,7 @@ class ItemendpointsTest extends \Tests\TestCase {
 
         $this->actingAs($user)
             ->delete("/item/{$item->id}")
-            ->assertResponseOk();
+            ->assertStatus(200);
 
         $this->assertEquals(0, $user->items()->count());
     }
@@ -119,7 +119,7 @@ class ItemendpointsTest extends \Tests\TestCase {
 
         $this->actingAs($userWithoutItem)
             ->delete("/item/{$item->id}")
-            ->assertResponseStatus(403);
+            ->assertStatus(403);
 
         $this->assertEquals(1, $userWithItem->items()->count());
     }
@@ -135,7 +135,7 @@ class ItemendpointsTest extends \Tests\TestCase {
 
         $this->actingAs($user)
             ->get("/item")
-            ->seeJson([
+            ->assertJsonFragment([
                 'name' => 'list test 1',
                 'name' => 'list test 2',
                 'name' => 'list test 3',
@@ -151,7 +151,7 @@ class ItemendpointsTest extends \Tests\TestCase {
 
         $this->actingAs($user)
             ->get("/item/{$item->id}")
-            ->seeJson([
+            ->assertJson([
                 'name' => 'show test',
                 'packed' => false,
             ]);
@@ -168,7 +168,7 @@ class ItemendpointsTest extends \Tests\TestCase {
 
         $this->actingAs($userWithoutItem)
             ->get("/item/{$item->id}")
-            ->dontSee('show auth test')
-            ->assertResponseStatus(403);
+            ->assertDontSee('show auth test')
+            ->assertStatus(403);
     }
 }

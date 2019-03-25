@@ -13,8 +13,8 @@ class AccountpageTest extends \Tests\TestCase {
 
     public function testAccountPageRedirectWhenNotLoggedIn()
     {
-        $response = $this->visit('/account')
-                         ->seePageIs('/login');
+        $this->get('/account')
+            ->assertRedirect('/login');
     }
 
     public function testAccountPageDisplayWhenLoggedIn()
@@ -22,8 +22,8 @@ class AccountpageTest extends \Tests\TestCase {
         $user = factory(User::class)->make();
 
         $this->actingAs($user)
-             ->visit('/account')
-             ->see('Change Password'); 
+            ->get('/account')
+            ->assertSee('Change Password');
     }
 
 }

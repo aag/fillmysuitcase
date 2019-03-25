@@ -13,8 +13,8 @@ class ListpageTest extends \Tests\TestCase {
 
     public function testListPageRedirectWhenNotLoggedIn()
     {
-        $response = $this->visit('/list')
-                         ->seePageIs('/login');
+        $this->get('/list')
+            ->assertRedirect('/login');
     }
 
     public function testListPageDisplayWhenLoggedIn()
@@ -22,8 +22,8 @@ class ListpageTest extends \Tests\TestCase {
         $user = factory(User::class)->make();
 
         $this->actingAs($user)
-             ->visit('/list')
-             ->see($user->username); 
+             ->get('/list')
+             ->assertSee($user->username); 
     }
 
 }

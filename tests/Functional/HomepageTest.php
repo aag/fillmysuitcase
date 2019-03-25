@@ -16,8 +16,8 @@ class HomepageTest extends \Tests\TestCase {
      */
     public function testHomepageGetResponse()
     {
-        $response = $this->visit('/')
-                         ->assertResponseOk();
+        $this->get('/')
+            ->assertStatus(200);
     }
 
 }
