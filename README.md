@@ -8,15 +8,19 @@ This software runs the site [https://fillmysuitca.se](https://fillmysuitca.se)
 
 ### Installation
 
-The application is built on Laravel 5.2 and AngularJS.  It requires Apache or
-Nginx running PHP 5.5.9+ and the MCrypt PHP extension.  It also requires a
+The application is built on Laravel 5.3 and AngularJS.  It requires Apache or
+Nginx running PHP 7.1+ and the MCrypt PHP extension.  It also requires a
 database server with a PDO driver.  The default configuration uses PostgreSQL.
 
 Development and deploying require [npm](https://www.npmjs.com/) and gulp.
-Once you have installed npm, you can install gulp globally with this command:
+[NVM](https://github.com/creationix/nvm) is recommended for managing Node and
+NPM versions. Once you have installed NVM, you can install the correct Node
+version and gulp with these commands, run from the root of the repository:
 
 ```
-$ sudo npm install --global gulp
+$ nvm install
+$ nvm use
+$ npm install --global gulp@3.9.1
 ```
 
 **Installation Steps**
