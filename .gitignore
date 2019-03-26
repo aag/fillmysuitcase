@@ -1,4 +1,8 @@
 .env
 /node_modules
+/public/fonts
 /public/mix-manifest.json
 /vendor
+npm-debug.log
+yarn-error.log
+.phpunit.result.cache
