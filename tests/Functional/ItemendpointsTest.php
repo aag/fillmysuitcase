@@ -17,7 +17,7 @@ class ItemendpointsTest extends \Tests\TestCase {
         $user = factory(User::class)->create();
 
         $this->actingAs($user)
-            ->post('/item', ['name' => 'create test'])
+            ->post('/api/items', ['name' => 'create test'])
             ->assertJson([
                 'name' => 'create test',
                 'packed' => false,
@@ -43,7 +43,7 @@ class ItemendpointsTest extends \Tests\TestCase {
         $user->items()->saveMany($items);
 
         $this->actingAs($user)
-            ->post('/item', ['name' => 'create too many items test'])
+            ->post('/api/items', ['name' => 'create too many items test'])
             ->assertJson([
                 'usermessage' => 'You cannot add any more items',
             ]) 
@@ -62,7 +62,7 @@ class ItemendpointsTest extends \Tests\TestCase {
         $user->items()->save($item);
 
         $this->actingAs($user)
-            ->post("/item/{$item->id}", ['name' => 'EDITED NAME'])
+            ->post("/api/items/{$item->id}", ['name' => 'EDITED NAME'])
             ->assertJson([
                 'name' => 'EDITED NAME',
             ]); 
@@ -83,7 +83,7 @@ class ItemendpointsTest extends \Tests\TestCase {
         $userWithoutItem = factory(User::class)->make();
 
         $this->actingAs($userWithoutItem)
-            ->post("/item/{$item->id}", ['name' => 'EDITED NAME'])
+            ->post("/api/items/{$item->id}", ['name' => 'EDITED NAME'])
             ->assertStatus(403);
 
         $userItems = $userWithItem->items();
@@ -102,7 +102,7 @@ class ItemendpointsTest extends \Tests\TestCase {
         $this->assertEquals(1, $user->items()->count());
 
         $this->actingAs($user)
-            ->delete("/item/{$item->id}")
+            ->delete("/api/items/{$item->id}")
             ->assertStatus(200);
 
         $this->assertEquals(0, $user->items()->count());
@@ -118,7 +118,7 @@ class ItemendpointsTest extends \Tests\TestCase {
         $userWithoutItem = factory(User::class)->make();
 
         $this->actingAs($userWithoutItem)
-            ->delete("/item/{$item->id}")
+            ->delete("/api/items/{$item->id}")
             ->assertStatus(403);
 
         $this->assertEquals(1, $userWithItem->items()->count());
@@ -134,7 +134,7 @@ class ItemendpointsTest extends \Tests\TestCase {
         $user->items()->saveMany([$item1, $item2, $item3]);
 
         $this->actingAs($user)
-            ->get("/item")
+            ->get("/api/items")
             ->assertJsonFragment([
                 'name' => 'list test 1',
                 'name' => 'list test 2',
@@ -150,7 +150,7 @@ class ItemendpointsTest extends \Tests\TestCase {
         $user->items()->save($item);
 
         $this->actingAs($user)
-            ->get("/item/{$item->id}")
+            ->get("/api/items/{$item->id}")
             ->assertJson([
                 'name' => 'show test',
                 'packed' => false,
@@ -167,7 +167,7 @@ class ItemendpointsTest extends \Tests\TestCase {
         $userWithoutItem = factory(User::class)->make();
 
         $this->actingAs($userWithoutItem)
-            ->get("/item/{$item->id}")
+            ->get("/api/items/{$item->id}")
             ->assertDontSee('show auth test')
             ->assertStatus(403);
     }

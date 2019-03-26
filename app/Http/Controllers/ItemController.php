@@ -41,7 +41,7 @@ class ItemController extends Controller {
     {
         $item = Item::findOrFail($id);
         if (Auth::user()->cannot('view-item', $item)) {
-            abort(403);
+            return response()->json(['message' => 'Unauthorized'], 403);
         }
 
         return response()->json($item);

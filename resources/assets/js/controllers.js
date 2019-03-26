@@ -4,9 +4,9 @@
 angular.module('suitcase.controllers', []).
   controller('ListCtrl', ['$scope', '$http', '$resource', '$timeout',
                   function($scope,   $http,   $resource,   $timeout) {
-    var Item = $resource('/item/:id', 
+    var Item = $resource('/api/items/:id', 
                          {id: '@id'},
-                         {unpackAll: {method: 'POST', url: '/list/unpackall', isArray: true}});
+                         {unpackAll: {method: 'POST', url: '/api/list/unpackall', isArray: true}});
     $scope.items = Item.query();
     $scope.newName = '';
 
