@@ -58,7 +58,7 @@ class Item extends Model {
     public function getValidationRules()
     {
         return [
-            'name' => 'required|max:100',
+            'name' => ['required', 'max:100'],
         ];
     }
 

@@ -1,7 +1,10 @@
 .env
 /node_modules
 /public/fonts
+/public/hot
+/public/storage
 /public/mix-manifest.json
+/storage/*.key
 /vendor
 npm-debug.log
 yarn-error.log

@@ -43,8 +43,8 @@ class User extends Authenticatable
      * @var array
      */
     private static $infoValidationRules = [
-        'username' => 'required|max:255|unique:users',
-        'email' => 'required|email|max:255|unique:users',
+        'username' => ['required', 'max:255', 'unique:users'],
+        'email' => ['required', 'email', 'max:255', 'unique:users'],
     ];
 
     /**
@@ -55,7 +55,7 @@ class User extends Authenticatable
      * @var array
      */
     private static $passValidationRules = [
-        'password' => 'required|confirmed|min:8',
+        'password' => ['required', 'confirmed', 'min:8'],
     ];
 
     /**
