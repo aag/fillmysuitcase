@@ -9,7 +9,7 @@
 
     @stack('meta-tags')
 
-    <link href="{{ elixir('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/styles.css') }}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -99,7 +99,7 @@
         <script src="/js/libs/angular-resource.min.js"></script>
     @endif
 
-    <script src="{{ elixir('js/all.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
 

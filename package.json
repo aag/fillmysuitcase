@@ -1,10 +1,22 @@
 {
   "private": true,
   "devDependencies": {
-    "gulp": "~3.9.0"
+    "laravel-mix": "^4.0.15",
+    "resolve-url-loader": "2.3.1",
+    "sass": "^1.17.3",
+    "sass-loader": "7.*",
+    "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "laravel-elixir": "~5.0.0",
     "bootstrap-sass": "~3.3.6"
+  },
+  "scripts": {
+    "dev": "npm run development",
+    "development": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   }
 }

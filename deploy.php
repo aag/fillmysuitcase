@@ -61,11 +61,11 @@ task('deploy:npm_install', function() {
     //writeln('<info>'.$output.'</info>');
 })->desc('Install npm modules');
 
-task('deploy:gulp', function() {
+task('deploy:mix', function() {
     cd('{{release_path}}');
-    $output = run('./node_modules/.bin/gulp --production');
+    $output = run('npm run prod');
     //writeln('<info>'.$output.'</info>');
-})->desc('Execute gulp');
+})->desc('Execute Laravel Mix');
 
 task('deploy:fpm_restart', function() {
     $output = run('sudo service php5-fpm restart');
@@ -96,7 +96,7 @@ task('deploy', [
     'deploy:optimize',
     'deploy:migrate',
     'deploy:npm_install',
-    'deploy:gulp',
+    'deploy:mix',
     'deploy:symlink',
     'deploy:fpm_restart',
     'cleanup',
