@@ -7,6 +7,7 @@ use App\Models\Item;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Str;
 
 class ItemendpointsTest extends \Tests\TestCase {
 
@@ -36,7 +37,7 @@ class ItemendpointsTest extends \Tests\TestCase {
         $items = [];
         $numItemsToAdd = $user->getNumMaxItems();
         for ($i = 0; $i < $numItemsToAdd; $i++) {
-            $item = new Item(['name' => str_random(8)]);
+            $item = new Item(['name' => Str::random(8)]);
             $items[] = $item;
         }
 

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Str;
 use Validator;
 
 class UserTest extends \Tests\TestCase {
@@ -45,7 +46,7 @@ class UserTest extends \Tests\TestCase {
         $items = [];
         $numItemsToAdd = $user->getNumMaxItems();
         for ($i = 0; $i < $numItemsToAdd; $i++) {
-            $item = new Item(['name' => str_random(8)]);
+            $item = new Item(['name' => Str::random(8)]);
             $items[] = $item;
         }
 
@@ -61,7 +62,7 @@ class UserTest extends \Tests\TestCase {
         $items = [];
         $numItemsToAdd = $user->getNumMaxItems() - 1;
         for ($i = 0; $i < $numItemsToAdd; $i++) {
-            $item = new Item(['name' => str_random(8)]);
+            $item = new Item(['name' => Str::random(8)]);
             $items[] = $item;
         }
 
