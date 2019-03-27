@@ -8,12 +8,12 @@ This software runs the site [https://fillmysuitca.se](https://fillmysuitca.se)
 
 ### Installation
 
-The application is built on Laravel 5.5 and AngularJS 1.7.  It requires Apache
+The application is built on Laravel 5.8 and AngularJS 1.7.  It requires Apache
 or Nginx running PHP 7.1+ and the MCrypt PHP extension.  It also requires a
 database server with a PDO driver.  The default configuration uses PostgreSQL.
 
 Development and deploying require [Node.js](https://nodejs.org/) and
-[npm](https://www.npmjs.com/). [NVM](https://github.com/creationix/nvm) is
+[NPM](https://www.npmjs.com/). [NVM](https://github.com/creationix/nvm) is
 recommended for managing Node and NPM versions. Once you have installed NVM,
 you can install the correct Node version with these commands, run from the
 root of the repository:
