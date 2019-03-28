@@ -56,7 +56,7 @@ task('deploy:optimize', function() {
 
 task('deploy:npm_install', function() {
     cd('{{release_path}}');
-    $output = run('npm install');
+    $output = run('npm ci');
     //writeln('<info>'.$output.'</info>');
 })->desc('Install npm modules');
 
@@ -67,7 +67,8 @@ task('deploy:mix', function() {
 })->desc('Execute Laravel Mix');
 
 task('deploy:fpm_restart', function() {
-    $output = run('sudo service php5-fpm restart');
+    $fpmServiceName = trim(run("ls -1 /var/run/php | grep 'fpm\.sock' | sed 's/\.sock//'"));
+    $output = run("sudo service {$fpmServiceName} restart");
     //writeln('<info>'.$output.'</info>');
 })->desc('Restart PHP-FPM');
 
