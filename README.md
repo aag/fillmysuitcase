@@ -57,7 +57,7 @@ $ nvm use
    with access to the database. If you're using PostgreSQL, you can use these
    commands:
    ```
-   $ sudo su - postgresql
+   $ sudo su - postgres
    $ psql
    postgres-# CREATE DATABASE fillmysuitcase;
    postgres-# \q
@@ -71,7 +71,7 @@ $ nvm use
    `/etc/postgresql/{VERSION}/main/pg_hba.conf` and ensuring that this line
    exists:
    ```
-   local  all  all  md5
+   host    all             all             127.0.0.1/32            md5
    ```
 7. Copy the `.env.example` file in the top-level directory of the Fill My
    Suitcase code to a file named `.env`.
