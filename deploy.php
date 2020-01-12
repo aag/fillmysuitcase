@@ -1,14 +1,18 @@
 <?php
+namespace Deployer;
 
 // All Deployer recipes are based on `recipe/common.php`.
 require 'recipe/common.php';
 
+// Speed up the native ssh client
+set('ssh_multiplexing', true);
+
 // Define a server for deployment.
-server('prod', 'fillmysuitca.se', 22)
+host('fillmysuitca.se')
     ->user('deployer')
-    ->forwardAgent()
+    ->forwardAgent(true)
     ->stage('production')
-    ->env('deploy_path', '/var/www/fillmysuitcase'); 
+    ->set('deploy_path', '/var/www/fillmysuitca.se'); 
 
 // Specify the repository from which to download your project's code.
 // The server needs to have git installed for this to work.
@@ -29,6 +33,7 @@ set('shared_dirs', [
 set('shared_files', ['.env']);
 
 set('http_user', 'www-data');
+set('writable_use_sudo', true);
 set('writable_dirs', [
     'bootstrap/cache',
     'storage',
