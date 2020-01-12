@@ -110,12 +110,6 @@ this command:
 $ sudo apt-get install php-sqlite3
 ```
 
-On older Debian-derived Linux systems, you will need to use this command:
-
-```
-$ sudo apt-get install php5-sqlite
-```
-
 You can then run all the tests with phpunit:
 
 ```
