@@ -34,10 +34,14 @@ class NavigationTest extends \Tests\TestCase {
     public function testUserAccountNavigation()
     {
         $user = factory(User::class)->create();
+        $encodedUsername = htmlentities(
+            $user->username,
+            ENT_COMPAT | ENT_HTML401 | ENT_QUOTES
+        );
 
         $this->actingAs($user)
             ->get('/')
-            ->assertSee($user->username)
+            ->assertSee($encodedUsername)
             ->assertSee('href="/account"');
     }
 
