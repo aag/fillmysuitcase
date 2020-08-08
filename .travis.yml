@@ -20,6 +20,8 @@ install:
   - npm run prod
 
 before_script:
+  - sqlite3 database/database.sqlite '.databases'
+  - chmod a+w database/database.sqlite
   - php artisan serve &
   - sleep 3 # give the PHP server time to start
 
