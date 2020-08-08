@@ -76,17 +76,22 @@ class FullUserFlowTest extends DuskTestCase
 
                     // Pack all 3 items
                     ->click('@unpacked-check-0')
+                    ->waitFor('@packed-item-0')
                     ->assertSeeIn('@packed-item-0', 'Item 1')
                     ->click('@unpacked-check-0')
+                    ->waitFor('@packed-item-1')
                     ->assertSeeIn('@packed-item-1', 'Item 2')
                     ->click('@unpacked-check-0')
+                    ->waitFor('@packed-item-2')
                     ->assertSeeIn('@packed-item-2', 'Item 3')
                     ->assertSee('Bon voyage!')
 
                     // Unpack an item and pack it again
                     ->click('@packed-check-2')
+                    ->waitFor('@unpacked-item-0')
                     ->assertInputValue('@unpacked-item-0', 'Item 3')
                     ->click('@unpacked-check-0')
+                    ->waitFor('@packed-item-2')
                     ->assertSeeIn('@packed-item-2', 'Item 3')
 
                     // Reset packing list
