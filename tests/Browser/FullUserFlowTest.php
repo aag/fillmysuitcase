@@ -2,18 +2,25 @@
 
 namespace Tests\Browser;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
-use App\Models\User;
 
 class FullUserFlowTest extends DuskTestCase
 {
     use DatabaseMigrations;
 
-    protected $username;
-    protected $email;
-    protected $password;
+    /**
+     * Delete all users from the database that have been created by this test.
+     */
+    private function deleteTestUsers()
+    {
+        $users = User::where('email', 'like', 'full_user_flow_test%')->get();
+        foreach ($users as $user) {
+            $user->delete();
+        }
+    }
 
     public function setUp(): void
     {
@@ -21,16 +28,15 @@ class FullUserFlowTest extends DuskTestCase
 
         // Clean up any old users caused by previous test failures stopping the
         // test in the middle.
-        $users = User::where('email', 'like', 'flow_test%')->get();
-        foreach ($users as $user) {
-            $user->delete();
-        }
+        $this->deleteTestUsers();
+    }
 
-        // Generate information for a new user to be created during the test.
-        $uniqid = uniqid();
-        $this->username = "Test $uniqid";
-        $this->email = "flow_test+{$uniqid}@example.com";
-        $this->password = "testpassword";
+    public function tearDown(): void
+    {
+        // Clean up the test user.
+        $this->deleteTestUsers();
+
+        parent::tearDown();
     }
 
     /**
@@ -42,6 +48,13 @@ class FullUserFlowTest extends DuskTestCase
     public function testFullUserFlow()
     {
         $this->browse(function (Browser $browser) {
+            // Generate information for a new user to be created during the
+            // test.
+            $uniqid = uniqid();
+            $username = "Test $uniqid";
+            $email = "full_user_flow_test+{$uniqid}@example.com";
+            $password = "testpassword";
+
             // Go to homepage
             $browser->visit('/')
                     ->assertSee('Pack right for every trip.')
@@ -53,10 +66,10 @@ class FullUserFlowTest extends DuskTestCase
                     // Go to registration page
                     ->click('@register-link')
                     ->assertSee('Create Account')
-                    ->type('@username-input', $this->username)
-                    ->type('@email-input', $this->email)
-                    ->type('@password-input', $this->password)
-                    ->type('@password-confirm-input', $this->password)
+                    ->type('@username-input', $username)
+                    ->type('@email-input', $email)
+                    ->type('@password-input', $password)
+                    ->type('@password-confirm-input', $password)
                     ->click('@submit-button')
 
                     // Add 3 items
@@ -113,7 +126,7 @@ class FullUserFlowTest extends DuskTestCase
                     // Delete account
                     ->click('@delete-account-link')
                     ->assertSee('Delete Account')
-                    ->type('@password-input', $this->password)
+                    ->type('@password-input', $password)
                     ->click('@delete-account-button')
                     ->assertSee('Your account has been deleted.');
         });
