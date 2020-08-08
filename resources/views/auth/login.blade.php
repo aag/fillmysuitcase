@@ -46,7 +46,7 @@
                 <button type="submit" class="btn btn-primary btn-lg">Log In</button>
 
                 <div class="create-account-message">
-                    Don't have an account yet?  <a href="/register">Create Account</a>
+                    Don't have an account yet?  <a href="/register" dusk="register-link">Create Account</a>
                 </div>
 
                 <div class="create-account-message">

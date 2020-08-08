@@ -23,7 +23,7 @@
 
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <label for="password" class="control-label">Password</label>
-                    <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}">
+                    <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}" dusk="password-input">
                     
                     @if ($errors->has('password'))
                         <span class="help-block">
@@ -32,7 +32,7 @@
                     @endif
                 </div>
 
-                <button type="submit" class="btn btn-danger btn-lg">Delete My Account</button>
+                <button type="submit" class="btn btn-danger btn-lg" dusk="delete-account-button">Delete My Account</button>
 
             </form>
 

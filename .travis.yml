@@ -3,13 +3,26 @@ php:
   - 7.2
   - 7.3
   - 7.4
+
+addons:
+  chrome: stable
+
 before_install:
   - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && (cd && source ~/.nvm/nvm.sh) && nvm install
+
 install:
-  - php composer.phar install
+  - cp .env.travis .env
+  - travis_retry php composer.phar install --no-interaction --prefer-dist --no-suggest
+  - php artisan key:generate
+  - php artisan dusk:chrome-driver
   - nvm use
   - npm install
   - npm run prod
+
+before_script:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - php artisan serve &
+
 script: 
-  - vendor/bin/phpunit
+  - php artisan test
 

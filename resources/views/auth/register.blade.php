@@ -17,7 +17,7 @@
 
                 <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                     <label for="username" class="control-label">Username</label>
-                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}">
+                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" dusk="username-input">
 
                     @if ($errors->has('username'))
                         <span class="help-block">
@@ -28,7 +28,7 @@
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="control-label">Email Address</label>
-                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" dusk="email-input">
 
                     @if ($errors->has('email'))
                         <span class="help-block">
@@ -39,7 +39,7 @@
 
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <label for="password" class="control-label">Password</label>
-                    <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}">
+                    <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}" dusk="password-input">
                     
                     @if ($errors->has('password'))
                         <span class="help-block">
@@ -50,7 +50,7 @@
 
                 <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                     <label for="password_confirmation" class="control-label">Confirm Password</label>
-                    <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}">
+                    <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" dusk="password-confirm-input">
                     
                     @if ($errors->has('password_confirmation'))
                         <span class="help-block">
@@ -59,7 +59,7 @@
                     @endif
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-lg">Create Account</button>
+                <button type="submit" class="btn btn-primary btn-lg" dusk="submit-button">Create Account</button>
 
                 <div class="privacy-message">We will never sell or give away your email address.</div>
             </form>

@@ -109,7 +109,7 @@
             </div>
 
             <div class="delete-account-link-holder">
-                <a href="{!! URL::route('account.getdelete') !!}" class="text-danger">Delete Account</a>
+                <a href="{!! URL::route('account.getdelete') !!}" class="text-danger" dusk="delete-account-link">Delete Account</a>
             </div>
 
         </div>

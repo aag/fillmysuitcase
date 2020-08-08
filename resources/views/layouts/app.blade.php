@@ -35,11 +35,11 @@
                     <div class="collapse navbar-collapse" id="navbar-links-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             @if (Auth::guest())
-                                <li><a href="/login">Log In</a></li>
+                                <li><a href="/login" dusk="log-in-link">Log In</a></li>
                             @else
-                                <li class="{{ URL::getRequest()->is('list') ? 'active' : '' }}"><a href="{{ URL::route('listpage') }}">My List</a></li>
-                                <li class="{{ URL::getRequest()->is('account') ? 'active' : '' }}"><a href="/account">{{ Auth::user()->username }}</a></li>
-                                <li><a href="/logout">Log Out</a></li>
+                                <li class="{{ URL::getRequest()->is('list') ? 'active' : '' }}"><a href="{{ URL::route('listpage') }}" dusk="my-list-link">My List</a></li>
+                                <li class="{{ URL::getRequest()->is('account') ? 'active' : '' }}"><a href="/account" dusk="account-link">{{ Auth::user()->username }}</a></li>
+                                <li><a href="/logout" dusk="log-out-link">Log Out</a></li>
                             @endif
                         </ul>
                     </div>

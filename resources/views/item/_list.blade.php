@@ -7,15 +7,15 @@
                     <form class="form-inline">
                         <div class="col-xs-2 col-sm-1">
                             <div class="checkbox-holder">
-                                <input type="checkbox" class="check item-check" ng-model="item.packed" ng-change="checkChange(item)">
+                                <input type="checkbox" class="check item-check" ng-model="item.packed" ng-change="checkChange(item)" dusk="unpacked-check-{% $index %}">
                             </div>
                         </div>
                         <div class="col-xs-8 col-sm-6 col-md-5 col-lg-4">
-                            <input class="item-name" ng-model="item.name" ng-change="change(item)">
+                            <input class="item-name" ng-model="item.name" ng-change="change(item)" dusk="unpacked-item-{% $index %}">
                         </div>
                         <div class="col-xs-2" ng-hide="item.confirmingDelete">
                             <div class="item-icon-holder">
-                                <a href="" ng-click="delete(item)" ng-hide="item.justSaved">
+                                <a href="" ng-click="delete(item)" ng-hide="item.justSaved" dusk="delete-item-link-{% $index %}">
                                     <img class="delete-icon" alt="Delete item" title="Delete item" src="{{ mix('img/cross.png') }}">
                                 </a>
                                 <img class="save-check" ng-show="item.justSaved" src="{{ mix('img/check.png') }}" alt="item saved" title="item saved">
@@ -24,7 +24,7 @@
                         <div class="col-xs-10 col-xs-offset-2 col-sm-5 col-sm-offset-0 col-md-6 col-lg-7" ng-show="item.confirmingDelete">
                             <div class="confirm-delete">
                                 Are you sure?
-                                <button class="delete-yes btn btn-danger" ng-click="confirmDelete(item)">Delete</button>
+                                <button class="delete-yes btn btn-danger" ng-click="confirmDelete(item)" dusk="confirm-delete-button-{% $index %}">Delete</button>
                                 <button class="delete-cancel btn btn-default" ng-click="cancelDelete(item)">Cancel</button>
                             </div>
                         </div>
@@ -36,10 +36,10 @@
                     <form class="form-inline" ng-submit="submit()">
                         <div class="col-xs-2 col-sm-1"></div>
                         <div class="col-xs-7 col-sm-6 col-md-5 col-lg-4">
-                            <input placeholder="New Item" class="item-name" ng-model="newName">
+                            <input placeholder="New Item" class="item-name" ng-model="newName" dusk="new-item-input">
                         </div>
                         <div class="col-xs-3 col-sm-2">
-                            <button type="submit" class="btn btn-default create-item-button">Add</button>
+                            <button type="submit" class="btn btn-default create-item-button" dusk="add-item-button">Add</button>
                         </div>
                     </form>
                 </div>
@@ -50,7 +50,7 @@
                 <div class="packing-finished" ng-hide="!!unpackedItems.length || !items.length">
                     <h2>Bon voyage!</h2>
                     <p>Reset the list for your next trip.</p>
-                    <button class="reset-list btn btn-primary" ng-click="resetPacked()">Reset</button>
+                    <button class="reset-list btn btn-primary" ng-click="resetPacked()" dusk="reset-button">Reset</button>
                 </div>
             </div>
         </div>
@@ -64,11 +64,11 @@
                     <form class="form-inline">
                         <div class="col-xs-2 col-sm-1">
                             <div class="checkbox-holder">
-                                <input type="checkbox" class="check" ng-model="item.packed" ng-change="checkChange(item)">
+                                <input type="checkbox" class="check" ng-model="item.packed" ng-change="checkChange(item)" dusk="packed-check-{% $index %}">
                             </div>
                         </div>
                         <div class="col-xs-10 col-sm-11">
-                            <div class="checked-item">{% item.name %}</div>
+                            <div class="checked-item" dusk="packed-item-{% $index %}">{% item.name %}</div>
                         </div>
                     </form>
                 </div>
