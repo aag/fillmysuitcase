@@ -20,6 +20,7 @@ install:
 
 before_script:
   - php artisan serve &
+  - sleep 3 # give the PHP server time to start
 
 script: 
   - php artisan test
