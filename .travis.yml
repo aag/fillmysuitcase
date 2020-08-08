@@ -13,6 +13,7 @@ install:
   - cp .env.travis .env
   - travis_retry php composer.phar install --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate
+  - php artisan migrate
   - php artisan dusk:chrome-driver
   - nvm use
   - npm install
