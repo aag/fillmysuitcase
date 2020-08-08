@@ -14,7 +14,7 @@ class NavigationTest extends \Tests\TestCase {
     {
         $this->get('/')
             ->assertSee('Log In')
-            ->assertSee('href="/login"')
+            ->assertSee('href="/login"', false)
             ->assertDontSee('My List')
             ->assertDontSee('/list');
     }
@@ -42,7 +42,7 @@ class NavigationTest extends \Tests\TestCase {
         $this->actingAs($user)
             ->get('/')
             ->assertSee($encodedUsername)
-            ->assertSee('href="/account"');
+            ->assertSee('href="/account"', false);
     }
 
     public function testUserAccountLogOut()
@@ -52,7 +52,7 @@ class NavigationTest extends \Tests\TestCase {
         $this->actingAs($user)
             ->get('/')
             ->assertSee('Log Out')
-            ->assertSee('href="/logout"');
+            ->assertSee('href="/logout"', false);
     }
 
 }
