@@ -101,7 +101,7 @@ to use the same version of Node as on the Travis CI server.
 
 ### Tests
 
-The functional and integration tests run against an in-memory SQLite database,
+The functional and integration tests run against an SQLite database,
 so you will need to have the PHP SQLite extension installed. On newer
 Debian-derived Linux systems (e.g. Ubuntu 16.04+), you can install it with
 this command:
@@ -110,10 +110,35 @@ this command:
 $ sudo apt-get install php-sqlite3
 ```
 
-You can then run all the tests with phpunit:
+The [Dusk](https://laravel.com/docs/7.x/dusk) tests use Selenium controlling
+Chrome with ChromeDriver, so you'll need to install Chrome, then run these
+commands:
 
 ```
-$ ./vendor/bin/phpunit
+$ touch database/database.sqlite
+$ chmod a+w database/database.sqlite
+$ php artisan migrate
+$ php artisan dusk:chrome-driver
+```
+
+Before running the Dusk tests, you need to start the PHP server in a separate
+window with this command:
+
+```
+$ php artisan serve --env=testing
+```
+
+Then you can run all the tests with artisan:
+
+```
+$ php artisan test
+```
+
+If you want to watch the browser tests as they run, you can edit the file
+`tests/DuskTestCase.php` and comment out this line:
+
+```
+            '--headless',
 ```
 
 ### Deploying
