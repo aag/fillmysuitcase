@@ -28,7 +28,7 @@ class NavigationTest extends \Tests\TestCase {
             ->assertSee('My List')
             ->assertSee('/list')
             ->assertDontSee('Login')
-            ->assertDontSee('href="/login"');
+            ->assertDontSee('href="/login"', false);
     }
 
     public function testUserAccountNavigation()
@@ -41,7 +41,7 @@ class NavigationTest extends \Tests\TestCase {
 
         $this->actingAs($user)
             ->get('/')
-            ->assertSee($encodedUsername)
+            ->assertSee($encodedUsername, false)
             ->assertSee('href="/account"', false);
     }
 
