@@ -1,6 +1,5 @@
 language: php
 php:
-  - 7.2
   - 7.3
   - 7.4
 
@@ -20,7 +19,6 @@ install:
   - npm run prod
 
 before_script:
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
 
 script: 
