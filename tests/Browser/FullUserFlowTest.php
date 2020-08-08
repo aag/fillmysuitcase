@@ -58,10 +58,9 @@ class FullUserFlowTest extends DuskTestCase
                     ->type('@password-input', $this->password)
                     ->type('@password-confirm-input', $this->password)
                     ->click('@submit-button')
-                    ->dump();
 
                     // Add 3 items
-            $browser->assertSee('Your Packing List')
+                    ->assertSee('Your Packing List')
                     ->type('@new-item-input', 'Item 1')
                     ->click('@add-item-button')
                     ->waitFor('@unpacked-item-0')
