@@ -55,24 +55,32 @@ class FullUserFlowTest extends DuskTestCase
             $email = "full_user_flow_test+{$uniqid}@example.com";
             $password = "testpassword";
 
+            $renderWaitTime = 400;
+
             // Go to homepage
             $browser->visit('/')
                     ->assertSee('Pack right for every trip.')
 
                     // Go to login page
                     ->click('@log-in-link')
+                    ->pause($renderWaitTime)
+                    ->waitFor('@register-link')
                     ->assertSee('Log In')
 
                     // Go to registration page
                     ->click('@register-link')
+                    ->pause($renderWaitTime)
+                    ->waitFor('@password-confirm-input')
                     ->assertSee('Create Account')
                     ->type('@username-input', $username)
                     ->type('@email-input', $email)
                     ->type('@password-input', $password)
                     ->type('@password-confirm-input', $password)
                     ->click('@submit-button')
+                    ->pause($renderWaitTime)
 
                     // Add 3 items
+                    ->waitFor('@new-item-input')
                     ->assertSee('Your Packing List')
                     ->type('@new-item-input', 'Item 1')
                     ->click('@add-item-button')
@@ -121,13 +129,19 @@ class FullUserFlowTest extends DuskTestCase
 
                     // Go to account page
                     ->click('@account-link')
+                    ->pause($renderWaitTime)
+                    ->waitFor('@delete-account-link')
                     ->assertSee('Edit Account Info')
 
                     // Delete account
                     ->click('@delete-account-link')
+                    ->pause($renderWaitTime)
+                    ->waitFor('@password-input')
                     ->assertSee('Delete Account')
                     ->type('@password-input', $password)
                     ->click('@delete-account-button')
+                    ->pause($renderWaitTime)
+                    ->waitForText('Your account has been deleted.')
                     ->assertSee('Your account has been deleted.');
         });
     }
