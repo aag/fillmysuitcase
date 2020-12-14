@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
 
     // The Angular JS $resource service uses POST instead of PUT for updates
     Route::post('/items/{id}', [
-        'as' => 'items.update',
+        'as' => 'items.postupdate',
         'uses' => 'ItemController@update'
     ]);
 });
