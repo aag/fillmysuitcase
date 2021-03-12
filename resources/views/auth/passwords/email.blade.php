@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid main-container">
+<div class="container">
     @if (Session::has('status'))
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-xl-6">
             <div class="page-errors alert alert-success">
                 <h4>Email Sent</h4>
                 <p>{!! trans(Session::get('status')) !!}</p>
@@ -13,15 +13,15 @@
     </div>
     @endif
 
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-xl-6">
             <h1 class="form-page-heading">Reset Password</h1>
         </div>
     </div>
  
-    <div class="row">
+    <div class="row justify-content-center">
 
-        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+        <div class="col-12 col-md-8 col-xl-6">
             <form class="user-form" role="form" method="POST" action="{{ url('/password/email') }}">
                 {!! csrf_field() !!}
 

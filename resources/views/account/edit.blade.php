@@ -4,21 +4,21 @@
 
 @section('content')
 
-<div class="container main-container">
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-xl-6">
             <h1 class="form-page-heading">Edit Account Info</h1>
         </div>
     </div>
 
-    <div class="row">
-
-        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2 class="panel-title">Edit Username or Email Address</h2>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-xl-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Edit Username or Email Address</h2>
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <form class="user-form" role="form" method="POST" action="{{ url('/account/editinfo') }}">
                         {!! csrf_field() !!}
 
@@ -61,11 +61,11 @@
                 </div>
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2 class="panel-title">Change Password</h2>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Change Password</h2>
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <form class="user-form" role="form" method="POST" action="{{ url('/account/changepassword') }}">
                         {!! csrf_field() !!}
 

@@ -1,13 +1,13 @@
 .page-type-home {
-    .navbar-default {
-        .navbar-nav > li > a, .navbar-brand {
-            color: #eee;
-        }
+    // .navbar-default {
+    //     .navbar-nav > li > a, .navbar-brand {
+    //         color: #eee;
+    //     }
 
-        .navbar-nav > li > a:hover, .navbar-brand:hover {
-            color: #fff;
-        }
-    }
+    //     .navbar-nav > li > a:hover, .navbar-brand:hover {
+    //         color: #fff;
+    //     }
+    // }
 
     .messages-holder {
         position: absolute;
@@ -18,19 +18,19 @@
     }
 }
 
-.page-type-home .navbar-default .navbar-toggle {
-    background-color: rgba(128, 128, 128, 0.3);
-    border-color: #eee;
+// .page-type-home .navbar-default .navbar-toggle {
+//     background-color: rgba(128, 128, 128, 0.3);
+//     border-color: #eee;
 
-    &:focus,
-    &:hover {
-        background-color: rgba(128, 128, 128, 0.5);
-    }
+//     &:focus,
+//     &:hover {
+//         background-color: rgba(128, 128, 128, 0.5);
+//     }
 
-    .icon-bar {
-        background-color: #eee;
-    }
-}
+//     .icon-bar {
+//         background-color: #eee;
+//     }
+// }
 
 .jumbotron-home {
     color: #fff;
@@ -42,14 +42,15 @@
     background-clip: border-box;
     background-origin: padding-box;
     background-size: cover !important;
-    height: auto;
     padding-top: 120px;
     padding-bottom: 8em;
     text-align: center;
     overflow: hidden;
     position: relative;
+    margin-top: -56px;
 
     .impact-text {
+        margin-top: 20px;
         font-size: 40px;
         line-height: 1;
     }
@@ -80,7 +81,6 @@
 
 @media (min-width: 768px) {
     .jumbotron-home {
-        height: 810px;
 
         .impact-text {
             font-size: 72px;

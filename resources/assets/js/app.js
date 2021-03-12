@@ -1,5 +1,8 @@
 'use strict';
 
+window._ = require('lodash');
+require('bootstrap');
+
 // Declare app level modules
 angular.module(
     'suitcase',

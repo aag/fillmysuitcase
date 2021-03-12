@@ -2,16 +2,15 @@
 
 @section('content')
 
-<div class="container-fluid main-container">
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-xl-6">
             <h1 class="form-page-heading">Delete Account</h1>
         </div>
     </div>
 
-    <div class="row">
-
-        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-xl-6">
             <p>Are you sure? Deleting your account permanently removes your login
                 information and packing list.</p>
 

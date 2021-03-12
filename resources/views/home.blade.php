@@ -8,15 +8,17 @@
 
 @section('content')
     <div class="jumbotron jumbotron-home">
-        <h1 class="impact-text">Pack right for every trip.</h1>
-        <p class="subtitle">Put your packing list online and never pack too much or too little.</p>
+        <div class="container">
+            <h1 class="impact-text">Pack right for every trip.</h1>
+            <p class="subtitle">Put your packing list online and never pack too much or too little.</p>
+        </div>
     </div>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+        <div class="row justify-content-center">
+            <div class="col-xs-10 col-md-8 col-xl-6">
                 <div class="homepage-blurb">
                     <h2>What is Fill My Suitcase?</h2>
-                    <p>Most people pack way too much when they travel, forget to bring
+                    <p class="text-justify">Most people pack way too much when they travel, forget to bring
                         essential things, or both. Fill My Suitcase helps you pack
                         everything you need, but nothing you don't. It's an online packing
                         list that you use every time you travel.
@@ -25,8 +27,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
+        <div class="row justify-content-center">
+            <div class="col-xs-10 col-sm-4">
             @if(Auth::guest())
                 <a class="btn btn-primary btn-lg btn-block" href="/login">Get started</a>
             @else
@@ -35,22 +37,22 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+        <div class="row justify-content-center">
+            <div class="col-xs-10 col-md-8 col-xl-6">
                 <div class="homepage-blurb">
                     <h2>How does it work?</h2>
-                    <p>Fill My Suitcase is designed to be used with a particular method of
+                    <p class="text-justify">Fill My Suitcase is designed to be used with a particular method of
                         packing, called the <strong>One List, Two Pass</strong> method.
                         One List refers to using the same packing list for
                         every trip you take, for the rest of your life. Two Pass
                         refers to going through the list twice each time you pack.
                     </p>
                 </div>
-                <div class="long-explanation">
+                <div class="long-explanation text-justify">
                     <h3>The One List, Two Pass method has three simple rules:</h3>
                     <ol>
                         <li>
-                            <h4>
+                            <h4 class="mt-4">
                                 Put everything on the list as soon as you think
                                 of it.
                             </h4>
@@ -68,7 +70,7 @@
                             </p>
                         </li>
                         <li>
-                            <h4>
+                            <h4 class="mt-4">
                                 When it's time to pack your bags, do a first pass over the
                                 list to clean up things you don't need on this trip.
                             </h4>
@@ -100,7 +102,7 @@
                             </ul>
                         </li>
                         <li>
-                            <h4>
+                            <h4 class="mt-4">
                                 Pack everything left on the list.
                             </h4>
                             <p>

@@ -1,14 +1,17 @@
-#list ul.packing-list {
-    padding-left: 0;
+.list-page-title {
+    margin-top: 20px;
 }
 
 #list-container {
-    .unpacked {
-        margin-top: 30px;
-    }
+    margin-top: 30px;
+    padding: 0;
 
     .packed {
         margin-top: 50px;
+    }
+
+    .packing-list {
+        padding: 0;
     }
 
     ul {
@@ -17,8 +20,11 @@
     }
 
     .confirm-delete {
-        display: inline-block;
         margin-bottom: 5px;
+    }
+
+    .new-item-form {
+        width: 100%;
     }
 
     .checked-item {
@@ -26,20 +32,16 @@
     }
 
     .checkbox-holder {
-        text-align: right;
+        height: 100%;
     }
 
-    .check {
+    .unpacked .check {
         position: relative;
-        top: 6px;
+        top: 3px;
     }
 
-    .already-packed .check {
-        top: -2px;
-    }
-
-    form {
-        margin-bottom: 7px;
+    .already-packed .item {
+        height: 31px;
     }
 
     .item-name {
@@ -47,12 +49,6 @@
         height: auto;
         padding: 2px 4px;
         width: 100%;
-        margin-bottom: 5px;
-    }
-
-    .check-holder {
-        display: inline-block;
-        width: 20px;
     }
 
     .item-icon-holder {
@@ -60,7 +56,6 @@
     }
 
     .delete-icon {
-        position: relative;
         opacity: 0.3;
 
         &:hover {

@@ -19,39 +19,36 @@
 </head>
 
 <body class="page-type-@yield('page-type')">
-    <header role="banner">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container">
-                <div class="row">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-links-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="{{ URL::route('root') }}">Fill My Suitcase</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="navbar-links-collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            @if (Auth::guest())
-                                <li><a href="/login" dusk="log-in-link">Log In</a></li>
-                            @else
-                                <li class="{{ URL::getRequest()->is('list') ? 'active' : '' }}"><a href="{{ URL::route('listpage') }}" dusk="my-list-link">My List</a></li>
-                                <li class="{{ URL::getRequest()->is('account') ? 'active' : '' }}"><a href="/account" dusk="account-link">{{ Auth::user()->username }}</a></li>
-                                <li><a href="/logout" dusk="log-out-link">Log Out</a></li>
-                            @endif
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
+    <header class=" page-header navbar navbar-expand-sm navbar-light bg-light" role="navigation">
+        <a class="navbar-brand" href="/">Fill My Suitcase</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+            @if (Auth::check())
+                <li class="nav-item{{ Route::is('listpage') ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ URL::route('listpage') }}" dusk="my-list-link">My List{!! URL::getRequest()->is('list') ? ' <span class="sr-only">(current)</span>' : '' !!}</a>
+                </li>
+                <li class="nav-item{{ Route::is('account.getedit') ? ' active' : '' }}">
+                    <a class="nav-link" href="/account" dusk="account-link">{{ Auth::user()->username }}{!! URL::getRequest()->is('account') ? ' <span class="sr-only">(current)</span>' : '' !!}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" dusk="log-out-link">Log Out</a>
+                </li>
+            @else
+                <li class="nav-item active">
+                    <a href="/login" class="nav-link" dusk="log-in-link">Log In</a>
+                </li>
+            @endif
+            </ul>
+        </div>
     </header>
 
     @if (Session::has('errors'))
-    <div class="container-fluid messages-holder">
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
+    <div class="container messages-holder">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-xl-6">
                 <div class="page-errors alert alert-danger">
                     <h4>Errors</h4>
                     <ul>
@@ -66,9 +63,9 @@
     @endif
 
     @if (Session::has('success-message'))
-    <div class="container-fluid messages-holder">
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
+    <div class="container messages-holder">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-xl-6">
                 <div class="page-errors alert alert-success">
                     {{ Session::get('success-message') }}
                 </div>

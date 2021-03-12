@@ -1,6 +1,17 @@
-.page-type-account-edit .delete-account-link-holder {
-    margin-top: 20px;
-    text-align: right;
-    font-size: 12px;
+.page-type-account-edit {
+    .card-title {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .card {
+        margin-top: 20px;
+    }
+
+    .delete-account-link-holder {
+        margin-top: 20px;
+        text-align: right;
+        font-size: 14px;
+    }
 }
 
