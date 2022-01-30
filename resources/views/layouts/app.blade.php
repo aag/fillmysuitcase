@@ -19,7 +19,7 @@
 </head>
 
 <body class="page-type-@yield('page-type')">
-    <header class=" page-header navbar navbar-expand-sm navbar-light bg-light" role="navigation">
+    <header class="page-header navbar navbar-expand-sm navbar-light justify-content-between bg-light" role="navigation">
         <a class="navbar-brand" href="/">Fill My Suitcase</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

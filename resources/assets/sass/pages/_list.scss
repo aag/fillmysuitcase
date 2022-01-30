@@ -20,7 +20,15 @@
     }
 
     .confirm-delete {
+        display: flex;
+        justify-content: flex-end;
+
         margin-bottom: 5px;
+    }
+
+    .confirm-delete-copy {
+        margin-right: 2rem;
+        padding-top: 0.25rem;
     }
 
     .new-item-form {
@@ -41,7 +49,7 @@
     }
 
     .already-packed .item {
-        height: 31px;
+        height: 24px;
     }
 
     .item-name {

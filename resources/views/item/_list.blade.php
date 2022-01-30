@@ -22,13 +22,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" ng-show="item.confirmingDelete">
+                    <div class="row mt-1" ng-show="item.confirmingDelete">
                         <div class="col-2 col-sm-1"></div>
-                        <div class="col-10 col-sm-9 col-lg-6 text-right">
+                        <div class="col-8 col-sm-9 col-lg-6">
                             <div class="confirm-delete">
-                                Are you sure?
-                                <button class="delete-yes btn btn-danger btn-sm" ng-click="confirmDelete(item)" dusk="confirm-delete-button-{% $index %}">Delete</button>
-                                <button class="delete-cancel btn btn-default btn-sm" ng-click="cancelDelete(item)">Cancel</button>
+                                <span class="confirm-delete-copy">Are you sure?</span>
+                                <span class="confirm-delete-buttons">
+                                    <button class="delete-yes btn btn-danger btn-sm" ng-click="confirmDelete(item)" dusk="confirm-delete-button-{% $index %}">Delete</button>
+                                    <button class="delete-cancel btn btn-default btn-sm" ng-click="cancelDelete(item)">Cancel</button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -60,7 +62,7 @@
     <div class="packed">
         <h3>Already Packed</h3>
         <ul class="packing-list already-packed">
-            <li class="item mb-2" ng-repeat="item in items | filter:{packed:true} | orderBy:'id'">
+            <li class="item" ng-repeat="item in items | filter:{packed:true} | orderBy:'id'">
                 <div class="row">
                     <div class="col-2 col-sm-1">
                         <div class="checkbox-holder text-right">
