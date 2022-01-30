@@ -8,8 +8,8 @@ This software runs the site [https://fillmysuitca.se](https://fillmysuitca.se)
 
 ### Installation
 
-The application is built on Laravel 7 and AngularJS 1.7.  It requires Apache
-or Nginx running PHP 7.3+ and the MCrypt PHP extension.  It also requires a
+The application is built on Laravel 8 and AngularJS 1.7.  It requires Apache
+or Nginx running PHP 8.0+ and the MCrypt PHP extension.  It also requires a
 database server with a PDO driver.  The default configuration uses PostgreSQL.
 
 Development and deploying require [Node.js](https://nodejs.org/) and
