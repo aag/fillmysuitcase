@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use App\Models\User;
 
-class UnitTest extends \Tests\TestCase {
+class UserTest extends \Tests\TestCase {
 
     public function testValidUserCreation()
     {
