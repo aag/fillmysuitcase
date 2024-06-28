@@ -59,19 +59,9 @@ $ nvm use
    ```
    $ sudo su - postgres
    $ psql
-   postgres-# CREATE DATABASE fillmysuitcase;
+   postgres-# CREATE USER fillmysuitcase WITH PASSWORD '{RANDOM_PASSWORD}';
+   postgres-# CREATE DATABASE fillmysuitcase OWNER fillmysuitcase;
    postgres-# \q
-   $ psql fillmysuitcase
-   fillmysuitcase=# CREATE USER fillmysuitcase WITH PASSWORD '{RANDOM_PASSWORD}';
-   fillmysuitcase=# GRANT ALL PRIVILEGES ON DATABASE "fillmysuitcase" to fillmysuitcase;
-   fillmysuitcase=# \q
-   ```
-
-   Make sure md5 authentication is enabled for all non-root users by editing
-   `/etc/postgresql/{VERSION}/main/pg_hba.conf` and ensuring that this line
-   exists:
-   ```
-   host    all             all             127.0.0.1/32            md5
    ```
 7. Copy the `.env.example` file in the top-level directory of the Fill My
    Suitcase code to a file named `.env`.
