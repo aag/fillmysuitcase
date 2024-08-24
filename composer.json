@@ -8,6 +8,7 @@
         "php": ">=8.2",
         "laravel/framework": "^11.0",
         "laravel/legacy-factories": "^1.4",
+        "laravel/pail": "^1.1",
         "laravel/tinker": "^2.9",
         "laravel/ui": "^4.0",
         "spatie/laravel-ignition": "^2.0"
