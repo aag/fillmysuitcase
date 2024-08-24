@@ -72,7 +72,7 @@ task('deploy:mix', function() {
 })->desc('Execute Laravel Mix');
 
 task('deploy:fpm_restart', function() {
-    $fpmServiceName = trim(run("ls -1 /var/run/php | grep 'php8\.0-fpm\.sock' | sed 's/\.sock//'"));
+    $fpmServiceName = trim(run("ls -1 /var/run/php | grep 'php8\.3-fpm\.sock' | sed 's/\.sock//'"));
     $output = run("sudo service {$fpmServiceName} restart");
     //writeln('<info>'.$output.'</info>');
 })->desc('Restart PHP-FPM');
