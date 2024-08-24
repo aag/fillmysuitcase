@@ -5,6 +5,7 @@
 /public/storage
 /public/mix-manifest.json
 /storage/*.key
+/storage/pail
 /vendor
 npm-debug.log
 yarn-error.log
