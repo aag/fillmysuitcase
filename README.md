@@ -118,6 +118,12 @@ window with this command:
 $ php artisan serve --env=testing
 ```
 
+You may need to run the serve command as a different user if you also have a
+web server serving the application from the same directory, e.g.
+```
+$ sudo -u www-data php artisan serve --env=testing
+```
+
 Then you can run all the tests with artisan:
 
 ```
