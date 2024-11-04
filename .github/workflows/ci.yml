@@ -1,0 +1,53 @@
+on: [push, pull_request]
+
+name: CI
+
+jobs:
+  test:
+    name: PHP Linting and Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-versions: ['8.2', '8.3']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up JavaScript dependencies
+        uses: actions/setup-node@v2
+        with:
+          node-version-file: '.nvmrc'
+        run: npm install
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mcrypt sqlite3
+          tools: composer:v2
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Install PHP dependencies
+        run: php composer.phar install --prefer-dist
+      - name: Set up application
+        run: |
+          php artisan key:generate
+          touch database/database.sqlite
+          chmod a+w database/database.sqlite
+          php artisan migrate
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+        run: chrome --version
+      - name: Install ChromeDriver
+        run: php artisan dusk:chrome-driver --detect
+      - name: Start application
+        run: |
+          php artisan serve --env=testing &
+          sleep 2 # give the PHP server time to start
+      - name: Run tests
+        run: php artisan test
