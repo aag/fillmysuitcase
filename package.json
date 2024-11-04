@@ -8,8 +8,7 @@
         "popper.js": "^1.12",
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.49.0",
-        "sass-loader": "^12.4.0",
-        "vue-template-compiler": "^2.7.16"
+        "sass-loader": "^12.4.0"
     },
     "scripts": {
         "dev": "npm run development",
