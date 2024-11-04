@@ -18,12 +18,13 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Install JavaScript dependencies
         run: npm install
+      - name: Do webpack build
+        run: npm run prod
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mcrypt sqlite3
-          tools: composer:v2
       - name: Get composer cache directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
