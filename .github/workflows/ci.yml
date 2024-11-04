@@ -43,6 +43,7 @@ jobs:
           php artisan migrate
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
+      - name: Print Chrome version
         run: chrome --version
       - name: Install ChromeDriver
         run: php artisan dusk:chrome-driver --detect
