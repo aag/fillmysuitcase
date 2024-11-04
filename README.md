@@ -1,4 +1,4 @@
-## Fill My Suitcase [![Build Status](https://travis-ci.org/aag/fillmysuitcase.svg?branch=master)](https://travis-ci.org/aag/fillmysuitcase) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+## Fill My Suitcase [![Build Status](https://github.com/aag/fillmysuitcase/actions/workflows/ci.yml/badge.svg)](https://github.com/aag/fillmysuitcase/actions) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Fill My Suitcase is a web application for keeping a packing list for traveling.
 The goal is to make it easy to bring exactly what you need when you pack luggage
@@ -87,7 +87,7 @@ VIEW_CDN_JS_LIBS=false
 ```
 
 If you have [NVM](https://github.com/creationix/nvm) installed, run `nvm use`
-to use the same version of Node as on the Travis CI server.
+to use the same version of Node as in the Github Workflow Action.
 
 ### Tests
 
