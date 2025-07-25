@@ -145,7 +145,7 @@ change the `server()` details. Once you have it configured, run this command
 to deploy:
 
 ```
-$ ./deployer.phar deploy production
+$ ./deployer.phar deploy stage=production
 ```
 
 ### License

@@ -9,9 +9,9 @@ set('ssh_multiplexing', true);
 
 // Define a server for deployment.
 host('fillmysuitca.se')
-    ->user('deployer')
-    ->forwardAgent(true)
-    ->stage('production')
+    ->set('remote_user', 'deployer')
+    ->set('forward_agent', true)
+    ->set('labels', ['stage' => 'production'])
     ->set('deploy_path', '/var/www/fillmysuitca.se'); 
 
 // Specify the repository from which to download your project's code.
@@ -34,6 +34,7 @@ set('shared_files', ['.env']);
 
 set('http_user', 'www-data');
 set('writable_use_sudo', true);
+set('writable_recursive', true);
 set('writable_dirs', [
     'bootstrap/cache',
     'storage',
@@ -93,10 +94,6 @@ task('deploy:down', function () {
  */
 task('deploy', [
     'deploy:prepare',
-    'deploy:release',
-    'deploy:update_code',
-    'deploy:shared',
-    'deploy:writable',
     'deploy:vendors',
     'deploy:optimize',
     'deploy:migrate',
@@ -104,7 +101,8 @@ task('deploy', [
     'deploy:mix',
     'deploy:symlink',
     'deploy:fpm_restart',
-    'cleanup',
+    'deploy:cleanup',
+    'deploy:unlock',
 ])->desc('Deploy your project');
 
-after('deploy', 'success');
+after('deploy', 'deploy:success');
