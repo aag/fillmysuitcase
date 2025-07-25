@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=8.2",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^12.0",
         "laravel/legacy-factories": "^1.4",
         "laravel/pail": "^1.1",
         "laravel/tinker": "^2.9",
@@ -15,17 +15,20 @@
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^2.0",
+        "fakerphp/faker": "^1.24",
         "filp/whoops": "^2.15",
         "laravel/dusk": "^8.3",
         "mockery/mockery": "^1.4",
         "nunomaduro/collision": "^8.8",
-        "fakerphp/faker": "^1.24",
-        "phpunit/phpunit": "^12.2"
+        "pestphp/pest": "^3.8"
     },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "extra": {
         "laravel": {
