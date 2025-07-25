@@ -18,9 +18,9 @@
         "filp/whoops": "^2.15",
         "laravel/dusk": "^8.3",
         "mockery/mockery": "^1.4",
-        "nunomaduro/collision": "^8.1",
+        "nunomaduro/collision": "^8.8",
         "fakerphp/faker": "^1.23",
-        "phpunit/phpunit": "^10.0"
+        "phpunit/phpunit": "^11.0"
     },
     "config": {
         "preferred-install": "dist",
