@@ -35,7 +35,7 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
       - name: Install PHP dependencies
-        run: php composer.phar install --prefer-dist --no-interaction --no-suggest
+        run: php composer.phar install --prefer-dist --no-interaction
       - name: Set up application
         run: |
           cp .env.ci .env
