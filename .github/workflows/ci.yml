@@ -11,9 +11,9 @@ jobs:
         php-versions: ['8.4', '8.5']
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
       - name: Install JavaScript dependencies
@@ -29,7 +29,7 @@ jobs:
         id: composer-cache
         run: echo "dir=$(php composer.phar config cache-files-dir)" >> $GITHUB_OUTPUT
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -45,7 +45,7 @@ jobs:
           chmod a+w database/database.sqlite
           php artisan migrate
       - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
+        uses: browser-actions/setup-chrome@v2
       - name: Print Chrome version
         run: chrome --version
       - name: Install ChromeDriver
