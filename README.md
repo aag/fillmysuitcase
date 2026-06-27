@@ -108,7 +108,7 @@ commands:
 $ touch database/database.sqlite
 $ chmod a+w database/database.sqlite
 $ php artisan migrate
-$ php artisan dusk:chrome-driver
+$ php artisan dusk:chrome-driver --detect
 ```
 
 Before running the Dusk tests, you need to start the PHP server in a separate
